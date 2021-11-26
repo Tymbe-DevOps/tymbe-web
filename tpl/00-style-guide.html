@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="cs" class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Style Guide | Tymbe">
+	<meta name="twitter:description" content="">
+	<meta name="twitter:image" content="../img/social/twitter.jpg">
+	<meta property="og:title" content="Style Guide | Tymbe">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="../img/social/facebook.jpg">
+	<meta property="og:site_name" content="Tymbe">
+	<meta property="og:url" content="http://www.example.com/">
+	<title>Style Guide | Tymbe</title>
+	<link rel="stylesheet" href="https://use.typekit.net/gwu8cnr.css">
+	<link rel="stylesheet" href="../css/style.css?t=1637934341274">
+	<link rel="stylesheet" href="../css/print.css?t=1637934341274" media="print">
+	<link rel="preload" as="script" href="https://cdn.polyfill.io/v3/polyfill.min.js?features=default,Array.prototype.includes,Object.values,Array.prototype.find,AbortController,fetch,features=Array.prototype.findIndex,Array.from,Element.prototype.closest,Map,MutationObserver,Object.assign,Promise,Set">
+	<link rel="preload" as="script" href="../js/app.js?t=1637934341274">
+	<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="msapplication-config" content="/browserconfig.xml">
+	<script>
+		(function() {
+			var className = document.documentElement.className;
+			className = className.replace('no-js', 'js');
+			(function() {
+				var mediaHover = window.matchMedia('(hover: none), (pointer: coarse), (pointer: none)');
+				mediaHover.addListener(function(media) {
+					document.documentElement.classList[media.matches ? 'add' : 'remove']('no-hoverevents');
+					document.documentElement.classList[!media.matches ? 'add' : 'remove']('hoverevents');
+				});
+				className += (mediaHover.matches ? ' no-hoverevents' : ' hoverevents');
+			})();
+			// var supportsCover = 'CSS' in window && typeof CSS.supports === 'function' && CSS.supports('object-fit: cover');
+			// className += (supportsCover ? ' ' : ' no-') + 'objectfit';
+			// fix iOS zoom issue: https://docs.google.com/document/d/1KclJmXyuuErcvit-kwCC6K2J7dClRef43oyGVCqWxFE/edit#heading=h.sgbqg5nzhvu9
+			var ua = navigator.userAgent.toLowerCase();
+			var isIOS = /ipad|iphone|ipod/.test(ua) && !window.MSStream;
+			if (isIOS === true) {
+				var viewportTag = document.querySelector("meta[name=viewport]");
+				viewportTag.setAttribute("content", "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no");
+			}
+			document.documentElement.className = className;
+		}());
+	</script>
+</head>
+
+<body>
+	<p class="m-accessibility">
+		<a title="Přejít k obsahu (Klávesová zkratka: Alt + 2)" accesskey="2" href="#main">Přejít k obsahu</a>
+		<span class="hide">|</span>
+		<a href="#menu-main">Přejít k hlavnímu menu</a>
+	</p>
+	<header class="header">
+		<div class="row-main">
+			<div class="header__inner">
+				<p class="header__logo">
+					<a href="./">
+						<img src="../img/logo.svg" alt="Tymbe" width="100" height="49">
+					</a>
+				</p>
+				<nav id="menu-main" class="m-main" data-controller="SiteNav">
+					<button type="button" class="m-main__title js-menu-main" aria-label="Menu" data-action="click->SiteNav#toggleNav"> Menu <span class="m-main__title-icon">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+					</button>
+					<div class="m-main__content" data-SiteNav-target="menu">
+						<ul class="m-main__list">
+							<li class="m-main__item is-active">
+								<a href="#" class="m-main__link">
+									<span class="icon-svg icon-svg--work" aria-hidden="true">
+										<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="../img/bg/icons-svg.svg#icon-work" width="100%" height="100%" focusable="false"></use>
+										</svg>
+									</span> Pro brigádníky </a>
+							</li>
+							<li class="m-main__item">
+								<a href="#" class="m-main__link">
+									<span class="icon-svg icon-svg--building" aria-hidden="true">
+										<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="../img/bg/icons-svg.svg#icon-building" width="100%" height="100%" focusable="false"></use>
+										</svg>
+									</span> Pro firmy </a>
+							</li>
+							<li class="m-main__item">
+								<a href="./03-about.html" class="m-main__link">
+									<span class="icon-svg icon-svg--user" aria-hidden="true">
+										<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="../img/bg/icons-svg.svg#icon-user" width="100%" height="100%" focusable="false"></use>
+										</svg>
+									</span> O nás </a>
+							</li>
+							<li class="m-main__item">
+								<a href="./05-contact.html" class="m-main__link">
+									<span class="icon-svg icon-svg--message" aria-hidden="true">
+										<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="../img/bg/icons-svg.svg#icon-message" width="100%" height="100%" focusable="false"></use>
+										</svg>
+									</span> Kontakty </a>
+							</li>
+						</ul>
+						<ul class="m-main__list m-main__list--buttons">
+							<li class="m-main__item">
+								<a href="#" class="m-main__btn btn btn--secondary">
+									<span class="btn__text"> Přihlásit </span>
+								</a>
+							</li>
+							<li class="m-main__item">
+								<a href="#" class="m-main__btn btn">
+									<span class="btn__text"> Registrace </span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<main id="main" class="main">
+		<div class="row-main">
+			<h1> Typografie </h1>
+			<h2> Heading h2 </h2>
+			<p> Suspendisse <a href="#">link</a> vel nisi accumsan pretium. Etiam id massa ut neque iaculis auctor. Fermentum eu dictum risus consequat. Cras magna justo, iaculis non scelerisque eget, condimentum in tellus. Maecenas a sem quam. Suspendisse facilisis neque tempor enim imperdiet sodales. Vitae lobortis sapien vestibulum. Suspendisse vehicula libero vel nisi accumsan. Suspendisse vehicula libero vel nisi accumsan pretium. Etiam id massa ut neque iaculis auctor. Fermentum eu dictum risus consequat. Cras magna justo, iaculis non scelerisque eget, condimentum in tellus. Maecenas a sem quam. Suspendisse. </p>
+			<p> Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assuiber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. </p>
+			<figure>
+				<img src="../img/illust/sample.jpg" width="400" height="250" alt="">
+				<figcaption> Image description </figcaption>
+			</figure>
+			<h3> Heading h3 </h3>
+			<ul>
+				<li>
+					<strong>Etiam ante sem,</strong> porta a porttitor ut, varius varius metus.
+				</li>
+				<li>
+					<strong>Nunc eu felis</strong> quis metus volutpat pellentesque.
+				</li>
+				<li>
+					<strong>Duis gravida</strong> tincidunt enim sed cursus.
+				</li>
+				<li>
+					<strong>Nunc eu felis</strong> quis metus volutpat pellentesque.
+				</li>
+				<li>
+					<strong>Duis gravida</strong> tincidunt enim sed cursus.
+				</li>
+			</ul>
+			<ol>
+				<li>
+					<strong>Etiam ante sem,</strong> porta a porttitor ut, varius varius metus.
+				</li>
+				<li>
+					<strong>Nunc eu felis</strong> quis metus volutpat pellentesque.
+				</li>
+				<li>
+					<strong>Duis gravida</strong> tincidunt enim sed cursus.
+				</li>
+				<li>
+					<strong>Nunc eu felis</strong> quis metus volutpat pellentesque.
+				</li>
+				<li>
+					<strong>Duis gravida</strong> tincidunt enim sed cursus.
+				</li>
+			</ol>
+			<p> Suspendisse <a href="#">link</a> vel nisi accumsan pretium. Etiam id massa ut neque iaculis auctor. Fermentum eu dictum risus consequat. Cras magna justo, iaculis non scelerisque eget, condimentum in tellus. Maecenas a sem quam. Suspendisse facilisis neque tempor enim imperdiet sodales. Vitae lobortis sapien vestibulum. Suspendisse vehicula libero vel nisi accumsan. Suspendisse vehicula libero vel nisi accumsan pretium. Etiam id massa ut neque iaculis auctor. Fermentum eu dictum risus consequat. Cras magna justo, iaculis non scelerisque eget, condimentum in tellus. Maecenas a sem quam. Suspendisse. </p>
+			<p> Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assuiber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. </p>
+			<blockquote>
+				<p>
+					<strong>Blockquote</strong> – Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum quia ipsa corrupti temporibus ratione voluptatibus, voluptatem eos culpa a, numquam suscipit deleniti veniam libero. Dicta soluta sint, officiis enim voluptate.
+				</p>
+			</blockquote>
+			<p> Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.<br>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam <strong>liber tempor cum soluta nobis</strong> eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. </p>
+			<h4> Heading 4 úrovně </h4>
+			<ol>
+				<li> Lorem ipsum dolor sit amet. <ol>
+						<li> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere consequuntur id quidem, expedita, dicta, eos temporibus incidunt, mollitia aspernatur vitae excepturi vel nam dolorem voluptates fuga assumenda reprehenderit? Aut, nesciunt. </li>
+						<li> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur deleniti aliquid, voluptatibus ratione! Id consequatur aperiam iusto nam in beatae atque a, voluptate iste fugit ea ex officia architecto impedit? </li>
+					</ol>
+				</li>
+				<li> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod </li>
+				<li> tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, uis nostrud exercitation ullamco laboris nisi ut iquip x ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse </li>
+				<li> cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </li>
+			</ol>
+			<ul>
+				<li> Lorem ipsum dolor sit amet. <ul>
+						<li> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere consequuntur id quidem, expedita, dicta, eos temporibus incidunt, mollitia aspernatur vitae excepturi vel nam dolorem voluptates fuga assumenda reprehenderit? Aut, nesciunt. </li>
+						<li> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur deleniti aliquid, voluptatibus ratione! Id consequatur aperiam iusto nam in beatae atque a, voluptate iste fugit ea ex officia architecto impedit? </li>
+					</ul>
+				</li>
+				<li> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod </li>
+				<li> tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, uis nostrud exercitation ullamco laboris nisi ut iquip x ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse </li>
+				<li> cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </li>
+			</ul>
+			<hr>
+			<p> Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. </p>
+			<dl>
+				<dt> Definition List Title </dt>
+				<dd> This is a definition list division. </dd>
+				<dt> Definition List Title </dt>
+				<dd> This is a definition list division. </dd>
+				<dt> Definition List Title </dt>
+				<dd> This is a definition list division. </dd>
+			</dl>
+			<h5> Heading 5 úrovně </h5>
+			<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae odio minima nostrum, blanditiis maxime ex reiciendis laborum voluptatum molestiae sequi optio, repudiandae sit explicabo. Obcaecati neque eligendi, totam debitis aperiam! </p>
+			<h6> Heading 6 úrovně </h6>
+			<p>
+				<cite>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</cite>
+			</p>
+			<h2> Tabular data </h2>
+			<table>
+				<caption> Table Caption </caption>
+				<thead>
+					<tr>
+						<th> Table Heading 1 </th>
+						<th> Table Heading 2 </th>
+						<th> Table Heading 3 </th>
+						<th> Table Heading 4 </th>
+						<th> Table Heading 5 </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td> Table Cell 1 </td>
+						<td> Table Cell 2 </td>
+						<td> Table Cell 3 </td>
+						<td> Table Cell 4 </td>
+						<td> Table Cell 5 </td>
+					</tr>
+					<tr>
+						<td> Table Cell 1 </td>
+						<td> Table Cell 2 </td>
+						<td> Table Cell 3 </td>
+						<td> Table Cell 4 </td>
+						<td> Table Cell 5 </td>
+					</tr>
+					<tr>
+						<td> Table Cell 1 </td>
+						<td> Table Cell 2 </td>
+						<td> Table Cell 3 </td>
+						<td> Table Cell 4 </td>
+						<td> Table Cell 5 </td>
+					</tr>
+					<tr>
+						<td> Table Cell 1 </td>
+						<td> Table Cell 2 </td>
+						<td> Table Cell 3 </td>
+						<td> Table Cell 4 </td>
+						<td> Table Cell 5 </td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th> Table Footer 1 </th>
+						<th> Table Footer 2 </th>
+						<th> Table Footer 3 </th>
+						<th> Table Footer 4 </th>
+						<th> Table Footer 5 </th>
+					</tr>
+				</tfoot>
+			</table>
+			<h2> Headings </h2>
+			<h1> Heading 1 </h1>
+			<h2> Heading 2 </h2>
+			<h3> Heading 3 </h3>
+			<h4> Heading 4 </h4>
+			<h5> Heading 5 </h5>
+			<h6> Heading 6 </h6>
+			<h2> Paragraphs </h2>
+			<p> A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose. </p>
+			<h2> Blockquotes </h2>
+			<blockquote>
+				<p> A block quotation (also known as a long quotation or extract) is a quotation in a written document, that is set off from the main text as a paragraph, or block of text. </p>
+				<p> It is typically distinguished visually using indentation and a different typeface or smaller size quotation. It may or may not include a citation, usually placed at the bottom. </p>
+				<cite>
+					<a href="#"> Said no one, ever. </a>
+				</cite>
+			</blockquote>
+			<h2> Lists </h2>
+			<h3> Definition list </h3>
+			<dl>
+				<dt> Definition List Title </dt>
+				<dd> This is a definition list division. </dd>
+			</dl>
+			<h3> Ordered List </h3>
+			<ol>
+				<li> List Item 1 </li>
+				<li> List Item 2 </li>
+				<li> List Item 3 </li>
+			</ol>
+			<h3> Unordered List </h3>
+			<ul>
+				<li> List Item 1 </li>
+				<li> List Item 2 </li>
+				<li> List Item 3 </li>
+			</ul>
+			<h2> Horizontal rules </h2>
+			<hr>
+			<h2> Tabular data </h2>
+			<table>
+				<caption> Table Caption </caption>
+				<thead>
+					<tr>
+						<th> Table Heading 1 </th>
+						<th> Table Heading 2 </th>
+						<th> Table Heading 3 </th>
+						<th> Table Heading 4 </th>
+						<th> Table Heading 5 </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td> Table Cell 1 </td>
+						<td> Table Cell 2 </td>
+						<td> Table Cell 3 </td>
+						<td> Table Cell 4 </td>
+						<td> Table Cell 5 </td>
+					</tr>
+					<tr>
+						<td> Table Cell 1 </td>
+						<td> Table Cell 2 </td>
+						<td> Table Cell 3 </td>
+						<td> Table Cell 4 </td>
+						<td> Table Cell 5 </td>
+					</tr>
+					<tr>
+						<td> Table Cell 1 </td>
+						<td> Table Cell 2 </td>
+						<td> Table Cell 3 </td>
+						<td> Table Cell 4 </td>
+						<td> Table Cell 5 </td>
+					</tr>
+					<tr>
+						<td> Table Cell 1 </td>
+						<td> Table Cell 2 </td>
+						<td> Table Cell 3 </td>
+						<td> Table Cell 4 </td>
+						<td> Table Cell 5 </td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th> Table Footer 1 </th>
+						<th> Table Footer 2 </th>
+						<th> Table Footer 3 </th>
+						<th> Table Footer 4 </th>
+						<th> Table Footer 5 </th>
+					</tr>
+				</tfoot>
+			</table>
+			<h2> Code </h2>
+			<p>
+				<strong>Keyboard input:</strong> <kbd>Cmd</kbd>
+			</p>
+			<p>
+				<strong>Inline code:</strong> <code>&lt;div&gt;code&lt;/div&gt;</code>
+			</p>
+			<p>
+				<strong>Sample output:</strong> <samp>This is sample output from a computer program.</samp>
+			</p>
+			<h2> Pre-formatted text </h2>
+			<pre>P R E F O R M A T T E D T E X T
+! " # $ % &amp; ' ( ) * + , - . /
+0 1 2 3 4 5 6 7 8 9 : ; &lt; = &gt; ?
+@ A B C D E F G H I J K L M N O
+P Q R S T U V W X Y Z [ \ ] ^ _
+` a b c d e f g h i j k l m n o
+p q r s t u v w x y z { | } ~ </pre>
+			<h2> Inline elements </h2>
+			<p>
+				<a href="#">This is a text link</a>.
+			</p>
+			<p>
+				<strong>Strong is used to indicate strong importance.</strong>
+			</p>
+			<p>
+				<em>This text has added emphasis.</em>
+			</p>
+			<p>
+				<del>This text is deleted</del> and <ins>This text is inserted</ins>.
+			</p>
+			<p>
+				<s>This text has a strikethrough</s>.
+			</p>
+			<p> Superscript<sup>®</sup>. </p>
+			<p> Subscript for things like H<sub>2</sub>O. </p>
+			<p> Abbreviation: <abbr title="HyperText Markup Language">HTML</abbr>
+			</p>
+			<p>
+				<q cite="https://developer.mozilla.org/en-US/docs/HTML/Element/q">This text is a short inline quotation.</q>
+			</p>
+			<p>
+				<cite>This is a citation.</cite>
+			</p>
+			<p> The <dfn>dfn element</dfn> indicates a definition. </p>
+			<p> The <mark>mark element</mark> indicates a highlight. </p>
+			<p> The <var>variable element</var>, such as <var>x</var> = <var>y</var>. </p>
+			<p> The time element: <time datetime="2013-04-06T12:32+00:00">2 weeks ago</time>
+			</p>
+			<h2> Formulářové prvky </h2>
+			<p class="message"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam autem, tempora itaque cum fuga, dignissimos dolorum facere ut harum voluptas distinctio perferendis minima incidunt consequatur magni dicta, fugiat. Velit, officia. </p>
+			<p class="message message--ok"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam autem, tempora itaque cum fuga, dignissimos dolorum facere ut harum voluptas distinctio perferendis minima incidunt consequatur magni dicta, fugiat. Velit, officia. </p>
+			<p class="message message--error"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam autem, tempora itaque cum fuga, dignissimos dolorum facere ut harum voluptas distinctio perferendis minima incidunt consequatur magni dicta, fugiat. Velit, officia. </p>
+			<p class="message message--warning"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam autem, tempora itaque cum fuga, dignissimos dolorum facere ut harum voluptas distinctio perferendis minima incidunt consequatur magni dicta, fugiat. Velit, officia. </p>
+			<p class="inp" data-controller="FocusInput">
+				<label for="default" class="inp-label"> Defaultní input s labelem </label>
+				<span class="inp-fix">
+					<input type="text" name="default" id="default" class="inp-text" data-action="focus->FocusInput#focus blur->FocusInput#blur">
+				</span>
+			</p>
+			<p class="inp" data-controller="FocusInput">
+				<label for="email" class="inp-label"> E-mail input </label>
+				<span class="inp-fix">
+					<input type="email" name="email" id="email" class="inp-text" data-action="focus->FocusInput#focus blur->FocusInput#blur">
+				</span>
+			</p>
+			<p class="inp" data-controller="FocusInput">
+				<label for="password" class="inp-label"> Password input </label>
+				<span class="inp-fix">
+					<input type="password" name="password" id="password" class="inp-text" data-action="focus->FocusInput#focus blur->FocusInput#blur">
+				</span>
+			</p>
+			<p class="inp" data-controller="FocusInput">
+				<label for="number" class="inp-label"> Number input </label>
+				<span class="inp-fix">
+					<input type="number" name="number" id="number" class="inp-text" data-action="focus->FocusInput#focus blur->FocusInput#blur">
+				</span>
+			</p>
+			<p class="inp" data-controller="FocusInput">
+				<label for="tel" class="inp-label"> Phone input </label>
+				<span class="inp-fix">
+					<input type="tel" name="tel" id="tel" class="inp-text" data-action="focus->FocusInput#focus blur->FocusInput#blur">
+				</span>
+			</p>
+			<p class="inp" data-controller="FocusInput">
+				<label for="number" class="inp-label"> Number input </label>
+				<span class="inp-fix">
+					<input type="number" name="number" id="number" class="inp-text" data-action="focus->FocusInput#focus blur->FocusInput#blur">
+				</span>
+			</p>
+			<p class="inp has-focus" data-controller="FocusInput">
+				<label for="select" class="inp-label"> Select </label>
+				<span class="inp-fix">
+					<select name="select" id="select" class="inp-select" data-action="focus->FocusInput#focus blur->FocusInput#blur">
+						<option value=""> Vyberte hodnotu </option>
+						<option value="1"> Hodnota 1 </option>
+						<option value="2"> Hodnota 2 </option>
+						<option value="3"> Hodnota 3 </option>
+						<option value="4"> Hodnota 4 </option>
+					</select>
+				</span>
+			</p>
+			<p class="inp" data-controller="FocusInput">
+				<label for="textarea" class="inp-label"> Textarea </label>
+				<span class="inp-fix">
+					<textarea name="textarea" id="textarea" class="inp-text" cols="40" rows="6" data-action="focus->FocusInput#focus blur->FocusInput#blur"></textarea>
+				</span>
+			</p>
+			<p class="inp is-disabled">
+				<label for="disabled" class="inp-label"> Disabled defaultní input </label>
+				<span class="inp-fix">
+					<input type="text" name="disabled" id="disabled" class="inp-text" disabled>
+				</span>
+			</p>
+			<p class="inp has-error" data-controller="FocusInput">
+				<label for="error" class="inp-label"> Defaultní input s errorem </label>
+				<span class="inp-fix">
+					<input type="text" name="error" id="error" class="inp-text" data-action="focus->FocusInput#focus blur->FocusInput#blur">
+					<button type="button" class="tooltip">
+						<span class="icon-svg icon-svg--info" aria-hidden="true">
+							<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+								<use xlink:href="../img/bg/icons-svg.svg#icon-info" width="100%" height="100%" focusable="false"></use>
+							</svg>
+						</span>
+						<span class="u-vhide"> Info </span>
+						<span class="tooltip__content">
+							<span class="tooltip__title"> Lorem ipsum </span>
+							<span class="tooltip__text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate velit libero laudantium consequuntur minus, qui vel et, facere omnis facilis aspernatur minima doloremque enim. Fugiat itaque possimus voluptates voluptatum nemo? </span>
+						</span>
+					</button>
+				</span>
+			</p>
+			<p>
+				<button type="submit" class="btn">
+					<span class="btn__text"> Odeslat </span>
+				</button>
+			</p>
+			<p>
+				<button type="submit" class="btn btn--secondary">
+					<span class="btn__text"> Odeslat </span>
+				</button>
+			</p>
+			<h2> Pomocné třídy </h2>
+			<table>
+				<thead>
+					<tr>
+						<th> Třída </th>
+						<th> Popis a ukázka </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th> .u-text-left </th>
+						<td class="u-text-left"> Zarovnání textu doleva </td>
+					</tr>
+					<tr>
+						<th> .u-text-right </th>
+						<td class="u-text-right"> Zarovnání textu doprava </td>
+					</tr>
+					<tr>
+						<th> .u-text-center </th>
+						<td class="u-text-center"> Zarovnání textu na střed </td>
+					</tr>
+					<tr>
+						<th> .u-text-justify </th>
+						<td class="u-text-justify"> Zarovnání textu do bloku </td>
+					</tr>
+					<tr>
+						<th> .u-text-nowrap </th>
+						<td> Nezalomitelný text </td>
+					</tr>
+					<tr>
+						<th> .u-text-truncate </th>
+						<td> Ukončení dlouhého textu třemi tečkami </td>
+					</tr>
+					<tr>
+						<th> .u-text-lowercase </th>
+						<td class="u-text-lowercase"> Malá písmena </td>
+					</tr>
+					<tr>
+						<th> .u-text-uppercase </th>
+						<td class="u-text-uppercase"> Velká písmena </td>
+					</tr>
+					<tr>
+						<th> .u-text-capitalize </th>
+						<td class="u-text-capitalize"> Velká pouze první písmena </td>
+					</tr>
+					<tr>
+						<th> .u-font-light </th>
+						<td class="u-font-light"> Tenké písmo </td>
+					</tr>
+					<tr>
+						<th> .u-font-regular </th>
+						<td class="u-font-regular"> Normální písmo </td>
+					</tr>
+					<tr>
+						<th> .u-font-bold </th>
+						<td class="u-font-bold"> Tučné písmo </td>
+					</tr>
+					<tr>
+						<th> .u-font-italic </th>
+						<td class="u-font-italic"> Kurzíva </td>
+					</tr>
+					<tr>
+						<th> .u-text-hide </th>
+						<td> Skrytí textu (např. při nahrazování obrázkem) </td>
+					</tr>
+					<tr>
+						<th> .u-align-top </th>
+						<td class="u-align-top"> Zarovnání nahoru </td>
+					</tr>
+					<tr>
+						<th> .u-align-middle </th>
+						<td class="u-align-middle"> Zarovnání na střed </td>
+					</tr>
+					<tr>
+						<th> .u-align-bottom </th>
+						<td class="u-align-bottom"> Zarovnání dolů </td>
+					</tr>
+					<tr>
+						<th> .u-pull-left </th>
+						<td> Float vlevo </td>
+					</tr>
+					<tr>
+						<th> .u-pull-right </th>
+						<td> Float vpravo </td>
+					</tr>
+					<tr>
+						<th> .u-center-block </th>
+						<td> Centrování blocku </td>
+					</tr>
+					<tr>
+						<th> .u-box-vertical </th>
+						<td> Vertikální centrování uvnitř bloku </td>
+					</tr>
+					<tr>
+						<th> .u-clearfix </th>
+						<td> Clearování floatů </td>
+					</tr>
+					<tr>
+						<th> .u-vhide </th>
+						<td> Skrytí obsahu (zůstává zobrazitelný čtečkám) </td>
+					</tr>
+					<tr>
+						<th> .u-js-hide </th>
+						<td> Skrytí obsahu (pouze při zapnutém javascriptu) </td>
+					</tr>
+					<tr>
+						<th> .u-out </th>
+						<td> Vypozicování obsahu mimo viewport </td>
+					</tr>
+					<tr>
+						<th> .u-js-out </th>
+						<td> Vypozicování obsahu mimo viewport (pouze při zapnutém javascriptu) </td>
+					</tr>
+					<tr>
+						<th> .u-hide </th>
+						<td> Skrytí obsahu </td>
+					</tr>
+					<tr>
+						<th> .u-show </th>
+						<td> Zobrazení obsahu </td>
+					</tr>
+					<tr>
+						<th> .u-hide@sm </th>
+						<td> Skrytí obsahu na všech breakpointech větších než SM (většinou &lt; 480px) </td>
+					</tr>
+					<tr>
+						<th> .u-show@sm </th>
+						<td> Zobrazení obsahu na všech breakpointech větších než SM (většinou &lt; 480px) </td>
+					</tr>
+					<tr>
+						<th> .u-hide@md </th>
+						<td> Skrytí obsahu na všech breakpointech větších než MD (většinou &lt; 750px) </td>
+					</tr>
+					<tr>
+						<th> .u-show@md </th>
+						<td> Zobrazení obsahu na všech breakpointech větších než MD (většinou &lt; 750px) </td>
+					</tr>
+					<tr>
+						<th> .u-hide@lg </th>
+						<td> Skrytí obsahu na všech breakpointech větších než LG (většinou &lt; 1000px) </td>
+					</tr>
+					<tr>
+						<th> .u-show@lg </th>
+						<td> Zobrazení obsahu na všech breakpointech větších než LG (většinou &lt; 1000px) </td>
+					</tr>
+					<tr>
+						<th> .u-hide@xl </th>
+						<td> Skrytí obsahu na všech breakpointech větších než XL (většinou &lt; 1200px) </td>
+					</tr>
+					<tr>
+						<th> .u-show@xl </th>
+						<td> Zobrazení obsahu na všech breakpointech větších než XL (většinou &lt; 1200px) </td>
+					</tr>
+				</tbody>
+			</table>
+			<h2> Grid </h2>
+			<h2> Defaultní grid (mobil portrait) </h2>
+			<div class="grid">
+				<div class="grid__cell size--1-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--2-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--3-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--4-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--4-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--4-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--5-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--7-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--5-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--7-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--6-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 6/12 </p>
+				</div>
+				<div class="grid__cell size--6-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 6/12 </p>
+				</div>
+				<div class="grid__cell size--7-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--5-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--8-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 8/12 </p>
+				</div>
+				<div class="grid__cell size--4-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--9-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 9/12 </p>
+				</div>
+				<div class="grid__cell size--3-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--10-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 10/12 </p>
+				</div>
+				<div class="grid__cell size--2-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--11-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 11/12 </p>
+				</div>
+				<div class="grid__cell size--1-12">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 12/12 </p>
+				</div>
+			</div>
+			<h2> Grid od breakpointu sm (mobil landscape) </h2>
+			<div class="grid">
+				<div class="grid__cell size--1-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--5-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--7-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--5-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--7-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--6-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 6/12 </p>
+				</div>
+				<div class="grid__cell size--6-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 6/12 </p>
+				</div>
+				<div class="grid__cell size--7-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--5-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--8-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 8/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--9-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 9/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--10-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 10/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--11-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 11/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@sm">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 12/12 </p>
+				</div>
+			</div>
+			<h2> Grid od breakpointu md (tablet) </h2>
+			<div class="grid">
+				<div class="grid__cell size--1-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--5-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--7-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--5-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--7-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--6-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 6/12 </p>
+				</div>
+				<div class="grid__cell size--6-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 6/12 </p>
+				</div>
+				<div class="grid__cell size--7-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--5-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--8-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 8/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--9-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 9/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--10-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 10/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--11-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 11/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@md">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 12/12 </p>
+				</div>
+			</div>
+			<h2> Grid od breakpointu lg (desktop) </h2>
+			<div class="grid">
+				<div class="grid__cell size--1-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--5-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--7-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--5-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--7-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--6-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 6/12 </p>
+				</div>
+				<div class="grid__cell size--6-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 6/12 </p>
+				</div>
+				<div class="grid__cell size--7-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--5-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--8-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 8/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--9-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 9/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--10-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 10/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--11-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 11/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@lg">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 12/12 </p>
+				</div>
+			</div>
+			<h2> Grid od breakpointu xl (desktop – large) </h2>
+			<div class="grid">
+				<div class="grid__cell size--1-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--5-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--7-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--5-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--7-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--6-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 6/12 </p>
+				</div>
+				<div class="grid__cell size--6-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 6/12 </p>
+				</div>
+				<div class="grid__cell size--7-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 7/12 </p>
+				</div>
+				<div class="grid__cell size--5-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 5/12 </p>
+				</div>
+				<div class="grid__cell size--8-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 8/12 </p>
+				</div>
+				<div class="grid__cell size--4-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 4/12 </p>
+				</div>
+				<div class="grid__cell size--9-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 9/12 </p>
+				</div>
+				<div class="grid__cell size--3-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 3/12 </p>
+				</div>
+				<div class="grid__cell size--10-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 10/12 </p>
+				</div>
+				<div class="grid__cell size--2-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 2/12 </p>
+				</div>
+				<div class="grid__cell size--11-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 11/12 </p>
+				</div>
+				<div class="grid__cell size--1-12@xl">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 1/12 </p>
+				</div>
+				<div class="grid__cell">
+					<p style="background: #f0f0f0; padding: 20px; text-align: center;"> 12/12 </p>
+				</div>
+			</div>
+			<h2> Auto šířka buňek gridu </h2>
+			<div class="grid">
+				<div class="grid__cell size--auto">
+					<p> Lorem ipsum </p>
+				</div>
+				<div class="grid__cell size--auto">
+					<p> Dolor sit amet </p>
+				</div>
+				<div class="grid__cell size--auto">
+					<p> Lorem ipsum </p>
+				</div>
+				<div class="grid__cell size--auto">
+					<p> Dolor sit amet </p>
+				</div>
+				<div class="grid__cell size--auto">
+					<p> Lorem ipsum </p>
+				</div>
+				<div class="grid__cell size--auto">
+					<p> Dolor sit amet </p>
+				</div>
+				<div class="grid__cell size--auto">
+					<p> Lorem ipsum </p>
+				</div>
+				<div class="grid__cell size--auto">
+					<p> Dolor sit amet </p>
+				</div>
+			</div>
+			<h2> Auto šírka buňky gridu s vyplněním celého řádku </h2>
+			<div class="grid">
+				<div class="grid__cell size--autogrow">
+					<p> Lorem ipsum </p>
+				</div>
+				<div class="grid__cell size--autogrow">
+					<p> Dolor sit amet </p>
+				</div>
+			</div>
+			<h2> Horizontální zarovnání </h2>
+			<div class="grid">
+				<div class="grid__cell size--4-12">
+					<p style="background: #f0f0f0; padding: 20px;">
+						<strong> Defaultní - left </strong>
+					</p>
+				</div>
+			</div>
+			<div class="grid grid--center">
+				<div class="grid__cell size--4-12">
+					<p style="background: #f0f0f0; padding: 20px;">
+						<strong> Defaultní - center </strong>
+					</p>
+				</div>
+			</div>
+			<div class="grid grid--right">
+				<div class="grid__cell size--4-12">
+					<p style="background: #f0f0f0; padding: 20px;">
+						<strong> Defaultní - right </strong>
+					</p>
+				</div>
+			</div>
+			<div class="grid grid--space-between">
+				<div class="grid__cell size--3-12">
+					<p style="background: #f0f0f0; padding: 20px;">
+						<strong> Defaultní - space-between </strong>
+					</p>
+				</div>
+				<div class="grid__cell size--3-12">
+					<p style="background: #f0f0f0; padding: 20px;"> Lorem ipsum dolor </p>
+				</div>
+			</div>
+			<h2> Vertikální zarovnání </h2>
+			<div class="grid">
+				<div class="grid__cell size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;">
+						<strong> Defaultní – top </strong>
+					</p>
+				</div>
+				<div class="grid__cell size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, iste, provident adipisci doloribus, sit tempora ex molestias illo soluta repellendus quae ipsam aut porro debitis iure praesentium! Sapiente, expedita, dolores! </p>
+				</div>
+			</div>
+			<div class="grid grid--middle">
+				<div class="grid__cell size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;">
+						<strong> Defaultní – middle </strong>
+					</p>
+				</div>
+				<div class="grid__cell size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, iste, provident adipisci doloribus, sit tempora ex molestias illo soluta repellendus quae ipsam aut porro debitis iure praesentium! Sapiente, expedita, dolores! </p>
+				</div>
+			</div>
+			<div class="grid grid--bottom">
+				<div class="grid__cell size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;">
+						<strong> Defaultní – bottom </strong>
+					</p>
+				</div>
+				<div class="grid__cell size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, iste, provident adipisci doloribus, sit tempora ex molestias illo soluta repellendus quae ipsam aut porro debitis iure praesentium! Sapiente, expedita, dolores! </p>
+				</div>
+			</div>
+			<h3> Vertikální zarovnání na buňkách </h3>
+			<div class="grid grid--middle">
+				<div class="grid__cell grid__cell--top size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;">
+						<strong> Defaultní – top </strong><br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, iste, provident adipisci doloribus, sit tempora ex molestias illo soluta repellendus quae ipsam aut porro debitis iure praesentium! Sapiente, expedita, dolores!
+					</p>
+				</div>
+				<div class="grid__cell size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, iste, provident adipisci doloribus, sit tempora ex molestias illo soluta repellendus quae ipsam aut porro debitis iure praesentium! Sapiente, expedita, dolores! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam rem quia accusamus. Quibusdam dolore aliquid, doloribus modi rem? Maiores nemo ipsam delectus repellat similique quibusdam, blanditiis accusamus ea ullam repudiandae. </p>
+				</div>
+			</div>
+			<div class="grid">
+				<div class="grid__cell grid__cell--middle size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;">
+						<strong> Defaultní – middle </strong><br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, iste, provident adipisci doloribus, sit tempora ex molestias illo soluta repellendus quae ipsam aut porro debitis iure praesentium! Sapiente, expedita, dolores!
+					</p>
+				</div>
+				<div class="grid__cell size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, iste, provident adipisci doloribus, sit tempora ex molestias illo soluta repellendus quae ipsam aut porro debitis iure praesentium! Sapiente, expedita, dolores! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam rem quia accusamus. Quibusdam dolore aliquid, doloribus modi rem? Maiores nemo ipsam delectus repellat similique quibusdam, blanditiis accusamus ea ullam repudiandae. </p>
+				</div>
+			</div>
+			<div class="grid">
+				<div class="grid__cell grid__cell--bottom size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;">
+						<strong> Defaultní – bottom </strong><br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, iste, provident adipisci doloribus, sit tempora ex molestias illo soluta repellendus quae ipsam aut porro debitis iure praesentium! Sapiente, expedita, dolores!
+					</p>
+				</div>
+				<div class="grid__cell size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, iste, provident adipisci doloribus, sit tempora ex molestias illo soluta repellendus quae ipsam aut porro debitis iure praesentium! Sapiente, expedita, dolores! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam rem quia accusamus. Quibusdam dolore aliquid, doloribus modi rem? Maiores nemo ipsam delectus repellat similique quibusdam, blanditiis accusamus ea ullam repudiandae. </p>
+				</div>
+			</div>
+			<h2> Srovnání výšek následující prvku v buňce </h2>
+			<div class="grid">
+				<div class="grid__cell grid__cell--eq size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, iste, provident adipisci doloribus, sit tempora ex molestias illo soluta repellendus quae ipsam aut porro debitis iure praesentium! Sapiente, expedita, dolores! </p>
+				</div>
+				<div class="grid__cell size--6-12">
+					<p style="background: #f0f0f0; padding: 20px;"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, iste, provident adipisci doloribus, sit tempora ex molestias illo soluta repellendus quae ipsam aut porro debitis iure praesentium! Sapiente, expedita, dolores! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam rem quia accusamus. Quibusdam dolore aliquid, doloribus modi rem? Maiores nemo ipsam delectus repellat similique quibusdam, blanditiis accusamus ea ullam repudiandae. </p>
+				</div>
+			</div>
+			<h2> Pořadí sloupců </h2>
+			<div class="grid">
+				<div class="grid__cell size--1-12 order--12">
+					<p style="background: #f0f0f0; padding: 20px;"> 1 -> 12 </p>
+				</div>
+				<div class="grid__cell size--1-12 order--11">
+					<p style="background: #f0f0f0; padding: 20px;"> 2 -> 11 </p>
+				</div>
+				<div class="grid__cell size--1-12 order--10">
+					<p style="background: #f0f0f0; padding: 20px;"> 3 -> 10 </p>
+				</div>
+				<div class="grid__cell size--1-12 order--9">
+					<p style="background: #f0f0f0; padding: 20px;"> 4 -> 9 </p>
+				</div>
+				<div class="grid__cell size--1-12 order--8">
+					<p style="background: #f0f0f0; padding: 20px;"> 5 -> 8 </p>
+				</div>
+				<div class="grid__cell size--1-12 order--7">
+					<p style="background: #f0f0f0; padding: 20px;"> 6 -> 7 </p>
+				</div>
+				<div class="grid__cell size--1-12 order--9">
+					<p style="background: #f0f0f0; padding: 20px;"> 7 -> 9 </p>
+				</div>
+				<div class="grid__cell size--1-12 order--5">
+					<p style="background: #f0f0f0; padding: 20px;"> 8 -> 5 </p>
+				</div>
+				<div class="grid__cell size--1-12 order--4">
+					<p style="background: #f0f0f0; padding: 20px;"> 9 -> 4 </p>
+				</div>
+				<div class="grid__cell size--1-12 order--3">
+					<p style="background: #f0f0f0; padding: 20px;"> 10 -> 3 </p>
+				</div>
+				<div class="grid__cell size--1-12 order--2">
+					<p style="background: #f0f0f0; padding: 20px;"> 11 -> 2 </p>
+				</div>
+				<div class="grid__cell size--1-12 order--1">
+					<p style="background: #f0f0f0; padding: 20px;"> 12 -> 1 </p>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer class="footer">
+		<div class="row-main">
+			<nav class="m-footer">
+				<p class="m-footer__logo">
+					<a href="./">
+						<img src="../img/logo.svg" alt="Tymbe" width="100" height="49">
+					</a>
+				</p>
+				<div class="m-footer__content">
+					<ul class="m-footer__list">
+						<li class="m-footer__item is-active">
+							<a href="#" class="m-footer__link">
+								<span class="icon-svg icon-svg--work" aria-hidden="true">
+									<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="../img/bg/icons-svg.svg#icon-work" width="100%" height="100%" focusable="false"></use>
+									</svg>
+								</span> Pro brigádníky </a>
+						</li>
+						<li class="m-footer__item">
+							<a href="#" class="m-footer__link">
+								<span class="icon-svg icon-svg--building" aria-hidden="true">
+									<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="../img/bg/icons-svg.svg#icon-building" width="100%" height="100%" focusable="false"></use>
+									</svg>
+								</span> Pro firmy </a>
+						</li>
+						<li class="m-footer__item">
+							<a href="#" class="m-footer__link">
+								<span class="icon-svg icon-svg--user" aria-hidden="true">
+									<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="../img/bg/icons-svg.svg#icon-user" width="100%" height="100%" focusable="false"></use>
+									</svg>
+								</span> O Společnosti </a>
+						</li>
+						<li class="m-footer__item">
+							<a href="#" class="m-footer__link">
+								<span class="icon-svg icon-svg--message" aria-hidden="true">
+									<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="../img/bg/icons-svg.svg#icon-message" width="100%" height="100%" focusable="false"></use>
+									</svg>
+								</span> Kontakty </a>
+						</li>
+						<li class="m-footer__item">
+							<a href="#" class="m-footer__link">
+								<span class="icon-svg icon-svg--chat" aria-hidden="true">
+									<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="../img/bg/icons-svg.svg#icon-chat" width="100%" height="100%" focusable="false"></use>
+									</svg>
+								</span> FAQ </a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<p class="u-max-width--6-12 u-mx-auto"> Ty&#8209;brigády od Tymbe jsou jediná ryze online platforma pro nábor, zaškolení a zasmluvnění brigádníků se správou docházek a možností okamžitého vyplacení brigádníků. </p>
+			<p class="footer__contact u-mb-4"> 24 hodin denně, 7 dní v týdnu a&nbsp;po celé ČR. </p>
+			<nav class="m-socials u-mb-4">
+				<ul class="m-socials__list">
+					<li class="m-socials__item">
+						<a href="#" class="m-socials__link">
+							<span class="icon-svg icon-svg--facebook" aria-hidden="true">
+								<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									<use xlink:href="../img/bg/icons-svg.svg#icon-facebook" width="100%" height="100%" focusable="false"></use>
+								</svg>
+							</span>
+							<span class="u-vhide"> Facebook </span>
+						</a>
+					</li>
+					<li class="m-socials__item">
+						<a href="#" class="m-socials__link">
+							<span class="icon-svg icon-svg--instagram" aria-hidden="true">
+								<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									<use xlink:href="../img/bg/icons-svg.svg#icon-instagram" width="100%" height="100%" focusable="false"></use>
+								</svg>
+							</span>
+							<span class="u-vhide"> Instagram </span>
+						</a>
+					</li>
+					<li class="m-socials__item">
+						<a href="#" class="m-socials__link">
+							<span class="icon-svg icon-svg--linkedin" aria-hidden="true">
+								<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									<use xlink:href="../img/bg/icons-svg.svg#icon-linkedin" width="100%" height="100%" focusable="false"></use>
+								</svg>
+							</span>
+							<span class="u-vhide"> LinkedIn </span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<p class="footer__copy"> &copy; Copyright 2021 – TYMBE a.s. </p>
+		</div>
+	</footer>
+	<script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=default,Array.prototype.includes,Object.values,Array.prototype.find,AbortController,fetch,features=Array.prototype.findIndex,Array.from,Element.prototype.closest,Map,MutationObserver,Object.assign,Promise,Set"></script>
+	<script src="../js/app.js?t=1637934341274"></script>
+	<script>
+		App.run({})
+	</script>
+</body>
+
+</html>

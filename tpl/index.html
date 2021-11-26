@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="cs" class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Rozcestník HTML šablon | Tymbe">
+	<meta name="twitter:description" content="">
+	<meta name="twitter:image" content="../img/social/twitter.jpg">
+	<meta property="og:title" content="Rozcestník HTML šablon | Tymbe">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="../img/social/facebook.jpg">
+	<meta property="og:site_name" content="Tymbe">
+	<meta property="og:url" content="http://www.example.com/">
+	<title>Rozcestník HTML šablon | Tymbe</title>
+	<link rel="stylesheet" href="https://use.typekit.net/gwu8cnr.css">
+	<link rel="stylesheet" href="../css/style.css?t=1637934341274">
+	<link rel="stylesheet" href="../css/print.css?t=1637934341274" media="print">
+	<link rel="preload" as="script" href="https://cdn.polyfill.io/v3/polyfill.min.js?features=default,Array.prototype.includes,Object.values,Array.prototype.find,AbortController,fetch,features=Array.prototype.findIndex,Array.from,Element.prototype.closest,Map,MutationObserver,Object.assign,Promise,Set">
+	<link rel="preload" as="script" href="../js/app.js?t=1637934341274">
+	<link rel="apple-touch-icon" sizes="180x180" href="../img/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../img/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../img/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="../img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="msapplication-config" content="/browserconfig.xml">
+	<script>
+		(function() {
+			var className = document.documentElement.className;
+			className = className.replace('no-js', 'js');
+			(function() {
+				var mediaHover = window.matchMedia('(hover: none), (pointer: coarse), (pointer: none)');
+				mediaHover.addListener(function(media) {
+					document.documentElement.classList[media.matches ? 'add' : 'remove']('no-hoverevents');
+					document.documentElement.classList[!media.matches ? 'add' : 'remove']('hoverevents');
+				});
+				className += (mediaHover.matches ? ' no-hoverevents' : ' hoverevents');
+			})();
+			// var supportsCover = 'CSS' in window && typeof CSS.supports === 'function' && CSS.supports('object-fit: cover');
+			// className += (supportsCover ? ' ' : ' no-') + 'objectfit';
+			// fix iOS zoom issue: https://docs.google.com/document/d/1KclJmXyuuErcvit-kwCC6K2J7dClRef43oyGVCqWxFE/edit#heading=h.sgbqg5nzhvu9
+			var ua = navigator.userAgent.toLowerCase();
+			var isIOS = /ipad|iphone|ipod/.test(ua) && !window.MSStream;
+			if (isIOS === true) {
+				var viewportTag = document.querySelector("meta[name=viewport]");
+				viewportTag.setAttribute("content", "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no");
+			}
+			document.documentElement.className = className;
+		}());
+	</script>
+</head>
+
+<body>
+	<p class="m-accessibility">
+		<a title="Přejít k obsahu (Klávesová zkratka: Alt + 2)" accesskey="2" href="#main">Přejít k obsahu</a>
+		<span class="hide">|</span>
+		<a href="#menu-main">Přejít k hlavnímu menu</a>
+	</p>
+	<header class="header">
+		<div class="row-main">
+			<div class="header__inner">
+				<p class="header__logo">
+					<a href="./">
+						<img src="../img/logo.svg" alt="Tymbe" width="100" height="49">
+					</a>
+				</p>
+				<nav id="menu-main" class="m-main" data-controller="SiteNav">
+					<button type="button" class="m-main__title js-menu-main" aria-label="Menu" data-action="click->SiteNav#toggleNav"> Menu <span class="m-main__title-icon">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+					</button>
+					<div class="m-main__content" data-SiteNav-target="menu">
+						<ul class="m-main__list">
+							<li class="m-main__item is-active">
+								<a href="#" class="m-main__link">
+									<span class="icon-svg icon-svg--work" aria-hidden="true">
+										<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="../img/bg/icons-svg.svg#icon-work" width="100%" height="100%" focusable="false"></use>
+										</svg>
+									</span> Pro brigádníky </a>
+							</li>
+							<li class="m-main__item">
+								<a href="#" class="m-main__link">
+									<span class="icon-svg icon-svg--building" aria-hidden="true">
+										<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="../img/bg/icons-svg.svg#icon-building" width="100%" height="100%" focusable="false"></use>
+										</svg>
+									</span> Pro firmy </a>
+							</li>
+							<li class="m-main__item">
+								<a href="./03-about.html" class="m-main__link">
+									<span class="icon-svg icon-svg--user" aria-hidden="true">
+										<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="../img/bg/icons-svg.svg#icon-user" width="100%" height="100%" focusable="false"></use>
+										</svg>
+									</span> O nás </a>
+							</li>
+							<li class="m-main__item">
+								<a href="./05-contact.html" class="m-main__link">
+									<span class="icon-svg icon-svg--message" aria-hidden="true">
+										<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<use xlink:href="../img/bg/icons-svg.svg#icon-message" width="100%" height="100%" focusable="false"></use>
+										</svg>
+									</span> Kontakty </a>
+							</li>
+						</ul>
+						<ul class="m-main__list m-main__list--buttons">
+							<li class="m-main__item">
+								<a href="#" class="m-main__btn btn btn--secondary">
+									<span class="btn__text"> Přihlásit </span>
+								</a>
+							</li>
+							<li class="m-main__item">
+								<a href="#" class="m-main__btn btn">
+									<span class="btn__text"> Registrace </span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<main id="main" class="main">
+		<div class="u-pt-10 u-mb-9">
+			<div class="row-main">
+				<h1> Rozcestník HTML šablon </h1>
+				<ul>
+					<li>
+						<a href="./00-style-guide.html"> 00 - Style Guide </a>
+					</li>
+					<li>
+						<span class="u-text-uppercase"> Homepage </span>
+						<ul>
+							<li>
+								<a href="./01-homepage-b2c.html"> 01 - Homepage - B2C </a>
+							</li>
+							<li>
+								<a href="./01-homepage-b2b.html"> 01 - Homepage - B2B </a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<span class="u-text-uppercase"> Formulář </span>
+						<ul>
+							<li>
+								<a href="./02-form-b2c.html"> 02 - Formulář - B2C </a>
+							</li>
+							<li>
+								<a href="./02-form-b2b.html"> 02 - Formulář - B2B </a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<span class="u-text-uppercase"> Prozatimní formulář </span>
+						<ul>
+							<li>
+								<a href="./02-form-provisional-step-1.html"> 02 - Prozatimní formulář - 1. krok </a>
+							</li>
+							<li>
+								<a href="./02-form-provisional-step-2.html"> 02 - Prozatimní formulář - 2. krok </a>
+							</li>
+							<li>
+								<a href="./02-form-provisional-step-3.html"> 02 - Prozatimní formulář - 3. krok </a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="./03-about.html"> 03 - O společnosti </a>
+					</li>
+					<li>
+						<a href="./04-training.html"> 04 - Ty&#8209;školení </a>
+					</li>
+					<li>
+						<a href="./05-contact.html"> 05 - Kontakt </a>
+					</li>
+					<li>
+						<a href="./06-faq.html"> 06 - FAQ </a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</main>
+	<footer class="footer">
+		<div class="row-main">
+			<nav class="m-footer">
+				<p class="m-footer__logo">
+					<a href="./">
+						<img src="../img/logo.svg" alt="Tymbe" width="100" height="49">
+					</a>
+				</p>
+				<div class="m-footer__content">
+					<ul class="m-footer__list">
+						<li class="m-footer__item is-active">
+							<a href="#" class="m-footer__link">
+								<span class="icon-svg icon-svg--work" aria-hidden="true">
+									<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="../img/bg/icons-svg.svg#icon-work" width="100%" height="100%" focusable="false"></use>
+									</svg>
+								</span> Pro brigádníky </a>
+						</li>
+						<li class="m-footer__item">
+							<a href="#" class="m-footer__link">
+								<span class="icon-svg icon-svg--building" aria-hidden="true">
+									<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="../img/bg/icons-svg.svg#icon-building" width="100%" height="100%" focusable="false"></use>
+									</svg>
+								</span> Pro firmy </a>
+						</li>
+						<li class="m-footer__item">
+							<a href="#" class="m-footer__link">
+								<span class="icon-svg icon-svg--user" aria-hidden="true">
+									<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="../img/bg/icons-svg.svg#icon-user" width="100%" height="100%" focusable="false"></use>
+									</svg>
+								</span> O Společnosti </a>
+						</li>
+						<li class="m-footer__item">
+							<a href="#" class="m-footer__link">
+								<span class="icon-svg icon-svg--message" aria-hidden="true">
+									<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="../img/bg/icons-svg.svg#icon-message" width="100%" height="100%" focusable="false"></use>
+									</svg>
+								</span> Kontakty </a>
+						</li>
+						<li class="m-footer__item">
+							<a href="#" class="m-footer__link">
+								<span class="icon-svg icon-svg--chat" aria-hidden="true">
+									<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<use xlink:href="../img/bg/icons-svg.svg#icon-chat" width="100%" height="100%" focusable="false"></use>
+									</svg>
+								</span> FAQ </a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<p class="u-max-width--6-12 u-mx-auto"> Ty&#8209;brigády od Tymbe jsou jediná ryze online platforma pro nábor, zaškolení a zasmluvnění brigádníků se správou docházek a možností okamžitého vyplacení brigádníků. </p>
+			<p class="footer__contact u-mb-4"> 24 hodin denně, 7 dní v týdnu a&nbsp;po celé ČR. </p>
+			<nav class="m-socials u-mb-4">
+				<ul class="m-socials__list">
+					<li class="m-socials__item">
+						<a href="#" class="m-socials__link">
+							<span class="icon-svg icon-svg--facebook" aria-hidden="true">
+								<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									<use xlink:href="../img/bg/icons-svg.svg#icon-facebook" width="100%" height="100%" focusable="false"></use>
+								</svg>
+							</span>
+							<span class="u-vhide"> Facebook </span>
+						</a>
+					</li>
+					<li class="m-socials__item">
+						<a href="#" class="m-socials__link">
+							<span class="icon-svg icon-svg--instagram" aria-hidden="true">
+								<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									<use xlink:href="../img/bg/icons-svg.svg#icon-instagram" width="100%" height="100%" focusable="false"></use>
+								</svg>
+							</span>
+							<span class="u-vhide"> Instagram </span>
+						</a>
+					</li>
+					<li class="m-socials__item">
+						<a href="#" class="m-socials__link">
+							<span class="icon-svg icon-svg--linkedin" aria-hidden="true">
+								<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									<use xlink:href="../img/bg/icons-svg.svg#icon-linkedin" width="100%" height="100%" focusable="false"></use>
+								</svg>
+							</span>
+							<span class="u-vhide"> LinkedIn </span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<p class="footer__copy"> &copy; Copyright 2021 – TYMBE a.s. </p>
+		</div>
+	</footer>
+	<script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=default,Array.prototype.includes,Object.values,Array.prototype.find,AbortController,fetch,features=Array.prototype.findIndex,Array.from,Element.prototype.closest,Map,MutationObserver,Object.assign,Promise,Set"></script>
+	<script src="../js/app.js?t=1637934341274"></script>
+	<script>
+		App.run({})
+	</script>
+</body>
+
+</html>
