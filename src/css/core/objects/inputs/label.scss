@@ -1,0 +1,41 @@
+.inp-label {
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 0.25em;
+	color: $colorPrimary;
+	font-weight: $medium;
+	font-size: 16px;
+	line-height: 22px;
+	white-space: nowrap;
+	text-align: left;
+	overflow: hidden;
+	transition: top $t, font-size $t;
+	.inp & {
+		position: absolute;
+		top: 12px;
+		right: 14px;
+		left: 14px;
+		z-index: 1;
+		margin: 0;
+		pointer-events: none;
+	}
+	.is-disabled & {
+		color: rgba($colorPrimary, 0.5);
+	}
+	.has-focus & {
+		top: 3px;
+		color: $colorSecondary;
+		font-size: 7px;
+	}
+	.has-error & {
+		color: $colorRed;
+	}
+	.no-js & {
+		display: none;
+	}
+
+	// IE11
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+		display: none;
+	}
+}

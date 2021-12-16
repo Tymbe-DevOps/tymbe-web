@@ -1,0 +1,74 @@
+.p-form {
+	$s: &;
+	background-image: url($imgPath+'bg/form-bg-sm.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-size: 14px;
+	h3 {
+		font-family: $fontPrimary;
+		font-weight: $medium;
+		font-size: 18px;
+	}
+	&__img {
+		position: relative;
+		display: inline-block;
+	}
+
+	// VARIANTs
+	&--b2b {
+		#{$s}__content {
+			margin-bottom: 15px;
+		}
+		#{$s}__img {
+			margin: 0 -71px -267px 0;
+		}
+	}
+	&--b2c {
+		#{$s}__content {
+			margin-bottom: 15px;
+		}
+		#{$s}__img {
+			margin: 0 -71px -116px 0;
+			.tag {
+				position: absolute;
+				right: -60px;
+				bottom: 20px;
+			}
+		}
+	}
+
+	// MQ
+	@media ($mdUp) {
+		// VARIANTs
+		&--b2b {
+			#{$s}__content {
+				margin-bottom: 100px;
+			}
+		}
+		&--b2c {
+			#{$s}__content {
+				margin-bottom: 100px;
+			}
+		}
+	}
+	@media ($lgDown) {
+		&__img {
+			display: none;
+		}
+	}
+	@media ($lgUp) {
+		background-image: url($imgPath+'bg/form-bg.jpg');
+
+		// VARIANTs
+		&--b2b {
+			#{$s}__content {
+				margin-bottom: 267px;
+			}
+		}
+		&--b2c {
+			#{$s}__content {
+				margin-bottom: 197px;
+			}
+		}
+	}
+}

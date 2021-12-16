@@ -1,0 +1,112 @@
+.tooltip {
+	$s: &;
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	height: 25px;
+	margin: 0;
+	padding: 0;
+	padding: 5px;
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+	.icon-svg {
+		width: 15px;
+	}
+
+	&__content {
+		position: absolute;
+		right: -4px;
+		bottom: calc(100% + 14px);
+		z-index: 10;
+		width: 250px;
+		padding: 10px;
+		border: 1px solid $colorText;
+		border-radius: 5px;
+		background-color: $colorWhite;
+		text-align: left;
+		visibility: hidden;
+		opacity: 0;
+		transition: opacity $t, visibility $t;
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			top: 100%;
+			right: 16px;
+			width: 0;
+			height: 0;
+			border-width: 0 16px 16px 0;
+			border-style: solid;
+		}
+		&::before {
+			z-index: 1;
+			border-color: transparent $colorText transparent transparent;
+		}
+		&::after {
+			top: calc(100% - 1px);
+			right: 17px;
+			z-index: 2;
+			border-width: 0 14px 14px 0;
+			border-color: transparent $colorWhite transparent transparent;
+		}
+	}
+	&__title {
+		display: block;
+		margin-bottom: 5px;
+		font-weight: $semiBold;
+		font-size: 12px;
+		line-height: (16/12);
+	}
+	&__text {
+		display: block;
+		color: $colorText;
+		font-size: 10px;
+		line-height: (18/10);
+	}
+
+	// STATEs
+	.has-error & {
+		color: $colorRed;
+		#{$s}__content {
+			border-color: $colorRed;
+			&::before {
+				border-color: transparent $colorRed transparent transparent;
+			}
+		}
+		#{$s}__title {
+			color: $colorRed;
+		}
+	}
+	.has-warning & {
+		color: $colorOrange;
+		#{$s}__content {
+			border-color: $colorOrange;
+			&::before {
+				border-color: transparent $colorOrange transparent transparent;
+			}
+		}
+		#{$s}__title {
+			color: $colorOrange;
+		}
+	}
+	.has-ok & {
+		color: $colorGreen;
+		#{$s}__content {
+			border-color: $colorGreen;
+			&::before {
+				border-color: transparent $colorGreen transparent transparent;
+			}
+		}
+		#{$s}__title {
+			color: $colorGreen;
+		}
+	}
+
+	// HOVERs
+	.hoverevents &:hover &__content {
+		visibility: visible;
+		opacity: 1;
+	}
+}

@@ -1,0 +1,8 @@
+*.md
+*.mdown
+*.mdx
+package.json
+package-lock.json
+dist/*
+src/js/static/*
+**/node_modules/**/*

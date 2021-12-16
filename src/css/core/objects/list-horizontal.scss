@@ -1,0 +1,12 @@
+.list-horizontal {
+	li {
+		margin: 0 0 $size1;
+		padding: 34px 0 0 0;
+		&::before {
+			color: $colorPrimary;
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 24px;
+		}
+	}
+}

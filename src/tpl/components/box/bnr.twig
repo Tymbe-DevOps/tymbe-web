@@ -1,0 +1,35 @@
+{% set props = {
+	background: props.background | default,
+	title: props.title | default,
+	btn: props.btn | default,
+	img: props.img | default,
+	width: props.width | default,
+	height: props.height | default,
+	classes: props.classes | default([]),
+} %}
+
+{% set classes = [
+	'b-bnr',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<div class="{{ classes }}">
+	<div class="b-bnr__inner"{% if props.background %} style="background-image: url({{ assets.images }}bg/{{ props.background }})"{% endif %}>
+		<div class="b-bnr__content">
+			<h2 class="b-bnr__title h1">
+				{{ props.title|raw }}
+			</h2>
+			{% if props.btn %}
+				<p class="u-mt-5 u-mb-0">
+					<a href="{{ props.btnLink|default('#') }}" class="btn">
+						<span class="btn__text">
+							{{ props.btn }}
+						</span>
+					</a>
+				</p>
+			{% endif %}
+		</div>
+		<p class="b-bnr__img">
+			<img src="{{ assets.images }}illust/{{ props.img }}" alt="" width="{{ props.width }}" height="{{ props.height }}">
+		</p>
+	</div>
+</div>

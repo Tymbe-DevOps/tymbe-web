@@ -1,0 +1,56 @@
+{% set props = {
+	title: props.title | default,
+	items: props.items | default([]),
+	btn: props.btn | default,
+	apiUrl: props.apiUrl | default('https://api.tymbe.com/rings'),
+	classes: props.classes | default([])
+} %}
+
+{% set classes = [
+	'c-products embla',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<section class="{{ classes }}" data-controller="Embla Rings" data-rings-url-value="{{ props.apiUrl }}">
+	<h2 class="c-products__title">
+		{{ props.title }}
+	</h2>
+	<div class="embla__viewport" data-embla-target="viewport">
+		<ul class="c-products__list grid grid--nowrap">
+			{% for props in props.items %}
+				<li class="c-products__item embla__slide grid__cell grid__cell--eq" data-rings-target="item">
+					{% include '@components/box/product.twig' %}
+				</li>
+			{% endfor %}
+		</ul>
+		<div class="embla__btns">
+			<button type="button" class="embla__btn embla__btn--prev" data-action="Embla#prev" data-embla-target="prevButton">
+				<span class="u-vhide">
+					Předchozí
+				</span>
+				{% include '@components/core/icon-svg/icon-svg.twig' with {
+					props: {
+						name: 'arr-left'
+					}
+				} %}
+			</button>
+			<button type="button" class="embla__btn embla__btn--next" data-action="Embla#next" data-embla-target="nextButton">
+				<span class="u-vhide">
+					Další
+				</span>
+				{% include '@components/core/icon-svg/icon-svg.twig' with {
+					props: {
+						name: 'arr-right'
+					}
+				} %}
+			</button>
+		</div>
+	</div>
+
+	<p class="u-mt-5 u-mb-0 u-text-center">
+		<a href="{{ props.btnLink|default('#') }}" class="btn btn--secondary">
+			<span class="btn__text">
+				{{ props.btn }}
+			</span>
+		</a>
+	</p>
+</section>

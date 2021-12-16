@@ -1,0 +1,24 @@
+.u-bg-default {
+	background: $colorBg;
+}
+.u-bg-primary {
+	background: $colorPrimary;
+}
+.u-bg-secondary {
+	background: rgba($colorSecondary, 0.05);
+}
+.u-bg-gradient {
+	background: linear-gradient(90deg, $colorBg 6.42%, rgba(243, 245, 253, 0) 88.54%);
+}
+.u-bg-gradient--68 {
+	position: relative;
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 68%;
+		background: linear-gradient(90deg, $colorBg 6.42%, rgba(243, 245, 253, 0) 88.54%);
+	}
+}

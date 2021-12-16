@@ -1,0 +1,20 @@
+.heading {
+	text-align: center;
+	&__title {
+		margin-bottom: $size1;
+		padding-bottom: $size1;
+		border-bottom: 1px solid $colorBd;
+	}
+	&__annot {
+		max-width: 770px;
+		margin: 0 auto $size6;
+	}
+
+	// MQ
+	@media ($mdUp) {
+		&__title {
+			margin-bottom: $size3;
+			padding-bottom: $size3;
+		}
+	}
+}

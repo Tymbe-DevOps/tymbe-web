@@ -1,0 +1,82 @@
+.b-review {
+	padding: $size2 $size1;
+	border-radius: $borderRadiusMd;
+	background-color: $colorWhite;
+	&__logo {
+		display: inline-block;
+	}
+	&__quotation {
+		position: relative;
+		padding: $size3 0;
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			width: 26px;
+			height: 23px;
+		}
+		&::before {
+			top: 0;
+			left: 0;
+			background: url($svgQuotationLeft);
+		}
+		&::after {
+			right: 0;
+			bottom: 0;
+			background: url($svgQuotationRight);
+		}
+	}
+
+	&__bottom {
+		margin: $size3 (-$size1) 0;
+		padding: $size1 $size1 0;
+		border-top: 1px solid $colorBd;
+		> * {
+			margin-bottom: 0;
+		}
+	}
+	&__name {
+		color: $colorPrimary;
+		font-family: $fontSecondary;
+		font-weight: $bold;
+		font-size: 18px;
+	}
+	&__info {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: rgba($colorGrey, 0.6);
+		font-weight: $medium;
+		font-size: 14px;
+		> * {
+			display: inline-block;
+			padding: 0 5px;
+			border-left: 1px solid rgba($colorGrey, 0.6);
+		}
+		> :first-child {
+			border-left: 0;
+		}
+	}
+
+	// MQ
+	@media ($mdDown) {
+		&__logo {
+			max-width: 72px;
+			margin-bottom: $size1;
+		}
+	}
+	@media ($mdUp) {
+		&__quotation {
+			padding: $size3 16px;
+			font-size: 18px;
+			line-height: (35/18);
+		}
+		&__bottom {
+			margin: $size4 (-$size1) 0;
+			padding: $size2 $size1 0;
+		}
+		&__name {
+			font-size: 22px;
+		}
+	}
+}

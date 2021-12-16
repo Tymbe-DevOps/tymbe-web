@@ -1,0 +1,203 @@
+{% set props = {
+	classes: props.classes | default([]),
+	background: props.background | default(),
+	contentSizes: props.contentSizes | default([]),
+	imgSizes: props.imgSizes | default([]),
+	title: props.title | default(),
+	text: props.text | default(),
+	items: props.items | default([]),
+	buttons: props.buttons | default([]),
+	downloads: props.downloads | default([]),
+	downLink: props.downLink | default(),
+	img: props.img | default(),
+	imgWidth: props.imgWidth | default(),
+	imgHeight: props.imgHeight | default(),
+	tag: props.tag | default(),
+	statistics: props.statistics | default([]),
+	hasCarousel: props.hasCarousel | default(),
+} %}
+
+{% set classes = [
+	'b-intro-hp',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+{% set contentSizes = [
+	'',
+] | merge(props.contentSizes) | filter(i => i) | join(' ') %}
+
+{% set imgSizes = [
+	'',
+] | merge(props.imgSizes) | filter(i => i) | join(' ') %}
+
+<section class="{{ classes }}"{% if props.background is defined %} style="background-image: url({{ assets.images }}bg/{{ props.background }})"{% endif %}{% if props.hasCarousel|default(false) %} data-controller="Embla"{% endif %}>
+	<div class="row-main">
+		{% if props.hasCarousel|default(false) %}
+		<div class="b-intro-hp__viewport embla__viewport" data-embla-target="viewport">
+			<div class="b-intro-hp__list embla__container grid grid--top grid--y-0 grid--nowrap">
+		{% endif %}
+			{% if props.items|default(false) is iterable %}
+				{% for item in props.items %}
+					<div class="b-intro-hp__item embla__slide grid__cell size--auto">
+						<div class="b-intro-hp__inner grid grid--space-between">
+							<div class="b-intro-hp__content grid__cell {{ contentSizes }}">
+								<h2 class="b-intro-hp__title h1">
+									{{ item.title|raw }}
+								</h2>
+								<p class="b-intro-hp__text">
+									{{ item.text|raw }}
+								</p>
+								{% if props.statistics | length > 0 %}<div class="u-hide u-show@md">{% endif %}
+									<ul class="b-intro-hp__btns">
+										{% for button in item.buttons %}
+											<li class="b-intro-hp__btn">
+												<a href="{{ button.link|default('#') }}" class="btn{% if button.type is defined %} btn--{{ button.type }}{% endif %}">
+													<span class="btn__text">
+														{{ button.name }}
+													</span>
+												</a>
+											</li>
+										{% endfor %}
+									</ul>
+								{% if props.statistics | length > 0 %}</div>{% endif %}
+
+								{% if props.downloads | length > 0 %}
+									<ul class="b-intro-hp__downloads u-mt-6 u-mb-6">
+										{% for download in props.downloads %}
+											{% set download = {
+												img: download.img | default,
+												name: download.name | default,
+												width: download.width | default,
+											} %}
+											<li class="b-intro-hp__download">
+												<a href="{{ download.link|default('#') }}" class="b-intro-hp__download-link">
+													<img src="{{ assets.images }}illust/{{ download.img }}" alt="{{ download.name }}" width="{{ download.width }}" height="40">
+												</a>
+											</li>
+										{% endfor %}
+									</ul>
+								{% endif %}
+							</div>
+
+							<div class="b-intro-hp__img grid__cell {{ imgSizes }}">
+								<img src="{{ assets.images }}illust/{{ item.img }}" alt="" width="{{ item.imgWidth }}" height="{{ item.imgHeight }}">
+								{% if item.tag | length > 0 %}
+									{% include '@components/core/objects/tag.twig' with {
+										props: item.tag
+									} %}
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			{% else %}
+				<div class="b-intro-hp__inner grid grid--space-between">
+					<div class="b-intro-hp__content grid__cell {{ contentSizes }}">
+						<h2 class="b-intro-hp__title h1">
+							{{ props.title|raw }}
+						</h2>
+						<p class="b-intro-hp__text">
+							{{ props.text|raw }}
+						</p>
+						{% if props.statistics | length > 0 %}<div class="u-hide u-show@md">{% endif %}
+							<ul class="b-intro-hp__btns">
+								{% for button in props.buttons %}
+									<li class="b-intro-hp__btn">
+										<a href="{{ button.link|default('#') }}" class="btn{% if button.type is defined %} btn--{{ button.type }}{% endif %}">
+											<span class="btn__text">
+												{{ button.name }}
+											</span>
+										</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% if props.statistics | length > 0 %}</div>{% endif %}
+
+						{% if props.downloads | length > 0 %}
+							<ul class="b-intro-hp__downloads u-mt-6 u-mb-6">
+								{% for download in props.downloads %}
+									{% set download = {
+										img: download.img | default,
+										name: download.name | default,
+										width: download.width | default,
+									} %}
+									<li class="b-intro-hp__download">
+										<a href="{{ download.link|default('#') }}" class="b-intro-hp__download-link">
+											<img src="{{ assets.images }}illust/{{ download.img }}" alt="{{ download.name }}" width="{{ download.width }}" height="40">
+										</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+					</div>
+
+					<div class="b-intro-hp__img grid__cell {{ imgSizes }}">
+						<img src="{{ assets.images }}illust/{{ props.img }}" alt="" width="{{ props.imgWidth }}" height="{{ props.imgHeight }}">
+						{% if props.tag | length > 0 %}
+							{% include '@components/core/objects/tag.twig' with {
+								props: props.tag
+							} %}
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+		{% if props.hasCarousel|default(false) %}
+			</div>
+			<div class="embla__btns embla__btns--blue">
+				<button type="button" class="embla__btn embla__btn--prev" data-action="Embla#prev" data-embla-target="prevButton">
+					<span class="u-vhide">
+						Předchozí
+					</span>
+					{% include '@components/core/icon-svg/icon-svg.twig' with {
+						props: {
+							name: 'arr-left'
+						}
+					} %}
+				</button>
+				<button type="button" class="embla__btn embla__btn--next" data-action="Embla#next" data-embla-target="nextButton">
+					<span class="u-vhide">
+						Další
+					</span>
+					{% include '@components/core/icon-svg/icon-svg.twig' with {
+						props: {
+							name: 'arr-right'
+						}
+					} %}
+				</button>
+			</div>
+		</div>
+		{% endif %}
+
+		{% if props.statistics | length > 0 %}
+			<ul class="b-intro-hp__btns{% if props.statistics %} u-hide@md{% endif %}">
+				{% for button in props.buttons %}
+					<li class="b-intro-hp__btn">
+						<a href="{{ button.link|default('#') }}" class="btn{% if button.type is defined %} btn--{{ button.type }}{% endif %}">
+							<span class="btn__text">
+								{{ button.name }}
+							</span>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+
+		{% if props.statistics | length > 0 %}
+			{% include '@components/box/statistics.twig' with {
+				props: props.statistics
+			} %}
+		{% endif %}
+
+		{% if props.downLink | length > 0 %}
+			<a href="#{{ props.downLink }}" class="down" data-controller="LinkSlide" data-action="LinkSlide#slideTo">
+				{% include '@components/core/icon-svg/icon-svg.twig' with {
+					props: {
+						name: 'arr-down'
+					}
+				} %}
+				<span class="u-vhide">
+					K obsahu
+				</span>
+			</a>
+		{% endif %}
+	</div>
+</section>

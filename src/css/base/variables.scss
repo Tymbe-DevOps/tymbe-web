@@ -1,0 +1,107 @@
+// Colors
+$colorPrimary: #28367b;
+$colorSecondary: #b6cd1e;
+
+$colorBlack: #000000;
+$colorGrey: #202020;
+$colorGreyLt: #616161;
+$colorWhite: #ffffff;
+$colorBlueLt: #dee2f5;
+$colorRed: #e84427;
+$colorGreen: #008800;
+$colorGreenLt: #f7fae5;
+$colorOrange: #ec8900;
+
+$colorText: $colorBlack;
+$colorBd: #f5f2f2;
+$colorBg: #f3f5fd;
+$colorLink: $colorPrimary;
+$colorHover: #141e4f;
+
+$colorFacebook: #3b5998;
+$colorTwitter: #1da1f2;
+$colorGoogle: #dd4b39;
+$colorYoutube: #ff0000;
+$colorLinkedIn: #0077b5;
+$colorInstagram: #c13584;
+$colorPinterest: #bd081c;
+
+// Font
+$fontSystem: -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, helvetica, arial, sans-serif;
+$fontPrimary: poppins, $fontSystem;
+$fontSecondary: coolvetica, $fontPrimary;
+$fontSize: 18px;
+$lineHeight: (28 / 18);
+
+// Typography
+$typoSpaceVertical: 1.375em;
+
+// Grid
+$gridColumns: 12;
+$gridGutter: 30px;
+$rowMainWidth: 1226px;
+$rowMainGutter: 28px;
+
+// Sizes
+$size13: 325px;
+$size12: 210px;
+$size11: 167px;
+$size10: 134px;
+$size9: 107px;
+$size8: 85px;
+$size7: 68px;
+$size6: 55px;
+$size5: 44px;
+$size4: 35px;
+$size3: 28px;
+$size2: 22px;
+$size1: 18px;
+$size-1: 14px;
+$size-2: 12px;
+$size-3: 9px;
+$size-4: 7px;
+$size-5: 6px;
+$size-6: 5px;
+$size-7: 4px;
+
+// Font weights
+$regular: 400; // = Coolvetica book
+$medium: 500;
+$semiBold: 600;
+$bold: 700;
+$heavy: 900;
+
+// Paths
+$imgPath: map-get($paths, 'images');
+$fontsPath: map-get($paths, 'fonts');
+
+// Transitions
+$t: 0.3s;
+
+// Radius
+$borderRadiusSm: 10px;
+$borderRadiusMd: 20px;
+$borderRadiusLg: 30px;
+$borderRadiusXl: 100px;
+
+// Shadow
+$boxShadow: 0 0 24px 0 rgba(#28367b, 0.08);
+
+// SVGs
+$svgBullet: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath d='M0 0h4v4H0z'/%3E%3C/svg%3E%0A";
+$svgSelect: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 5'%3E%3Cpath d='M10 0L5 5 0 0'/%3E%3C/svg%3E%0A";
+$svgQuotationLeft: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='.2' d='M11.051 0C2.688 1.717 0 5.899 0 14.785V22.7h11.051V12.171H4.854c.074-4.853 2.09-7.168 6.197-8.213V0Zm14.487 0c-8.364 1.717-11.052 5.899-11.052 14.785V22.7h11.052V12.171H19.34c.075-4.853 2.09-7.168 6.198-8.213V0Z' fill='%2328367B'/%3E%3C/svg%3E";
+$svgQuotationRight: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='.2' d='M0 22.7c8.288-1.717 11.051-5.899 11.051-14.785V0H0v10.529h6.123c-.075 4.853-2.09 7.168-6.123 8.213V22.7Zm14.934 0c8.289-1.717 11.051-5.899 11.051-14.785V0h-11.05v10.529h6.122c-.074 4.853-2.09 7.168-6.123 8.213V22.7Z' fill='%2328367B'/%3E%3C/svg%3E";
+
+// Fadein keyframes
+@keyframes fadein {
+	0% {
+		opacity: 0.65;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.65;
+	}
+}

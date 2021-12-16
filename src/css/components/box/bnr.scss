@@ -1,0 +1,45 @@
+.b-bnr {
+	position: relative;
+	padding: 70px 0 0;
+	&__inner {
+		display: flex;
+		align-items: center;
+		padding: 0 $size4;
+		border-radius: $borderRadiusMd;
+		background-position: right;
+		background-repeat: no-repeat;
+		background-size: cover;
+		box-shadow: $boxShadow;
+	}
+	&__content {
+		padding: $size8 0 $size4;
+	}
+	&__title {
+		margin-bottom: $size7;
+	}
+
+	// MQ
+	@media ($mdDown) {
+		&__img {
+			position: absolute;
+			top: 0;
+			right: 0;
+			max-width: 112px;
+		}
+	}
+	@media ($mdUp) {
+		&__inner {
+			padding: 0 $size8;
+		}
+		&__content {
+			width: 60%;
+			padding: $size7 0;
+		}
+		&__title {
+			margin-bottom: $size5;
+		}
+		&__img {
+			margin: -83px 0 0;
+		}
+	}
+}

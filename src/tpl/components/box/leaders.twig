@@ -1,0 +1,45 @@
+{% set props = {
+	title: props.title | default,
+	items: props.items | default([]),
+	classes: props.classes | default([])
+} %}
+
+{% set classes = [
+	'b-leaders',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<section class="{{ classes }}">
+	<div class="row-main">
+		<h2 class="b-leaders__title">
+			{{ props.title|raw }}
+		</h2>
+		<div class="b-leaders__wrapper">
+			<ul class="b-leaders__list grid">
+				{% for item in props.items %}
+					{% set item = {
+						img: item.img | default,
+						job: item.job | default,
+						name: item.name | default,
+						citation: item.citation | default,
+					} %}
+					<li class="b-leaders__item grid__cell size--6-12@md">
+						<div class="b-leaders__inner">
+							<p class="b-leaders__img">
+								<img src="{{ assets.images }}illust/people/{{ item.img }}" alt="{{ item.name }}">
+								<span class="b-leaders__job">
+									{{ item.job }}
+								</span>
+							</p>
+							<h3 class="b-leaders__name">
+								{{ item.name }}
+							</h3>
+							<p class="b-leaders__citation">
+								{{ item.citation }}
+							</p>
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>

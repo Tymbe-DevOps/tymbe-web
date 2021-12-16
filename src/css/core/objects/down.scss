@@ -1,0 +1,35 @@
+.down {
+	position: absolute;
+	bottom: -17px;
+	left: 50%;
+	z-index: 5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 35px;
+	height: 35px;
+	border-radius: 100%;
+	background-color: $colorPrimary;
+	color: $colorWhite;
+	transform: translateX(-50%);
+	transition: background-color $t;
+	.icon-svg {
+		width: 10px;
+	}
+
+	// HOVERs
+	.hoverevents &:hover {
+		background-color: $colorHover;
+		color: $colorWhite;
+	}
+
+	// MQ
+	@media ($mdUp) {
+		bottom: -25px;
+		width: 50px;
+		height: 50px;
+		.icon-svg {
+			width: 15px;
+		}
+	}
+}

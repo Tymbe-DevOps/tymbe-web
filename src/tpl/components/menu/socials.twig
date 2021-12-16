@@ -1,0 +1,31 @@
+{% set props = {
+	title: props.title | default,
+	items: props.items | default([]),
+	classes: props.classes | default([]),
+} %}
+
+{% set classes = [
+	'm-socials',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+
+{% if props.items | length > 0 %}
+	<nav class="{{ classes }}">
+		<ul class="m-socials__list">
+			{% for item in props.items %}
+				<li class="m-socials__item">
+					<a href="{{ item.link|default('#') }}" class="m-socials__link">
+						{% include '@components/core/icon-svg/icon-svg.twig' with {
+							props: {
+								name: item.icon
+							}
+						} %}
+						<span class="u-vhide">
+							{{ item.name }}
+						</span>
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</nav>
+{% endif %}

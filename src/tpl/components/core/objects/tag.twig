@@ -1,0 +1,23 @@
+{% set props = {
+	classes: props.classes | default([]),
+	logo: props.logo | default(),
+	logoName: props.logoName | default(),
+	name: props.name | default(),
+	job: props.job | default(),
+} %}
+
+{% set classes = [
+	'tag',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<p class="{{ classes }}">
+	<span class="tag__logo">
+		<img src="{{ assets.images }}illust/logos/{{ props.logo }}" alt="{{ props.logoName }}" width="72">
+	</span>
+	<span class="tag__name">
+		{{ props.name }}
+	</span>
+	<span class="tag__job">
+		{{ props.job }}
+	</span>
+</p>

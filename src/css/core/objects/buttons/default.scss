@@ -1,0 +1,53 @@
+.btn {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0;
+	border: 0;
+	background: none;
+	text-decoration: none;
+	cursor: pointer;
+	&__text {
+		position: relative;
+		display: block;
+		padding: 10px 22px 9px;
+		border: 1px solid $colorSecondary;
+		border-radius: $borderRadiusXl;
+		background-color: $colorSecondary;
+		color: $colorWhite;
+		font-weight: $semiBold;
+		font-size: 16px;
+		line-height: (23/16);
+		text-align: center;
+		text-decoration: none;
+		transition: background-color $t;
+	}
+
+	// VARIANTs
+	&--block {
+		display: block;
+	}
+	&--secondary &__text {
+		border-color: $colorPrimary;
+		background-color: transparent;
+		color: $colorPrimary;
+		transition: color $t, border-color $t;
+	}
+
+	// STATEs
+	&:disabled,
+	&.is-disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+	// HOVERs
+	.hoverevents &:hover &__text {
+		background-color: #a2ba02;
+		color: $colorWhite;
+	}
+	.hoverevents &--secondary:hover &__text {
+		border-color: $colorHover;
+		background-color: transparent;
+		color: $colorHover;
+	}
+}

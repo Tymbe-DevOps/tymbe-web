@@ -1,0 +1,31 @@
+.m-socials {
+	&__list {
+		@extend %reset-ul;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0 0 0 (-$size2);
+	}
+	&__item {
+		@extend %reset-ul-li;
+		border: $size2 solid transparent;
+		border-width: 0 0 0 $size2;
+	}
+	&__link {
+		color: $colorWhite;
+	}
+
+	// HOVERs
+	.hoverevents &__link:hover {
+		color: $colorSecondary;
+	}
+
+	// MQ
+	@media ($mdDown) {
+		&__link {
+			.icon-svg {
+				width: 18px;
+			}
+		}
+	}
+}

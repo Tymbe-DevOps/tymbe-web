@@ -1,0 +1,38 @@
+.b-about {
+	$s: &;
+	.row-main {
+		position: static;
+	}
+	&__inner {
+		position: relative;
+	}
+	&__img {
+		z-index: -1;
+	}
+	&__content {
+		font-size: 16px;
+		h3 {
+			font-family: $fontPrimary;
+			font-weight: $medium;
+			font-size: 18px;
+		}
+	}
+
+	// VARIANTs
+	&--reversed {
+		#{$s}__content {
+			margin-left: auto;
+		}
+	}
+
+	// MQ
+	@media ($lgUp) {
+		// VARIANTs
+		&--reversed {
+			#{$s}__img {
+				right: auto;
+				left: -70px;
+			}
+		}
+	}
+}

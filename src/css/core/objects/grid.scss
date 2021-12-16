@@ -1,0 +1,126 @@
+.row-main {
+	@include clearfix();
+	position: relative;
+	width: 100%;
+	max-width: $rowMainWidth;
+	margin: 0 auto;
+	padding: 0 $rowMainGutter;
+
+	// MQ
+	@media ($xsDown) {
+		padding: 0 10px;
+	}
+}
+.grid {
+	@extend %reset-ol;
+	@extend %grid;
+	margin-bottom: -($gridGutter);
+	margin-left: -($gridGutter);
+	&__cell {
+		@extend %reset-ol-li;
+		@extend %grid__cell;
+		position: relative;
+		border: $gridGutter solid transparent;
+		border-width: 0 0 $gridGutter $gridGutter;
+
+		// hide the border in MS high contrast mode
+		border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E");
+		&--top {
+			align-self: flex-start;
+		}
+		&--middle {
+			align-self: center;
+		}
+		&--bottom {
+			align-self: flex-end;
+		}
+		&--eq {
+			display: flex;
+			> * {
+				flex: 1 1 auto;
+			}
+		}
+	}
+
+	// VARIANTs
+	&--reversed {
+		flex-direction: row-reverse;
+	}
+	&--scroll {
+		@extend %grid--scroll;
+	}
+	&--nowrap {
+		flex-wrap: nowrap;
+	}
+	&--middle {
+		align-items: center;
+	}
+	&--bottom {
+		align-items: flex-end;
+	}
+	&--center {
+		justify-content: center;
+	}
+	&--right {
+		justify-content: flex-end;
+	}
+	&--space-between {
+		justify-content: space-between;
+	}
+
+	&--x-0 {
+		margin-left: 0;
+	}
+	&--x-0 > &__cell {
+		border-left-width: 0;
+	}
+	&--x-2 {
+		margin-left: (-$size2);
+	}
+	&--x-2 > &__cell {
+		border-left-width: $size2;
+	}
+	&--x-5 {
+		margin-left: (-$size5);
+	}
+	&--x-5 > &__cell {
+		border-left-width: $size5;
+	}
+
+	&--x-9 {
+		margin-left: (-($size9 / 2));
+
+		// MQ
+		@media ($mdUp) {
+			margin-left: (-$size9);
+		}
+	}
+	&--x-9 > &__cell {
+		border-left-width: (-($size9 / 2));
+
+		// MQ
+		@media ($mdUp) {
+			border-left-width: $size9;
+		}
+	}
+
+	&--y-0 {
+		margin-bottom: 0;
+	}
+	&--y-0 > &__cell {
+		border-bottom-width: 0;
+	}
+}
+.size {
+	@include generateGridSize();
+}
+
+// .push {
+// 	@include generateGridPush();
+// }
+// .pull {
+// 	@include generateGridPull();
+// }
+// .order {
+// 	@include generateGridOrder();
+// }

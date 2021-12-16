@@ -1,0 +1,35 @@
+{% set props = {
+	classes: props.classes | default([]),
+	apiUrl: props.apiUrl | default('https://api.tymbe.com/statistics'),
+	items: props.items | default([]),
+} %}
+
+{% set classes = [
+	'b-statistics',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<div class="{{ classes }}" data-controller="Statistics" data-statistics-url-value="{{ props.apiUrl }}">
+	<ul class="b-statistics__list">
+		{% for item in props.items %}
+			<li class="b-statistics__item">
+				{% if item.iconName|default(false) %}
+					<span class="b-statistics__icon">
+						{% include '@components/core/icon-svg/icon-svg.twig' with {
+							props: {
+								name: item.iconName
+							}
+						} %}
+					</span>
+				{% endif %}
+				<span class="b-statistics__number-text">
+					<span class="b-statistics__number" data-statistics-target="number" data-statistics-value="{{ item.value|default(false) }}" data-statistics-suffix="{{ item.suffix|default('') }}">
+						{{ item.number }} {{ item.suffix|default('') }}
+					</span>
+					<span class="b-statistics__text">
+						{{ item.text }}
+					</span>
+				</span>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

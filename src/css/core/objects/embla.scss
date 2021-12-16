@@ -1,0 +1,136 @@
+.embla {
+	$s: &;
+	position: relative;
+	&__viewport {
+		width: 100%;
+		&.is-draggable {
+			cursor: move;
+			cursor: grab;
+		}
+		&.is-dragging {
+			cursor: grabbing;
+		}
+	}
+
+	&__slide {
+		position: relative;
+	}
+	&__btns {
+		display: flex;
+		margin-top: $size2;
+		#{$s}__btn {
+			position: relative;
+			top: auto;
+			right: 0;
+			left: 0;
+			margin: 0 0 0 10px;
+			transform: translateY(0);
+		}
+	}
+	&__btn {
+		position: absolute;
+		top: 50%;
+		z-index: 5;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 44px;
+		height: 44px;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		border-radius: 50%;
+		background-color: $colorWhite;
+		color: $colorPrimary;
+		text-align: center;
+		transform: translateY(-50%);
+		transition: color $t;
+		box-shadow: $boxShadow;
+		&[disabled] {
+			color: rgba($colorBlack, 0.1);
+			pointer-events: none;
+		}
+		.icon-svg {
+			width: 13px;
+		}
+	}
+	&__btn--prev {
+		left: (-$size4);
+	}
+	&__btn--next {
+		right: (-$size4);
+	}
+
+	&__dots {
+		position: relative;
+		z-index: 5;
+		display: flex;
+		justify-content: center;
+		margin: 16px 0 0 -4px;
+	}
+	&__dot {
+		width: 8px;
+		height: 8px;
+		margin: 0 0 0 4px;
+		padding: 0;
+		border: 0;
+		border-radius: 100%;
+		background-color: $colorPrimary;
+		outline: none;
+		opacity: 0.1;
+		transition: opacity $t;
+		cursor: pointer;
+		&.is-selected {
+			opacity: 1;
+		}
+	}
+
+	// VARIANTs
+	.js &--fade &__slide {
+		opacity: 0;
+		transition: opacity 0.5s;
+	}
+	&--fade &__slide.is-selected {
+		z-index: 1;
+		opacity: 1;
+		transition: opacity 0.3s;
+	}
+	&__btns--blue &__btn {
+		background-color: $colorPrimary;
+		color: $colorWhite;
+		&[disabled] {
+			background-color: rgba($colorPrimary, 0.2);
+			pointer-events: none;
+		}
+	}
+
+	// HOVERs
+	.hoverevents &__btn:hover {
+		color: $colorSecondary;
+		cursor: pointer;
+	}
+	.hoverevents &__dot:hover {
+		opacity: 0.5;
+	}
+
+	// MQ
+	@media ($mdUp) {
+		&__btns {
+			position: absolute;
+			top: 3px;
+			right: 0;
+			margin-top: 0;
+		}
+		&__btn {
+			width: 35px;
+			height: 35px;
+			.icon-svg {
+				width: 11px;
+			}
+		}
+
+		&__btns--blue {
+			top: 30px;
+		}
+	}
+}

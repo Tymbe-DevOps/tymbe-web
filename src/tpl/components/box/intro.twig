@@ -1,0 +1,37 @@
+{% set props = {
+	classes: props.classes | default([]),
+	background: props.background | default(),
+	title: props.title | default(),
+	text: props.text | default(),
+	downLink: props.downLink | default(),
+} %}
+
+{% set classes = [
+	'b-intro',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<section class="{{ classes }}"{% if props.background is defined %} style="background-image: url({{ assets.images }}bg/{{ props.background }})"{% endif %}>
+	<div class="row-main">
+		<div class="b-intro__inner">
+			<h1 class="b-intro__title">
+				{{ props.title|raw }}
+			</h1>
+			<p class="b-intro__text">
+				{{ props.text|raw }}
+			</p>
+		</div>
+
+		{% if props.downLink | length > 0 %}
+			<a href="#{{ props.downLink }}" class="down" data-controller="LinkSlide" data-action="LinkSlide#slideTo">
+				{% include '@components/core/icon-svg/icon-svg.twig' with {
+					props: {
+						name: 'arr-down'
+					}
+				} %}
+				<span class="u-vhide">
+					K obsahu
+				</span>
+			</a>
+		{% endif %}
+	</div>
+</section>

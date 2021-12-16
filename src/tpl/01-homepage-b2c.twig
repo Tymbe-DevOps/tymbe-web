@@ -1,0 +1,209 @@
+{% extends '@layout/layout.twig' %}
+{% set pageTitle = 'Homepage B2C' %}
+{% set isHomepage = true %}
+
+{% block content %}
+
+	<main id="main" class="main">
+		{% include '@components/box/intro-hp.twig' with {
+			props: {
+				background: 'b2c-intro-bg.jpg',
+				contentSizes: ['size--6-12@md'],
+				imgSizes: ['size--6-12@md'],
+				title: 'Staň se Tymberem a&nbsp;vydělej víc!',
+				text: 'V aplikaci Ty&#8209;brigády od Tymbe jen Ty řekneš, kde a za kolik chceš pracovat a kdy si vyplatíš odměnu. Vše online, na pár kliknutí.',
+				buttons: [
+					{
+						name: 'Chci brigádu'
+					}
+				],
+				downloads: [
+					{
+						img: 'store-button-icons/app-store.svg',
+						name: 'App Store',
+						width: '137',
+					},
+					{
+						img: 'store-button-icons/google-play.svg',
+						name: 'Google Play',
+						width: '137',
+					},
+				],
+				downLink: 'content',
+				img: 'hand.png',
+				imgWidth: '470',
+				imgHeight: '588',
+			}
+		} %}
+		<div id="content" class="u-pt-9">
+			<div class="row-main">
+				{% include '@components/crossroad/products.twig' with {
+					props: {
+						classes: ['u-mb-7'],
+						title: 'Dnešní TOP brigády',
+						btn: 'Staň se Tymberem',
+						items: [
+							{
+								openingHours: '00:00',
+								title: 'Dnešní TOP brigády',
+								location: 'Praha',
+								fullPayment: '000,00',
+								fullCredits: '00,00',
+								btnText: 'Chci brigádu',
+							},
+							{
+								openingHours: '00:00',
+								title: 'Dnešní TOP brigády',
+								location: 'Praha',
+								fullPayment: '000,00',
+								fullCredits: '00,00',
+								btnText: 'Chci brigádu',
+							},
+							{
+								openingHours: '00:00',
+								title: 'Dnešní TOP brigády',
+								location: 'Praha',
+								fullPayment: '000,00',
+								fullCredits: '00,00',
+								btnText: 'Chci brigádu',
+							},
+							{
+								openingHours: '00:00',
+								title: 'Dnešní TOP brigády',
+								location: 'Praha',
+								fullPayment: '000,00',
+								fullCredits: '00,00',
+								btnText: 'Chci brigádu',
+							}
+						]
+					}
+				}%}
+			</div>
+
+			{% include '@components/crossroad/reviews.twig' with {
+				props: {
+					title: 'Jak to vidí Tymbeři',
+					items: [
+						{
+							quotation: 'Tuto stránku mi doporučila kamarádka a i když jsem se ze začátku obávala o to bude, chodím teď na brigády jen přes Tymbe. Super přístup a docela dobrý výběr brigád, doufám že bude ještě více možností',
+							name: 'Lucie',
+							from: 'Google',
+							date: 'únor 2021',
+						},
+						{
+							quotation: 'Ze začátku jsem se bála, jelikož většina agentur je příšerná, ale teď přes Tymbe docházím na brigády pravidelně již 2 roky a nemůžu si vůbec stěžovat. Určitě všem doporučuji.',
+							name: 'Nikola',
+							from: 'Facebook',
+							date: 'prosinec 2020',
+						},
+						{
+							quotation: 'Dobrá zkušenost, vyberu brigádu klidně i den předem a peníze na účtu po odpracování do pár dní.',
+							name: 'Martin',
+							from: 'Google',
+							date: 'leden 2021',
+						},
+						{
+							quotation: 'Super výběr brigád, který se stále rozrůstá. Moc se mi líbí nápad kreditů, které zvyšují hodinovou sazbu. A tak se někdy můžete dostat až na 200 Kč/hod. Peníze vždy včas na účtě. Určitě doporučuji.',
+							name: 'Míša',
+							from: 'Facebook',
+							date: 'duben 2020',
+						},
+						{
+							quotation: 'Spokojenost, k základu vám přidají kredity a peníze si můžete hned po směně poslat na účet.',
+							name: 'Tomáš',
+							from: 'Facebook',
+							date: 'prosinec 2018',
+						},
+						{
+							quotation: 'Vše na jedničku není co vytknout jen pochválit a jsem rád že jsem to zkusil nelituji a doporučuji a určitě dál budu využívat.',
+							name: 'Karlos',
+							from: 'Facebook',
+							date: 'prosinec 2018',
+						},
+					]
+				}
+			}%}
+
+			<div class="row-main">
+				{% include '@components/crossroad/steps.twig' with {
+					props: {
+						classes: ['c-steps--img u-mb-7'],
+						gridSize: 'size--6-12@sm size--3-12@lg',
+						isCarousel: true,
+						heading: {
+							classes: ['u-mb-6'],
+							title: 'Jak to funguje?',
+							annot: 'Stáhni si aplikaci, vyber si tu pravou brigádu, odpracuj si směnu a pošli si výplatu kdykoliv chceš. Třeba hned po potvrzení docházky. Vše na pár kliknutí.',
+						},
+						btn: 'Chci brigádu',
+						items: [
+							{
+								img: 'volna-mista.png',
+								title: '1. Stáhni si appku Ty&#8209;Brigády',
+								desc: 'Každý den dostaneš novou nabídku brigád včetně potřebných školení, takže budeš vždy dopředu vědět, co a jak máš dělat.',
+							},
+							{
+								img: 'detail-brigady.png',
+								title: '2. Vyber si tu pravou brigádu',
+								desc: 'Sám si řekni, jaká cena je pro Tebe fajn, všechny potřebné dokumenty Ti připravíme a podepsat je můžeš online.',
+							},
+							{
+								img: 'moje-brigady.png',
+								title: '3. Odpracuj si směnu',
+								desc: 'Podrobnosti ke své brigádě najdeš v mobilu. V případě potřeby můžeš zamluvenou brigádu 24 hodin před nástupem zrušit.',
+							},
+							{
+								img: 'vyplata.png',
+								title: '4. Vyplať si svou odměnu kdykoliv chceš',
+								desc: 'Počkej na potvrzení docházky vedoucím, ohodnoť brigádu za extra kredity a pak je jen na Tobě, jestli chceš výplatu co nejdříve po směně nebo třeba jednou za měsíc.',
+							},
+						]
+					}
+				}%}
+			</div>
+			<div class="u-bg-gradient">
+				<div class="row-main">
+					{% include '@components/box/people.twig' with {
+						props: {
+							classes: ['u-mb-7'],
+							title: 'Přidej se k těm nejlepším týmům',
+							annot: 'První směnu spolu zvládneme ještě dnes',
+							btn: 'Tymbe pro firmy',
+							items: [
+								{
+									img: 'tomas.png',
+									tag: {
+										logo: 'zasilkovna.svg',
+										logoName: 'Zásilkovna ve společnosti Packeta Group',
+										name: 'Tomáš Křesťan',
+										job: 'Chief Human Resources Officer '
+									},
+								},
+								{
+									isBiggest: true,
+									img: 'denisa.png',
+									tag: {
+										logo: 'pilulka.svg',
+										logoName: 'Pilulka',
+										name: 'Denisa Čechová',
+										job: 'HR Business Partner'
+									},
+								},
+								{
+									img: 'ctibor.png',
+									tag: {
+										logo: 'logo-dek.jpg',
+										logoName: 'DEK STAVEBNINY',
+										name: 'Ctibor Hurda',
+										job: 'Manažer prodejny '
+									},
+								},
+							]
+						}
+					}%}
+				</div>
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

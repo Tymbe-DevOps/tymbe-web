@@ -1,0 +1,36 @@
+{% set props = {
+	heading: props.heading | default,
+	items: props.items | default([]),
+	gridSize: props.gridSize | default,
+	classes: props.classes | default([])
+} %}
+
+{% set classes = [
+	'c-benefits',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<section class="{{ classes }}">
+	{% include '@components/core/objects/heading.twig' with {
+		props: props.heading
+	} %}
+	<ul class="c-benefits__list grid">
+		{% for item in props.items %}
+			{% set item = {
+				img: item.img | default,
+				title: item.title | default,
+				desc: item.desc | default,
+			} %}
+			<li class="c-benefits__item grid__cell {{ props.gridSize|default('size--6-12@sm size--3-12@md') }}">
+				<p class="c-benefits__img">
+					<img src="{{ assets.images }}illust/{{ item.img }}" alt="" width="210">
+				</p>
+				<h3 class="c-benefits__title">
+					{{ item.title }}
+				</h3>
+				<p class="c-benefits__desc">
+					{{ item.desc }}
+				</p>
+			</li>
+		{% endfor %}
+	</ul>
+</section>

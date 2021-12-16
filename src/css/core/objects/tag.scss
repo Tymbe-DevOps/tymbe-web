@@ -1,0 +1,23 @@
+.tag {
+	width: 185px;
+	margin: 0;
+	padding: 18px;
+	border-radius: $borderRadiusMd;
+	background-color: $colorWhite;
+	text-align: center;
+	box-shadow: $boxShadow;
+	> * {
+		display: block;
+	}
+
+	&__name {
+		color: $colorPrimary;
+		font-weight: $semiBold;
+		font-size: 16px;
+	}
+	&__job {
+		color: rgba(#202020, 0.7);
+		font-size: 12px;
+		text-transform: uppercase;
+	}
+}

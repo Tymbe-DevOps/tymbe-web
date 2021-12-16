@@ -1,0 +1,250 @@
+// Grid
+@mixin generateGridSize($breakpoints: $breakpoints, $columns: $gridColumns, $auto: true, $autoGrow: true) {
+	@if ($auto) {
+		&--auto {
+			width: auto;
+		}
+	}
+	@if ($autoGrow) {
+		&--autogrow {
+			flex: 1 0 auto;
+			width: auto;
+		}
+	}
+	@for $column from 1 to ($columns + 1) {
+		@at-root #{&}--#{$column}-#{$columns} {
+			width: percentage($column / $columns);
+		}
+	}
+	@each $breakpoint, $value in $breakpoints {
+		@include mq-checker($breakpoint) {
+			@if ($auto) {
+				&--auto {
+					@include suffix($breakpoint) {
+						width: auto;
+					}
+				}
+			}
+			@if ($autoGrow) {
+				&--autogrow {
+					@include suffix($breakpoint) {
+						flex: 1 0 auto;
+						width: auto;
+					}
+				}
+			}
+			@for $column from 1 to ($columns + 1) {
+				@at-root #{&}--#{$column}-#{$columns} {
+					@include suffix($breakpoint) {
+						width: percentage($column / $columns);
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin generateGridPush($breakpoints: $breakpoints, $columns: $gridColumns) {
+	@for $column from 1 to ($columns + 1) {
+		@at-root #{&}--#{$column}-#{$columns} {
+			left: percentage($column / $columns);
+		}
+	}
+	@each $breakpoint, $value in $breakpoints {
+		@include mq-checker($breakpoint) {
+			@for $column from 1 to ($columns + 1) {
+				@at-root #{&}--#{$column}-#{$columns} {
+					@include suffix($breakpoint) {
+						left: percentage($column / $columns);
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin generateGridPull($breakpoints: $breakpoints, $columns: $gridColumns) {
+	@for $column from 1 to ($columns + 1) {
+		@at-root #{&}--#{$column}-#{$columns} {
+			left: percentage(-$column / $columns);
+		}
+	}
+	@each $breakpoint, $value in $breakpoints {
+		@include mq-checker($breakpoint) {
+			@for $column from 1 to ($columns + 1) {
+				@at-root #{&}--#{$column}-#{$columns} {
+					@include suffix($breakpoint) {
+						left: percentage(-$column / $columns);
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin generateGridOrder($breakpoints: $breakpoints, $columns: $gridColumns) {
+	@for $column from 1 to ($columns + 1) {
+		@at-root #{&}--#{$column} {
+			order: $column;
+		}
+	}
+	@each $breakpoint, $value in $breakpoints {
+		@include mq-checker($breakpoint) {
+			@for $column from 1 to ($columns + 1) {
+				@at-root #{&}--#{$column} {
+					@include suffix($breakpoint) {
+						order: $column;
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin mq-checker($breakpoint, $type: 'Up') {
+	@if (map-has-key($breakpointsVars, $breakpoint + $type)) {
+		@if (
+			($type == 'Up' and ($breakpoint == 'md' or $breakpoint == 'lg')) or
+				($type == 'Down' and ($breakpoint == 'lg' or $breakpoint == 'xl'))
+		) {
+			@media (map-get($breakpointsVars, $breakpoint + $type)), print {
+				@content;
+			}
+		} @else {
+			@media (map-get($breakpointsVars, $breakpoint + $type)) {
+				@content;
+			}
+		}
+	} @else {
+		@error 'Unfortunately, breakpoint `#{$breakpoint}` is not defined in config.js';
+	}
+}
+
+// Suffix
+@mixin suffix($suffix, $delimiter: '\\@') {
+	&#{$delimiter}#{$suffix} {
+		@content;
+	}
+}
+
+// Breakpoints
+@mixin generateBreakpoints($breakpoints: $breakpoints) {
+	@content;
+	@each $breakpoint, $value in $breakpoints {
+		@include mq-checker($breakpoint) {
+			@include suffix($breakpoint) {
+				@content;
+			}
+		}
+	}
+}
+
+// Flexbox not supported
+@mixin no-flex() {
+	.no-flexwrap & {
+		@content;
+	}
+}
+
+// Hide scrollbar
+@mixin hide-scrollbar() {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+// Text Alignment and Transformation classes
+@mixin text-truncate($lines: 1) {
+	overflow: hidden;
+	@if ($lines == 1) {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	} @else {
+		display: -webkit-box;
+		text-overflow: ellipsis;
+		-webkit-line-clamp: #{$lines};
+		/* autoprefixer: ignore next */
+		-webkit-box-orient: vertical;
+	}
+}
+
+// Clearfix
+@mixin clearfix() {
+	&::before,
+	&::after {
+		content: '';
+		display: table;
+	}
+	&::after {
+		clear: both;
+	}
+}
+
+// Hiding content
+@mixin vhide() {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+}
+
+// Triangle
+@mixin triangle($direction: 'down', $width: 10px, $height: 10px, $color: currentColor) {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	@if ($direction == 'up') {
+		border-width: 0 ($width / 2) $height ($width / 2);
+		border-color: transparent transparent $color transparent;
+	} @else if ($direction == 'down') {
+		border-width: $height ($width / 2) 0 ($width / 2);
+		border-color: $color transparent transparent transparent;
+	} @else if ($direction == 'left') {
+		border-width: ($height / 2) $width ($height / 2) 0;
+		border-color: transparent $color transparent transparent;
+	} @else if ($direction == 'right') {
+		border-width: ($height / 2) 0 ($height / 2) $width;
+		border-color: transparent transparent transparent $color;
+	} @else if ($direction == 'up-left') {
+		border-width: $height $width 0 0;
+		border-color: $color transparent transparent transparent;
+	} @else if ($direction == 'down-left') {
+		border-width: $width 0 0 $height;
+		border-color: transparent transparent transparent $color;
+	} @else if ($direction == 'up-right') {
+		border-width: 0 $width $height 0;
+		border-color: transparent $color transparent transparent;
+	} @else if ($direction == 'down-right') {
+		border-width: 0 0 $height $width;
+		border-color: transparent transparent $color transparent;
+	}
+}
+
+// Line clamp
+@mixin line-clamp($lines) {
+	overflow: hidden;
+	@if ($lines == 1) {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	} @else {
+		display: -webkit-box;
+		-webkit-line-clamp: #{$lines};
+		/*! autoprefixer: ignore next */
+		-webkit-box-orient: vertical;
+	}
+}
+
+// Fancybox
+@function max($numbers...) {
+	@return m#{a}x(#{$numbers});
+}
+
+@function min($numbers...) {
+	@return m#{i}n(#{$numbers});
+}

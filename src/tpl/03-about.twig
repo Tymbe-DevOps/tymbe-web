@@ -1,0 +1,66 @@
+{% extends '@layout/layout.twig' %}
+{% set pageTitle = 'O společnosti' %}
+
+{% block content %}
+
+	<main id="main" class="main">
+		{% include '@components/box/intro.twig' with {
+			props: {
+				background: 'intro-bg.jpg',
+				title: 'In play is flow<br> Using positive innovation to create human workplace systems',
+				text: 'Tymbe je tu od toho, aby se všechno kolem práce zjednodušilo, zrychlilo a zlevnilo na úrovni firem i jednotlivců. ',
+				downLink: 'content',
+			}
+		} %}
+		<div class="row-main">
+			<div id="content" class="u-pt-10">
+				{% include '@components/box/info-list.twig' with {
+					props: {
+						classes: ['u-mb-8'],
+						items: [
+							{
+								title: 'O Tymbe',
+								text: '<p>Od prvního okamžiku nás bavilo procházet různými společnostmi z naprosto odlišných segmentů trhu a poznávat je. Jeden den jsme třídili balíčky, abychom poznali práci a úkony potřebné k nástupu, druhý den jsme se seznamovali s pokladním systémem, abychom o pár dní později procházeli výrobní halou. Přičemž každá taková návštěva, každé seznámení se s novým provozem pro nás vždy znamenalo novou revizi našeho vlastního produktu.</p>',
+								flag: 'icon2.svg',
+								flagName: 'Certifikát 2',
+								img: 'phone.png',
+								width: '317',
+								height: '380'
+							},
+							{
+								text: '<p>Od prvního okamžiku nás bavilo procházet různými společnostmi z naprosto odlišných segmentů trhu a poznávat je. Jeden den jsme třídili balíčky, abychom poznali práci a úkony potřebné k nástupu, druhý den jsme se seznamovali s pokladním systémem, abychom o pár dní později procházeli výrobní halou. Přičemž každá taková návštěva, každé seznámení se s novým provozem pro nás vždy znamenalo novou revizi našeho vlastního produktu.</p>
+								<p>Protože jsme se ovšem nechtěli zastavit na místě, napadla nás nová myšlenka, po které jdeme právě dnes. Rádi bychom, aby se uživatelé těšili na to, až si naši aplikaci otevřou, aby s nimi komunikovala tak, že ráno nebudou moci dospat do práce, aby s radostí koukali, co vše nového se událo, zatímco byli pryč. Rádi bychom nabídli takové prostředí, které dá uživateli nový pohled na svůj provoz, aby viděl analytiku svého pracoviště, datovou mapu svých pracovníků, a přesto jeho základní úkony v aplikaci zůstaly na pár kliknutí. Zkrátka sexy personální software (ano, taky se snažíme, aby nám to neznělo jako oxymóron).</p>',
+								flag: 'icon1.svg',
+								flagName: 'Certifikát 1',
+								img: 'phone.png',
+								width: '317',
+								height: '380'
+							},
+						]
+					}
+				}%}
+				{% include '@components/box/leaders.twig' with {
+					props: {
+						classes: ['u-mb-9'],
+						title: 'Náš tým',
+						items: [
+							{
+								img: 'michal.png',
+								job: 'CBDO',
+								name: 'Michal Harásek',
+								citation: '“Vždycky mě bavila závodní auta a chvíli jsem taky profesionálně závodil. To mě naučilo, že závod se rozhoduje až v cílové rovince.”'
+							},
+							{
+								img: 'martin.png',
+								job: 'CEO',
+								name: 'Martin Plášil',
+								citation: '“Naše první vize byla vytvořit software, který nebude uživatele otravovat a druhým krokem je dnes tvořit software, který bude uživatele bavit.”'
+							},
+						]
+					}
+				}%}
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

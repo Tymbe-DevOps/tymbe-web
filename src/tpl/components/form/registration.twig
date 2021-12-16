@@ -1,0 +1,195 @@
+{% set props = {
+	title: props.title | default,
+	steps: props.steps | default,
+	btnBack: props.btnBack | default,
+	btnNext: props.btnNext | default,
+	btn: props.btn | default,
+	text: props.text | default,
+	classes: props.classes | default([]),
+	inpTitle: props.inpTitle | default,
+	inputs: props.inputs | default([]),
+	inpGroups: props.inpGroups | default([]),
+	selectGroups: props.selectGroups | default([]),
+	inpGroupsName: props.inpGroupsName | default,
+	checkboxLabel: props.checkboxLabel | default,
+	radiosTitle: props.radiosTitle | default,
+	radios: props.radios | default([]),
+	controller: props.controller | default('Registration'),
+	nextStep: props.nextStep | default(),
+	apiUrl: props.apiUrl | default(),
+	sitekey: props.sitekey | default('6LfNCnMUAAAAAMwWYCZaqQvtn5TmuA3Uau07nj5g'),
+	showRecaptcha: props.showRecaptcha | default(),
+	success: props.success | default('Děkujeme za vaši registraci.')
+} %}
+
+{% set classes = [
+	'f-registration',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<form method="POST" action="?" id="post" class="{{ classes }}"
+	data-controller="{{ props.controller }}"
+	data-{{ props.controller|lower }}-url-value="{{ props.apiUrl }}"
+	data-action="submit->{{ props.controller }}#send"
+	data-{{ props.controller|lower }}-type-value="{{ props.inpGroupsName }}"
+	data-{{ props.controller|lower }}-next-value="{{ props.nextStep }}"
+	>
+	<h2 class="f-registration__title">
+		{{ props.title }}
+	</h2>
+	<p class="message message--ok u-hide" data-{{ props.controller|lower }}-target="success"><p>
+	<p class="message message--error u-hide" data-{{ props.controller|lower }}-target="message"><p>
+	{% if props.steps | length > 0 %}
+		{% include '@components/core/objects/steps.twig' with {
+			props: props.steps
+		} %}
+	{% endif %}
+	{% for inpGroup in props.inpGroups %}
+		{% if inpGroup.inpTitle is defined %}
+			<p class="f-registration__inp-title">
+				{{ inpGroup.inpTitle }}
+			</p>
+		{% endif %}
+
+		{% if inpGroup.options|default(false) is iterable %}
+			{% set select = {
+				selectName: inpGroup.selectName | default,
+				selectLabel: inpGroup.selectLabel | default,
+			} %}
+			<p class="f-registration__inp inp has-focus" data-controller="FocusInput">
+				<label for="select" class="inp-label">
+					{{ select.selectLabel }}
+				</label>
+				<span class="inp-fix">
+					<select name="{{ select.selectName }}" id="{{ select.selectName }}" {% if inpGroup.disable|default(false) %}disable{% endif %} {% if inpGroup.selectRequired|default(false) %}required{% endif %} class="inp-select" data-action="focus->FocusInput#focus blur->FocusInput#blur">
+						{% for option in inpGroup.options %}
+							{% set option = {
+								value: option.value | default,
+								title: option.title | default
+							} %}
+							<option value="{{ option.value }}">
+								{{ option.title }}
+							</option>
+						{% endfor %}
+					</select>
+				</span>
+			</p>
+		{% endif %}
+
+		{% for input in inpGroup.inputs %}
+			{% set input = {
+				label: input.label | default,
+				name: input.name | default,
+				type: input.type | default,
+				required: input.required | default,
+				pattern: input.pattern | default,
+				tooltipText: input.tooltipText | default,
+				tooltipTitle: input.tooltipTitle | default
+			} %}
+			<p class="f-registration__inp inp" data-controller="FocusInput">
+				<label for="{{ input.name }}" class="inp-label">
+					{{ input.label }}
+				</label>
+				<span class="inp-fix">
+					<input type="{{ input.type }}" value="" name="{{ input.name }}" id="{{ input.name }}" placeholder="{{ input.label }}" {% if input.required|default(false) %}required{% endif %} {% if input.pattern|default(false) %}pattern="{{ input.pattern }}"{% endif %} class="inp-text" data-action="focus->FocusInput#focus blur->FocusInput#blur">
+					{% if input.tooltipText|default(false) or input.tooltipTitle|default(false) %}
+						<button type="button" class="tooltip">
+							<span class="icon-svg icon-svg--info" aria-hidden="true">
+								<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+									<use xlink:href="../img/bg/icons-svg.svg#icon-info" width="100%" height="100%" focusable="false"></use>
+								</svg>
+							</span>
+							<span class="u-vhide"> Info </span>
+							<span class="tooltip__content">
+								<span class="tooltip__title">{{ input.tooltipTitle }}</span>
+								<span class="tooltip__text">{{ input.tooltipText }}</span>
+							</span>
+						</button>
+					{% endif %}
+				</span>
+			</p>
+		{% endfor %}
+	{% endfor %}
+
+	{% if props.radios %}
+		<div class="f-registration__radios">
+			<p class="f-registration__inp-title">
+				{{ props.radiosTitle }}
+			</p>
+			{% for radio in props.radios %}
+				{% set radio = {
+					label: radio.label | default,
+					value: radio.value | default,
+					name: radio.name | default('radio'),
+					required: radio.required | default,
+				} %}
+				<p class="f-registration__radio">
+					<label class="inp-item inp-item--radio inp-label">
+						<input type="radio" name="{{ radio.name }}" value="{{ radio.value }}" class="inp-item__inp" {% if radio.required|default(false) %}required{% endif %}>
+						<span class="inp-item__text">
+							<span class="inp-item__tool"></span>
+							{{ radio.label }}
+						</span>
+					</label>
+				</p>
+			{% endfor %}
+		</div>
+	{% endif %}
+	{% if props.checkboxLabel %}
+		<p class="f-registration__checkbox">
+			<label class="inp-item inp-item--checkbox">
+				<input type="checkbox" name="acceptDataProcessing" value="1" class="inp-item__inp" required>
+				<span class="inp-item__text">
+					<span class="inp-item__tool">
+						{% include '@components/core/icon-svg/icon-svg.twig' with {
+							props: {
+								name: 'check'
+							}
+						} %}
+					</span>
+					{{ props.checkboxLabel }}
+				</span>
+			</label>
+		</p>
+	{% endif %}
+	{% if props.steps %}
+		{% if props.showRecaptcha %}
+			<div class="f-registration__inp inp">
+				<div id="reCaptcha" name="reCaptcha" class="g-recaptcha" data-sitekey={{ props.sitekey }}></div>
+			</div>
+		{% endif %}
+		<div class="f-registration__btns">
+			{% if props.btnBack %}
+				<p class="f-registration__btn-back">
+					<button type="button" class="btn btn--secondary" data-action="click->{{ props.controller }}#back">
+						<span class="btn__text">
+							{{ props.btnBack }}
+						</span>
+					</button>
+				</p>
+			{% endif %}
+			{% if props.btnNext %}
+				<p class="f-registration__btn-next">
+					<button type="submit" class="btn" data-action="click->{{ props.controller }}#formValidate">
+						<span class="btn__text">
+							{{ props.btnNext }}
+						</span>
+					</button>
+				</p>
+			{% endif %}
+		</div>
+	{% else %}
+		<div class="f-registration__inp inp">
+			<div id="reCaptcha" name="reCaptcha" class="g-recaptcha" data-sitekey={{ props.sitekey }}></div>
+		</div>
+		<p class="f-registration__btn u-mt-3">
+			<button type="submit" class="btn" data-action="click->{{ props.controller }}#formValidate">
+				<span class="btn__text">
+					{{ props.btn }}
+				</span>
+			</button>
+		</p>
+	{% endif %}
+	<p class="f-registration__text">
+		{{ props.text|raw }}
+	</p>
+</form>

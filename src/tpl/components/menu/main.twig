@@ -1,0 +1,44 @@
+{% set props = {
+	items: props.items | default([]),
+	buttons: props.buttons | default([]),
+} %}
+
+<nav id="menu-main" class="m-main" data-controller="SiteNav">
+	<button type="button" class="m-main__title js-menu-main" aria-label="Menu" data-action="click->SiteNav#toggleNav">
+		Menu
+		<span class="m-main__title-icon">
+			<span></span>
+			<span></span>
+			<span></span>
+		</span>
+	</button>
+	<div class="m-main__content" data-SiteNav-target="menu">
+		<ul class="m-main__list">
+			{% for item in props.items %}
+				<li class="m-main__item{% if item.isActive is defined %} is-active{% endif %}">
+					<a href="{{ item.link|default('#') }}" class="m-main__link">
+						{% include '@components/core/icon-svg/icon-svg.twig' with {
+							props: {
+								name: item.icon
+							}
+						} %}
+						{{ item.name }}
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+		{% if props.buttons is defined %}
+			<ul class="m-main__list m-main__list--buttons">
+				{% for button in props.buttons %}
+					<li class="m-main__item">
+						<a href="{{ button.link|default('#') }}" class="m-main__btn btn{% if button.type is defined %} btn--{{ button.type }}{% endif %}">
+							<span class="btn__text">
+								{{ button.name }}
+							</span>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+</nav>

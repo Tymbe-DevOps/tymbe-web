@@ -1,0 +1,26 @@
+html {
+	height: 100%;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+body {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 320px;
+	min-height: 100%;
+	background-color: $colorWhite;
+	overflow-y: scroll;
+}
+:first-child {
+	margin-top: 0;
+}
+
+@import 'header';
+@import 'footer';
+@import 'main';

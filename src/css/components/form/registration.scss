@@ -1,0 +1,47 @@
+.f-registration {
+	padding: $size1;
+	text-align: center;
+	> :last-child {
+		margin-bottom: 0;
+	}
+
+	&__inp-title {
+		margin-bottom: 10px;
+		font-family: $fontPrimary;
+		font-weight: $medium;
+		font-size: 16px;
+		text-align: left;
+	}
+	&__radios {
+		margin-top: $size2;
+		text-align: left;
+	}
+	&__radio {
+		margin-bottom: 7px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__btns {
+		display: flex;
+		justify-content: space-between;
+		margin: $size5 0;
+		> * {
+			margin-bottom: 0;
+		}
+	}
+	&__btn-next {
+		margin-left: auto;
+	}
+
+	&__text {
+		font-size: 16px;
+		line-height: (24/16);
+	}
+
+	// MQ
+	@media ($mdUp) {
+		padding: $size3 $size4 $size1;
+	}
+}

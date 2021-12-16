@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="cs" class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:title" content="{{ pageTitle }} | Tymbe">
+		<meta name="twitter:description" content="">
+		<meta name="twitter:image" content="{{ assets.images }}social/twitter.jpg">
+
+		<meta property="og:title" content="{{ pageTitle }} | Tymbe">
+		<meta property="og:description" content="">
+		<meta property="og:image" content="{{ assets.images }}social/facebook.jpg">
+		<meta property="og:site_name" content="Tymbe">
+		<meta property="og:url" content="http://www.example.com/">
+
+		<title>{{ pageTitle }} | Tymbe</title>
+
+		<link rel="stylesheet" href="https://use.typekit.net/gwu8cnr.css">
+
+		<link rel="stylesheet" href="{{ assets.styles }}style.css">
+		<link rel="stylesheet" href="{{ assets.styles }}print.css" media="print">
+
+		{% set scripts = [
+			'https://cdn.polyfill.io/v3/polyfill.min.js?features=default,Array.prototype.includes,Object.values,Array.prototype.find,AbortController,fetch,features=Array.prototype.findIndex,Array.from,Element.prototype.closest,Map,MutationObserver,Object.assign,Promise,Set',
+			assets.scripts ~ 'app.js'
+		] %}
+
+		{% for script in scripts %}
+		<link rel="preload" as="script" href="{{script}}">
+		{% endfor %}
+
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ assets.images }}favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ assets.images }}favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ assets.images }}favicons/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<link rel="mask-icon" href="{{ assets.images }}favicons/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
+		<meta name="msapplication-config" content="/browserconfig.xml">
+
+		<script>
+			(function () {
+				var className = document.documentElement.className;
+				className = className.replace('no-js', 'js');
+
+				(function() {
+					var mediaHover = window.matchMedia('(hover: none), (pointer: coarse), (pointer: none)');
+					mediaHover.addListener(function(media) {
+						document.documentElement.classList[media.matches ? 'add' : 'remove']('no-hoverevents');
+						document.documentElement.classList[!media.matches ? 'add' : 'remove']('hoverevents');
+					});
+					className += (mediaHover.matches ? ' no-hoverevents' : ' hoverevents');
+				})();
+
+				// var supportsCover = 'CSS' in window && typeof CSS.supports === 'function' && CSS.supports('object-fit: cover');
+				// className += (supportsCover ? ' ' : ' no-') + 'objectfit';
+
+				// fix iOS zoom issue: https://docs.google.com/document/d/1KclJmXyuuErcvit-kwCC6K2J7dClRef43oyGVCqWxFE/edit#heading=h.sgbqg5nzhvu9
+				var ua = navigator.userAgent.toLowerCase();
+				var isIOS = /ipad|iphone|ipod/.test(ua) && !window.MSStream;
+
+				if (isIOS === true) {
+					var viewportTag = document.querySelector("meta[name=viewport]");
+					viewportTag.setAttribute("content", "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no");
+				}
+
+				document.documentElement.className = className;
+			}());
+		</script>
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	</head>
+	<body>
+		<p class="m-accessibility">
+			<a title="Přejít k obsahu (Klávesová zkratka: Alt + 2)" accesskey="2" href="#main">Přejít k obsahu</a>
+			<span class="hide">|</span>
+			<a href="#menu-main">Přejít k hlavnímu menu</a>
+		</p>
+
+		<header class="header{% if isTrainingPage is defined %} header--training{% endif %}">
+			<div class="row-main">
+				<div class="header__inner">
+					{% if isTrainingPage is defined %}
+						<h1 class="header__logo">
+							<img src="{{ assets.images }}logo-training.svg" alt="Ty-školení" width="129" height="26">
+						</h1>
+					{% else %}
+						{% if isHomepage is defined %}
+							<h1 class="header__logo">
+								<img src="{{ assets.images }}logo.svg" alt="Tymbe" width="100" height="49">
+							</h1>
+						{% else %}
+							<p class="header__logo">
+								<a href="./01-homepage-b2c.html">
+									<img src="{{ assets.images }}logo.svg" alt="Tymbe" width="100" height="49">
+								</a>
+							</p>
+						{% endif %}
+					{% endif %}
+
+					{% if isTrainingPage is defined %}
+						{% include '@components/menu/main.twig' with {
+							props: {
+								items: [
+									{
+										isActive: true,
+										link: './01-homepage-b2c.html',
+										icon: 'work',
+										name: 'Pro brigádníky'
+									},
+									{
+										link: './01-homepage-b2b.html',
+										icon: 'building',
+										name: 'Pro firmy'
+									},
+									{
+										link: './03-about.html',
+										icon: 'user',
+										name: 'O nás'
+									},
+									{
+										link: './05-contact.html',
+										icon: 'message',
+										name: 'Kontakty'
+									},
+									{
+										link: './06-faq.html',
+										icon: 'chat',
+										name: 'FAQ'
+									},
+								]
+							}
+						} %}
+					{% else %}
+						{% set buttonRegistration = isB2B is defined ?
+							[
+								{
+									link: './02-form-b2b.html',
+									name: 'Registrace'
+								}
+							] : [
+								{
+									link: './02-form-provisional-step-1.html',
+									name: 'Registrace'
+								}
+							]
+						%}
+						{% include '@components/menu/main.twig' with {
+							props: {
+								items: [
+									{
+										isActive: true,
+										link: './01-homepage-b2c.html',
+										icon: 'work',
+										name: 'Pro brigádníky'
+									},
+									{
+										link: './01-homepage-b2b.html',
+										icon: 'building',
+										name: 'Pro firmy'
+									},
+									{
+										link: './03-about.html',
+										icon: 'user',
+										name: 'O nás'
+									},
+									{
+										link: './05-contact.html',
+										icon: 'message',
+										name: 'Kontakty'
+									}
+								],
+								buttons: [
+									{
+										type: 'secondary',
+										link: '#',
+										name: 'Přihlásit'
+									}
+								]|merge(buttonRegistration)
+							}
+						} %}
+					{% endif %}
+				</div>
+			</div>
+		</header>
+
+		{% block content %}{% endblock %}
+
+		<footer class="footer">
+			<div class="row-main">
+				{% include '@components/menu/footer.twig' with {
+					props: {
+						logoLink: './01-homepage-b2c.html',
+						items: [
+							{
+								isActive: true,
+								link: './01-homepage-b2c.html',
+								icon: 'work',
+								name: 'Pro brigádníky'
+							},
+							{
+								link: './01-homepage-b2b.html',
+								icon: 'building',
+								name: 'Pro firmy'
+							},
+							{
+								link: './03-about.html',
+								icon: 'user',
+								name: 'O Společnosti'
+							},
+							{
+								link: './05-contact.html',
+								icon: 'message',
+								name: 'Kontakty'
+							},
+							{
+								link: './06-faq.html',
+								icon: 'chat',
+								name: 'FAQ'
+							},
+						],
+					}
+				} %}
+
+				<p class="u-max-width--6-12 u-mx-auto">
+					Ty&#8209;brigády od Tymbe jsou jediná ryze online platforma pro nábor, zaškolení a zasmluvnění brigádníků se správou docházek a možností okamžitého vyplacení brigádníků.
+				</p>
+				<p class="footer__contact u-mb-4">
+					24 hodin denně, 7 dní v týdnu a&nbsp;po celé ČR.
+				</p>
+
+				{% include '@components/menu/socials.twig' with {
+					props: {
+						classes: ['u-mb-4'],
+						items: [
+							{
+								icon: 'facebook',
+								name: 'Facebook'
+							},
+							{
+								icon: 'instagram',
+								name: 'Instagram'
+							},
+							{
+								icon: 'linkedin',
+								name: 'LinkedIn'
+							}
+						]
+					}
+				} %}
+
+				<p class="footer__copy">
+					&copy; Copyright 2021 – TYMBE a.s.
+				</p>
+			</div>
+		</footer>
+
+		{% for script in scripts %}
+		<script src="{{script}}"></script>
+		{% endfor %}
+		<script>
+			App.run({})
+		</script>
+	</body>
+</html>

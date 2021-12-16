@@ -1,0 +1,29 @@
+{% set props = {
+	name: props.name | default,
+	alt: props.alt | default,
+	classes: props.classes | default([]),
+} %}
+
+{% set classes = [
+	'icon-svg',
+	props.name ? 'icon-svg--' ~ props.name,
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<span class="{{ classes }}" aria-hidden="true">
+	<svg
+		class="icon-svg__svg"
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+	>
+		<use
+			xlink:href="{{ assets.images ~ ('bg/icons-svg.svg#icon-' ~ props.name) }}"
+			width="100%"
+			height="100%"
+			focusable="false"
+		></use>
+	</svg>
+</span>
+{% if props.alt %}
+	<span class="u-vhide">
+		{{ props.alt }}
+	</span>
+{% endif %}

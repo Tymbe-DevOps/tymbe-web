@@ -1,0 +1,83 @@
+%inp {
+	display: block;
+	width: 100%;
+	height: 44px;
+	padding: 20px 14px 5px;
+	border: 1px solid $colorPrimary;
+	border-radius: $borderRadiusSm;
+	background-color: rgba($colorBg, 0.5);
+	color: $colorPrimary;
+	outline: none;
+	font-weight: $medium;
+	font-size: 0.8rem;
+	line-height: 17px;
+	text-align: left;
+	resize: none;
+	transition: background-color $t, border-color $t, color $t;
+	appearance: none;
+
+	// STATEs
+	&:disabled {
+		border-color: rgba($colorPrimary, 0.5);
+		background-color: $colorBd;
+	}
+	&:focus {
+		border-color: $colorSecondary;
+	}
+	.has-error & {
+		padding-right: 35px;
+		border-color: $colorRed;
+		background-color: rgba($colorRed, 0.1);
+	}
+	.js &::placeholder {
+		opacity: 0;
+	}
+	.no-js & {
+		padding: 14px 14px 11px;
+		color: $colorPrimary;
+	}
+
+	&[type='date']::-webkit-inner-spin-button,
+	&[type='date']::-webkit-calendar-picker-indicator {
+		display: none;
+		-webkit-appearance: none;
+	}
+	/* Chrome, Safari, Edge, Opera */
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+		margin: 0;
+		-webkit-appearance: none;
+	}
+	/* Firefox */
+	&[type='number'] {
+		-moz-appearance: textfield;
+	}
+
+	// IE11
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+		padding: 14px 14px 11px;
+		color: $colorPrimary;
+		.js &::placeholder {
+			opacity: 1;
+		}
+	}
+}
+
+.inp {
+	position: relative;
+	margin-bottom: 10px;
+	input {
+		color: transparent;
+	}
+
+	&.has-focus input {
+		color: $colorPrimary;
+	}
+
+	// IE11
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+		input {
+			color: $colorPrimary;
+		}
+	}
+}

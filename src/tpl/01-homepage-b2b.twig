@@ -1,0 +1,371 @@
+{% extends '@layout/layout.twig' %}
+{% set pageTitle = 'Homepage B2B' %}
+{% set isHomepage = true %}
+{% set isB2B = true %}
+
+{% block content %}
+
+	<main id="main" class="main">
+		{% include '@components/box/intro-hp.twig' with {
+			props: {
+				classes: ['b-intro-hp--b2b', 'b-intro-hp--carousel'],
+				background: 'b2b-intro-bg.jpg',
+				contentSizes: ['size--7-12@md'],
+				imgSizes: ['size--5-12@md'],
+				hasCarousel: true,
+				items: [
+					{
+						title: '“Tymbe mi zajistí brigádníky bez papírování”',
+						text: 'Když jsme před 3 lety nabrali první brigádníky přes Tymbe, úplně mě šokovala ta jednoduchost. Díky jejich unikátní HR platformě, jsme brigádnickou agendu řešili kompletně online - od oslovení brigádníků až po potvrzení jejich docházky. Na jedno kliknutí jsem měla aktuální přehled o tom, co se děje.',
+						buttons: [
+							{
+								name: 'Chci brigádníky'
+							},
+							{
+								type: 'secondary',
+								name: 'Jsem brigádník'
+							},
+						],
+						img: 'people/denisa.png',
+						imgWidth: '370',
+						imgHeight: '370',
+						tag: {
+							logo: 'pilulka.svg',
+							logoName: 'Pilulka',
+							name: 'Denisa Čechová',
+							job: 'HR Business Partner'
+						},
+					},
+					{
+						title: '“Tymbe mi proškolí své brigádníky předtím než dorazí”',
+						text: 'Tymbe mi šetří čas a peníze tím, že mi zajistí sklad brigádníky, kteří už předtím projdou e-learningový školením na BOZP. Právě tyhle doplňky ové služby, dělají z Tymbe brigádnickou agenturu službu pro 21. století. Jejich HR platforma je opravdu unikátní, díky čemuž řešíme celou brigádnickou agendu kompletně online.',
+						buttons: [
+							{
+								name: 'Chci brigádníky'
+							},
+							{
+								type: 'secondary',
+								name: 'Jsem brigádník'
+							},
+						],
+						img: 'people/tomas.png',
+						imgWidth: '370',
+						imgHeight: '370',
+						tag: {
+							logo: 'zasilkovna.svg',
+							logoName: 'Zásilkovna ve společnosti Packeta Group',
+							name: 'Tomáš Křesťan',
+							job: 'Chief Human Resources Officer'
+						},
+					},
+					{
+						title: '“Tymbe nám zajistí brigádníky do druhého dne.”',
+						text: 'Líbí se mi flexibilita, kterou nám spolupráce s Tymbe nabízí. Když potřebujeme jednorázovou výpomoc, tak máme brigádníka do druhého dne. Jsou schopni nám zajistit brigádníky i na dlouhodobou práci. Mají dostatek kvalitních studentů, kteří mají potenciál být našimi budoucími zaměstnanci.',
+						buttons: [
+							{
+								name: 'Chci brigádníky'
+							},
+							{
+								type: 'secondary',
+								name: 'Jsem brigádník'
+							},
+						],
+						img: 'people/ctibor.png',
+						imgWidth: '370',
+						imgHeight: '370',
+						tag: {
+							logo: 'logo-dek.jpg',
+							logoName: 'DEK STAVEBNINY',
+							name: 'Ctibor Hurda',
+							job: 'Manažer prodejny'
+						},
+					},
+				],
+				statistics: {
+					items: [
+						{
+							iconName: 'person',
+							number: '12 920',
+							value: 'firma_1',
+							text: 'Brigádníků k dispozici'
+						},
+						{
+							iconName: 'places',
+							number: '68',
+							value: 'firma_2',
+							text: 'Míst, kde to šlape'
+						},
+						{
+							iconName: 'chart',
+							number: '95',
+							value: 'firma_3',
+							suffix: '%',
+							text: 'Brigád obsazeno'
+						},
+						{
+							iconName: 'happy',
+							number: '98',
+							value: 'firma_4',
+							suffix: '%',
+							text: 'Vedoucích spokojeno'
+						},
+					]
+				}
+			}
+		} %}
+		<div class="row-main">
+			<div id="content" class="u-pt-7">
+				{% include '@components/crossroad/benefits.twig' with {
+					props: {
+						classes: ['c-benefits--cards u-mb-7'],
+						heading: {
+							classes: ['u-mb-5'],
+							title: 'Zaškolení brigádníci přijdou přes Ty&#8209;brigády',
+							annot: 'Je skvělé získat kvalitní pracovníky, ale ještě lepší je získat kvalitní pracovníky již zaučené na pozici, kam mají nastoupit. Každá brigáda u nás má svůj onboardingový online kurz, který umožní hladký a pohodový nástup nováčka a jeho zapojení do pracovního procesu.',
+						},
+						gridSize: 'size--4-12@md',
+						items: [
+							{
+								img: 'fists.svg',
+								title: 'Tisíce prověřených brigádníků',
+								desc: 'Online ověření identity a zasmluvnění brigádníků v souladu s evropskými pravidly eIDAS přesně tak, jak vyžaduje Zákoník práce.',
+							},
+							{
+								img: 'fist-hat.svg',
+								title: 'Onboardingové online kurzy',
+								desc: 'Vše, co lze ukázat dopředu, umíme brigádníkovi předat dříve, než dorazí na první směnu. Nezatěžujeme pracoviště školením nováčků.',
+							},
+							{
+								img: 'click.svg',
+								title: 'Jednoduché a intuitivní rozhraní',
+								desc: 'Vytvořit požadavek na brigádníka a potvrdit docházku lze vždy na pár kliknutí, bez nutnosti dopředu zaškolovat vedoucí pracovníky.',
+							},
+						]
+					}
+				}%}
+			</div>
+		</div>
+		<div class="u-bg-secondary u-pt-7">
+			<div class="row-main">
+				{% include '@components/crossroad/steps.twig' with {
+					props: {
+						classes: ['c-steps--numbers u-mb-7'],
+						heading: {
+							classes: ['u-mb-6'],
+							title: 'Jak začít?',
+							annot: 'Nejlepší je vyzkoušet si Ty-brigády naostro. Registrace je zdarma a cena je stanovena vždy až za brigádníkem odpracované hodiny. Žádné riziko!',
+						},
+						btn: 'Jdu do toho',
+						items: [
+							{
+								title: 'Vyplnění kontaktního formuláře',
+								desc: 'Obratem se s Vámi spojíme. Nebo nám napište na email <a href="mailto:tybrigady@tymbe.cz">tybrigady@tymbe.cz</a>.',
+							},
+							{
+								title: 'Založíme profil Vaší společnosti ',
+								desc: 'Vše Vám nastavíme tak, abyste po prvním spuštění mohli rovnou jen naklikat kdy a kam mají brigádníci dorazit.',
+							},
+							{
+								title: 'Vše je připraveno',
+								desc: 'Používání systému je maximálně jednoduché, na pár kliknutí objednáte pracovníka, na pár kliknutí potvrdíte docházku.',
+							},
+						]
+					}
+				}%}
+			</div>
+		</div>
+		<div class="u-pt-7">
+			<div class="row-main">
+				{% include '@components/crossroad/customers.twig' with {
+					props: {
+						classes: ['u-mb-0'],
+						heading: {
+							classes: ['u-mb-5'],
+							title: 'Firmy, které nám důvěřují',
+							annot: 'Tady už Ty&#8209;brigády pomáhají zvládat náročné každodenní úkoly i nárazové sezónní výkyvy.',
+						},
+						btn: 'Zjistit více',
+						items: [
+							{
+								img: 'pilulka.svg',
+								name: 'Pilulka',
+								width: '135',
+								height: '30',
+							},
+							{
+								img: 'tesco.svg',
+								name: 'Tesco',
+								width: '133',
+								height: '38',
+							},
+							{
+								img: 'zasilkovna.png',
+								name: 'Zásilkovna',
+								width: '107',
+								height: '60',
+							},
+							{
+								img: 'ups.svg',
+								name: 'UPS',
+								width: '50',
+								height: '60',
+							},
+						]
+					}
+				}%}
+				{% include '@components/box/bnr.twig' with {
+					props: {
+						classes: ['u-mb-7'],
+						background: 'bnr-bg.jpg',
+						title: 'Ty&#8209;brigády jsou to, co potřebuju!',
+						btn: 'Chci brigádníky',
+						img: 'hand.png',
+						width: '352',
+						height: '440'
+					}
+				}%}
+
+				{% include '@components/box/info-list.twig' with {
+					props: {
+						classes: ['b-info-list--hp u-mb-8'],
+						items: [
+							{
+								title: ' Onboarding je snadný se specializovanou aplikací Ty&#8209;školení!',
+								text: 'Potřebujete naučit pracovníky ovládat pokladní systém? Čtečky nebo jiné nástroje? Nebo naučit pohyb po skladu? Ty-školení jsou specializovaný onboardingový nástroj s interaktivními prvky, který naučí uchazeče vše co je potřeba ještě předtím, než dorazí na pracoviště. Málo? Přidejte se k testování a buďte první, kdo bude pro pokladní, pickerské či skladové pozice mít vlastní simulátor v mobilní aplikaci.',
+								btn: 'Zjistit více',
+								img: 'app.png',
+								flag: 'icon1.svg',
+								flagName: 'Certifikát 1',
+								width: '187',
+								height: '350'
+							}
+						]
+					}
+				}%}
+			</div>
+		</div>
+
+		<div class="u-bg-gradient--68 u-pt-8">
+			<div class="row-main">
+				{% include '@components/crossroad/products.twig' with {
+					props: {
+						classes: ['u-mb-6'],
+						title: 'Vyber si brigádu s výplatou denně. Teď hned!',
+						btn: 'Staň se Tymberem',
+						items: [
+							{
+								logo: 'tesco.svg',
+								logoAlt: 'Tesco',
+								openingHours: 'Dnes od 22:00',
+								title: 'Delší popis brigády Doplňování a vychystávání zboží v supermarketu.',
+								location: 'Ústí nad Orlicí',
+								fullPayment: '120,00',
+								fullCredits: '35,10',
+								tooltipTitle: 'Odměna za brigádu + kredity = Tvůj výdělek',
+								tooltipText: 'Každá brigáda má svou předem jasně stanovenou hodinovou odměnu. Tu stanovuje zaměstnavatel dle svých interních předpisů. S tím samozřejmě nehneš. Ale! S Tymbe můžeš získat mnohem více, protože kromě této odměny dostáváš v aplikaci Ty-brigády i zpeněžitelné Tymbe kredity za to, že nám řekneš, jak se Ti na brigádě líbilo. To je cajk, ne? 1kr = 1Kč ;)',
+								btnText: 'Chci brigádu',
+							},
+							{
+								logo: 'tesco.svg',
+								logoAlt: 'Tesco',
+								openingHours: 'Dnes od 22:00',
+								title: 'Delší popis brigády Doplňování a vychystávání zboží v supermarketu.',
+								location: 'Ústí nad Orlicí',
+								fullPayment: '120,00',
+								fullCredits: '35,10',
+								tooltipTitle: 'Odměna za brigádu + kredity = Tvůj výdělek',
+								tooltipText: 'Každá brigáda má svou předem jasně stanovenou hodinovou odměnu. Tu stanovuje zaměstnavatel dle svých interních předpisů. S tím samozřejmě nehneš. Ale! S Tymbe můžeš získat mnohem více, protože kromě této odměny dostáváš v aplikaci Ty-brigády i zpeněžitelné Tymbe kredity za to, že nám řekneš, jak se Ti na brigádě líbilo. To je cajk, ne? 1kr = 1Kč ;)',
+								btnText: 'Chci brigádu',
+							},
+							{
+								logo: 'tesco.svg',
+								logoAlt: 'Tesco',
+								openingHours: 'Dnes od 22:00',
+								title: 'Delší popis brigády Doplňování a vychystávání zboží v supermarketu.',
+								location: 'Ústí nad Orlicí',
+								fullPayment: '120,00',
+								fullCredits: '35,10',
+								tooltipTitle: 'Odměna za brigádu + kredity = Tvůj výdělek',
+								tooltipText: 'Každá brigáda má svou předem jasně stanovenou hodinovou odměnu. Tu stanovuje zaměstnavatel dle svých interních předpisů. S tím samozřejmě nehneš. Ale! S Tymbe můžeš získat mnohem více, protože kromě této odměny dostáváš v aplikaci Ty-brigády i zpeněžitelné Tymbe kredity za to, že nám řekneš, jak se Ti na brigádě líbilo. To je cajk, ne? 1kr = 1Kč ;)',
+								btnText: 'Chci brigádu',
+							},
+							{
+								logo: 'tesco.svg',
+								logoAlt: 'Tesco',
+								openingHours: 'Dnes od 22:00',
+								title: 'Delší popis brigády Doplňování a vychystávání zboží v supermarketu.',
+								location: 'Ústí nad Orlicí',
+								fullPayment: '120,00',
+								fullCredits: '35,10',
+								tooltipTitle: 'Odměna za brigádu + kredity = Tvůj výdělek',
+								tooltipText: 'Každá brigáda má svou předem jasně stanovenou hodinovou odměnu. Tu stanovuje zaměstnavatel dle svých interních předpisů. S tím samozřejmě nehneš. Ale! S Tymbe můžeš získat mnohem více, protože kromě této odměny dostáváš v aplikaci Ty-brigády i zpeněžitelné Tymbe kredity za to, že nám řekneš, jak se Ti na brigádě líbilo. To je cajk, ne? 1kr = 1Kč ;)',
+								btnText: 'Chci brigádu',
+							},
+							{
+								logo: 'tesco.svg',
+								logoAlt: 'Tesco',
+								openingHours: 'Dnes od 22:00',
+								title: 'Delší popis brigády Doplňování a vychystávání zboží v supermarketu.',
+								location: 'Ústí nad Orlicí',
+								fullPayment: '120,00',
+								fullCredits: '35,10',
+								tooltipTitle: 'Odměna za brigádu + kredity = Tvůj výdělek',
+								tooltipText: 'Každá brigáda má svou předem jasně stanovenou hodinovou odměnu. Tu stanovuje zaměstnavatel dle svých interních předpisů. S tím samozřejmě nehneš. Ale! S Tymbe můžeš získat mnohem více, protože kromě této odměny dostáváš v aplikaci Ty-brigády i zpeněžitelné Tymbe kredity za to, že nám řekneš, jak se Ti na brigádě líbilo. To je cajk, ne? 1kr = 1Kč ;)',
+								btnText: 'Chci brigádu',
+							},
+							{
+								logo: 'tesco.svg',
+								logoAlt: 'Tesco',
+								openingHours: 'Dnes od 22:00',
+								title: 'Delší popis brigády Doplňování a vychystávání zboží v supermarketu.',
+								location: 'Ústí nad Orlicí',
+								fullPayment: '120,00',
+								fullCredits: '35,10',
+								tooltipTitle: 'Odměna za brigádu + kredity = Tvůj výdělek',
+								tooltipText: 'Každá brigáda má svou předem jasně stanovenou hodinovou odměnu. Tu stanovuje zaměstnavatel dle svých interních předpisů. S tím samozřejmě nehneš. Ale! S Tymbe můžeš získat mnohem více, protože kromě této odměny dostáváš v aplikaci Ty-brigády i zpeněžitelné Tymbe kredity za to, že nám řekneš, jak se Ti na brigádě líbilo. To je cajk, ne? 1kr = 1Kč ;)',
+								btnText: 'Chci brigádu',
+							},
+							{
+								logo: 'tesco.svg',
+								logoAlt: 'Tesco',
+								openingHours: 'Dnes od 22:00',
+								title: 'Delší popis brigády Doplňování a vychystávání zboží v supermarketu.',
+								location: 'Ústí nad Orlicí',
+								fullPayment: '120,00',
+								fullCredits: '35,10',
+								tooltipTitle: 'Odměna za brigádu + kredity = Tvůj výdělek',
+								tooltipText: 'Každá brigáda má svou předem jasně stanovenou hodinovou odměnu. Tu stanovuje zaměstnavatel dle svých interních předpisů. S tím samozřejmě nehneš. Ale! S Tymbe můžeš získat mnohem více, protože kromě této odměny dostáváš v aplikaci Ty-brigády i zpeněžitelné Tymbe kredity za to, že nám řekneš, jak se Ti na brigádě líbilo. To je cajk, ne? 1kr = 1Kč ;)',
+								btnText: 'Chci brigádu',
+							},
+							{
+								logo: 'tesco.svg',
+								logoAlt: 'Tesco',
+								openingHours: 'Dnes od 22:00',
+								title: 'Delší popis brigády Doplňování a vychystávání zboží v supermarketu.',
+								location: 'Ústí nad Orlicí',
+								fullPayment: '120,00',
+								fullCredits: '35,10',
+								tooltipTitle: 'Odměna za brigádu + kredity = Tvůj výdělek',
+								tooltipText: 'Každá brigáda má svou předem jasně stanovenou hodinovou odměnu. Tu stanovuje zaměstnavatel dle svých interních předpisů. S tím samozřejmě nehneš. Ale! S Tymbe můžeš získat mnohem více, protože kromě této odměny dostáváš v aplikaci Ty-brigády i zpeněžitelné Tymbe kredity za to, že nám řekneš, jak se Ti na brigádě líbilo. To je cajk, ne? 1kr = 1Kč ;)',
+								btnText: 'Chci brigádu',
+							},
+							{
+								logo: 'tesco.svg',
+								logoAlt: 'Tesco',
+								openingHours: 'Dnes od 22:00',
+								title: 'Delší popis brigády Doplňování a vychystávání zboží v supermarketu.',
+								location: 'Ústí nad Orlicí',
+								fullPayment: '120,00',
+								fullCredits: '35,10',
+								tooltipTitle: 'Odměna za brigádu + kredity = Tvůj výdělek',
+								tooltipText: 'Každá brigáda má svou předem jasně stanovenou hodinovou odměnu. Tu stanovuje zaměstnavatel dle svých interních předpisů. S tím samozřejmě nehneš. Ale! S Tymbe můžeš získat mnohem více, protože kromě této odměny dostáváš v aplikaci Ty-brigády i zpeněžitelné Tymbe kredity za to, že nám řekneš, jak se Ti na brigádě líbilo. To je cajk, ne? 1kr = 1Kč ;)',
+								btnText: 'Chci brigádu',
+							},
+						]
+					}
+				}%}
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

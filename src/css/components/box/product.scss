@@ -1,0 +1,121 @@
+.b-product {
+	$s: &;
+	min-width: 270px;
+	padding: $size1;
+	border-radius: $borderRadiusMd;
+	background-color: $colorWhite;
+	box-shadow: $boxShadow;
+	> :last-child {
+		margin-bottom: 0;
+	}
+
+	&__top {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		min-height: 40px;
+		margin-bottom: $size5;
+	}
+	&__logo {
+		position: relative;
+		width: 78px;
+		border: 1px solid $colorBd;
+		border-radius: 5px;
+		&::before {
+			content: '';
+			display: block;
+			padding-top: percentage(40/78);
+		}
+		img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			height: auto;
+			padding: 5px;
+			transform: translate(-50%, -50%);
+		}
+	}
+	&__opening-hours {
+		margin-left: auto;
+		font-size: 14px;
+	}
+	&__title {
+		color: $colorBlack;
+		font-family: $fontPrimary;
+		font-size: 16px;
+	}
+	&__location {
+		font-size: 14px;
+		text-decoration: none;
+	}
+
+	&__payment {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		margin-right: (-$size1);
+		margin-left: (-$size1);
+		padding: $size1;
+		border: 1px solid $colorBd;
+		border-width: 1px 0;
+		color: rgba($colorGrey, 0.6);
+		font-size: 12px;
+		strong {
+			color: $colorGrey;
+			line-height: 1;
+		}
+		.tooltip {
+			color: $colorOrange;
+			&__content {
+				right: -8px;
+				border-color: $colorOrange;
+				&::before {
+					border-color: transparent $colorOrange transparent transparent;
+				}
+			}
+			&__title {
+				color: $colorOrange;
+			}
+		}
+	}
+	&__payment-full strong {
+		font-size: 24px;
+	}
+	&__payment-credits {
+		position: relative;
+		padding-left: 15px;
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 1px;
+			height: 36px;
+			background-color: $colorBd;
+			transform: rotate(20deg) translateY(-50%);
+		}
+		strong {
+			font-size: 16px;
+		}
+	}
+
+	// HOVERs
+	.hoverevents &__opening-hours:hover {
+		text-decoration: none;
+	}
+	.hoverevents &__location:hover {
+		text-decoration: underline;
+	}
+
+	// STATEs
+	&:not(.loaded) &__title,
+	&:not(.loaded) &__location,
+	&:not(.loaded) &__payment-full strong,
+	&:not(.loaded) &__payment-credits strong,
+	&:not(.loaded) &__opening-hours {
+		color: transparent;
+		text-shadow: 0 0 16px $colorPrimary;
+		animation: 1.6s linear 0s infinite fadein;
+	}
+}

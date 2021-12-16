@@ -1,0 +1,11 @@
+bin
+obj
+*.*
+!*.css
+!*.scss
+/src/css/core/generated/icons.scss
+/src/css/core/generated/icons-svg.scss
+/src/css/core/generated/sprites.scss
+/src/css/core/generated/sprites-retina.scss
+dist/**/*
+**/node_modules/**/*

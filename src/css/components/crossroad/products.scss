@@ -1,0 +1,23 @@
+.c-products {
+	&__title {
+		margin-bottom: $size1;
+		padding-bottom: $size1;
+		border-bottom: 1px solid $colorBd;
+	}
+	&__item {
+		width: 298px;
+	}
+
+	// STATES
+	.no-js &__list {
+		overflow-x: scroll;
+	}
+
+	// MQ
+	@media ($mdUp) {
+		&__title {
+			margin-bottom: $size4;
+			padding: 0 100px $size3 0;
+		}
+	}
+}

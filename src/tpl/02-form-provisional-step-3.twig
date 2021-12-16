@@ -1,0 +1,110 @@
+{% extends '@layout/layout.twig' %}
+{% set pageTitle = 'Provizorní formulář - 3. krok' %}
+
+{% block content %}
+
+	<main id="main" class="main">
+		<div class="p-form p-form--b2b u-pt-12">
+			<div class="row-main">
+				<div class="p-form__content">
+					<h1 class="u-vhide">
+						Registrace
+					</h1>
+					<div class="grid grid--x-5">
+						<div class="grid__cell size--6-12@md size--5-12@lg">
+							{% include '@components/form/registration.twig' with {
+								props: {
+									classes: ['b-white'],
+									controller: 'Registration',
+									apiUrl: 'https://api.tymbe.com/registration',
+									title: 'Staň se Tymberem',
+									showRecaptcha: true,
+									steps: {
+										classes: ['u-mt-3 u-mb-3'],
+										items: [
+											{
+												done: true,
+												text: 'První krok'
+											},
+											{
+												done: true,
+												text: 'Druhý krok'
+											},
+											{
+												isActive: true,
+												text: 'Třetí krok'
+											},
+										]
+									},
+									btnBack: 'Zpět',
+									btnNext: 'Odeslat',
+									text: 'Už máš u nás účet? <a href="#">Přihlas se.</a>',
+									inpGroupsName: 'login',
+									inpGroups: [
+										{
+											inputs: [
+												{
+													label: 'Email',
+													name: 'email',
+													type: 'email'
+												},
+												{
+													label: 'Heslo',
+													name: 'password',
+													type: 'password'
+												},
+												{
+													label: 'Ověřit heslo',
+													name: 'passwordCheck',
+													type: 'password'
+												}
+											],
+										}
+									],
+									checkboxLabel: 'Souhlasím se zpracováním svých osobních údajů',
+								}
+							}%}
+						</div>
+						<div class="grid__cell size--6-12@md size--7-12@lg">
+							<div class="grid grid--x-2 grid--bottom">
+								<div class="grid__cell size--6-12@lg">
+									<div class="u-mt-2">
+										<h3>
+											Výplata každý den. Stačí kliknout!
+										</h3>
+										<p>
+											Ty–brigády jedou online, takže jsou mnohem rychlejší ve všem. I ve výplatách.
+										</p>
+										<h3>
+											Brigáda bez papírování. Pecka!
+										</h3>
+										<p>
+											Nemusíš nikde běhat a něco stokrát podepisovat. Všechno nahraješ na svůj účet v apce Ty–brigády.
+										</p>
+										<h3>
+											Odměna za tvůj názor na brigádu.
+										</h3>
+										<p>
+											Byla směna v pohodě? Dej nám vědět a získáš extra odměnu.
+										</p>
+										<h3>
+											Ty–brigády zajímají práva brigádníků.
+										</h3>
+										<p>
+											Ohlídáme, že ti tvoje práva nikdo neupře. Třeba na pauzy v práci máš jasný nárok.
+										</p>
+									</div>
+								</div>
+
+								<div class="p-form__img grid__cell size--6-12">
+									<img src="{{ assets.images }}illust/hand-dot.png" alt="" width="385" height="635">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

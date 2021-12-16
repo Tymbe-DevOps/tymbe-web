@@ -1,0 +1,48 @@
+{% set props = {
+	title: props.title | default,
+	items: props.items | default([]),
+	classes: props.classes | default([])
+} %}
+
+{% set classes = [
+	'c-reviews embla embla--fade',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<section class="{{ classes }}" data-controller="Embla">
+	<div class="row-main">
+		<h2 class="c-reviews__title">
+			{{ props.title }}
+		</h2>
+		<div class="c-reviews__wrapper embla__viewport" data-embla-target="viewport">
+			<ul class="c-reviews__list embla__container grid grid--y-0 grid--nowrap">
+				{% for props in props.items %}
+					<li class="c-reviews__item embla__slide grid__cell grid__cell--eq{% if loop.first %} is-selected{% endif %}">
+						{% include '@components/box/review.twig' %}
+					</li>
+				{% endfor %}
+			</ul>
+			<button type="button" class="embla__btn embla__btn--prev" data-action="Embla#prev" data-embla-target="prevButton">
+				<span class="u-vhide">
+					Předchozí
+				</span>
+				{% include '@components/core/icon-svg/icon-svg.twig' with {
+					props: {
+						name: 'arr-left'
+					}
+				} %}
+			</button>
+			<button type="button" class="embla__btn embla__btn--next" data-action="Embla#next" data-embla-target="nextButton">
+				<span class="u-vhide">
+					Další
+				</span>
+				{% include '@components/core/icon-svg/icon-svg.twig' with {
+					props: {
+						name: 'arr-right'
+					}
+				} %}
+			</button>
+		</div>
+		<!-- Dots -->
+		<div class="embla__dots" data-embla-target="dots"></div>
+	</div>
+</section>

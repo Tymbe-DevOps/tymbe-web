@@ -1,0 +1,66 @@
+.c-benefits {
+	$s: &;
+	&__item {
+		text-align: left;
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+	&__img {
+		margin-bottom: $size3;
+		text-align: center;
+	}
+	&__title {
+		margin-top: 0;
+		font-family: $fontPrimary;
+		font-weight: $medium;
+		font-size: 22px;
+		line-height: (28/22);
+	}
+	&__desc {
+		font-size: 16px;
+		line-height: (24/16);
+	}
+
+	// VARIANTs
+	&--cards {
+		#{$s}__img {
+			position: relative;
+			margin: 0 0 $size1;
+			border-radius: $borderRadiusMd;
+			background-image: url($imgPath+'bg/bg-benefits.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			overflow: hidden;
+			box-shadow: $boxShadow;
+			&::before {
+				content: '';
+				display: block;
+				padding-top: percentage(331/319);
+			}
+			img {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
+	}
+
+	// MQ
+	@media ($mdUp) {
+		&__title {
+			font-size: 18px;
+			line-height: (24/18);
+		}
+
+		// VARIANTs
+		&--cards {
+			#{$s}__img {
+				&::before {
+					padding-top: percentage(351/270);
+				}
+			}
+		}
+	}
+}

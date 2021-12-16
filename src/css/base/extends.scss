@@ -1,0 +1,58 @@
+%reset-ul {
+	margin: 0;
+}
+
+%reset-ul-li {
+	margin: 0;
+	padding: 0;
+	background: none;
+	&::before {
+		display: none;
+	}
+}
+
+%reset-ol {
+	@extend %reset-ul;
+	counter-reset: none;
+}
+
+%reset-ol-li {
+	@extend %reset-ul-li;
+	position: static;
+	&::before {
+		content: normal;
+		counter-increment: none;
+		position: static;
+		top: auto;
+		left: auto;
+	}
+}
+
+%grid {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+%grid__cell {
+	flex: 0 0 auto;
+	width: 100%;
+}
+
+%grid--scroll {
+	position: relative;
+	display: flex;
+	flex-wrap: nowrap;
+	overflow: hidden;
+	overflow-x: auto;
+	.js & {
+		overflow-x: hidden;
+	}
+	.grid__cell {
+		flex-shrink: 0;
+	}
+	.slick-slide {
+		.grid__cell {
+			max-width: none;
+		}
+	}
+}

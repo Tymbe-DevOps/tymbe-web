@@ -1,0 +1,56 @@
+.header {
+	$s: &;
+	position: absolute;
+	top: 10px;
+	right: 0;
+	left: 0;
+	z-index: 50;
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 10px;
+		border-radius: $borderRadiusXl;
+		background-color: $colorWhite;
+		box-shadow: $boxShadow;
+	}
+	&__logo {
+		display: block;
+		flex: 0 0 auto;
+		margin: 0;
+		padding: 0;
+		font-family: $fontPrimary;
+		font-size: 100%;
+		line-height: 1;
+	}
+
+	// MQ
+	@media ($lgDown) {
+		&__inner {
+			margin: 0 -18px;
+		}
+		&__logo {
+			max-width: 70px;
+		}
+
+		.menu-is-open &__inner {
+			border-radius: $borderRadiusMd $borderRadiusMd 0 0;
+		}
+		@media ($xsDown) {
+			&__inner {
+				margin: 0;
+			}
+		}
+	}
+	@media ($mdUp) {
+		top: 18px;
+	}
+	@media ($lgUp) {
+		// VARIANTs
+		&--training {
+			#{$s}__inner {
+				padding: 21px $size3 20px;
+			}
+		}
+	}
+}

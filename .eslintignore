@@ -1,0 +1,4 @@
+# Of particular note is that like .gitignore files, all paths used as patterns for both .eslintignore and --ignore-pattern must use forward slashes as their path separators.
+# /node_modules/* and /bower_components/* in the project root are ignored by default
+dist/**/*
+src/js/static/**/*

@@ -1,0 +1,37 @@
+{% set props = {
+	classes: props.classes | default([]),
+	items: props.items | default([]),
+	titleElement: props.titleElement | default,
+} %}
+
+{% set classes = [
+	'accordion',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+{% set titleElement = [
+	props.titleElement in ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'] ? props.titleElement : 'h3',
+] | filter(i => i) | join(' ') %}
+
+<div class="{{ classes }}">
+	{% for item in props.items %}
+		<div class="accordion__item" data-controller="Accordion">
+			<{{ titleElement }} class="accordion__title">
+				<span class="accordion__toggle" role="button" aria-expanded="false" data-action="click->Accordion#toggle" data-accordion-target="toggle">
+					{{ item.title }}
+					<span class="accordion__arrow">
+						{% include '@components/core/icon-svg/icon-svg.twig' with {
+							props: {
+								name: 'angle-down'
+							}
+						} %}
+					</span>
+				</span>
+			</{{ titleElement }}>
+			<div class="accordion__content" data-accordion-target="content" hidden>
+				{% if item.content is defined and item.content is not empty %}
+					<p>{{ item.content }}</p>
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+</div>

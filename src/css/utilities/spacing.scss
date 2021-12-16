@@ -1,0 +1,78 @@
+$sizes: (
+	-11: (-$size11),
+	-10: (-$size10),
+	-9: (-$size9),
+	-8: (-$size8),
+	-7: (-$size7),
+	-6: (-$size6),
+	-5: (-$size5),
+	-4: (-$size4),
+	-3: (-$size3),
+	-2: (-$size2),
+	-1: (-$size1),
+	1: $size1,
+	2: $size2,
+	3: $size3,
+	4: $size4,
+	5: $size5,
+	6: $size6,
+	7: $size7,
+	8: $size8,
+	9: $size9,
+	10: $size10,
+	11: $size11,
+	12: $size12,
+	13: $size13
+);
+.u-mt {
+	@each $size in map-keys($sizes) {
+		&-#{$size} {
+			margin-top: (map-get($sizes, $size) / 2);
+		}
+	}
+
+	@media ($mdUp) {
+		@each $size in map-keys($sizes) {
+			&-#{$size} {
+				margin-top: map-get($sizes, $size);
+			}
+		}
+	}
+}
+.u-mb {
+	&-0 {
+		margin-bottom: 0;
+	}
+	@each $size in map-keys($sizes) {
+		&-#{$size} {
+			margin-bottom: (map-get($sizes, $size) / 2);
+		}
+	}
+
+	@media ($mdUp) {
+		@each $size in map-keys($sizes) {
+			&-#{$size} {
+				margin-bottom: map-get($sizes, $size);
+			}
+		}
+	}
+}
+.u-pt {
+	@each $size in map-keys($sizes) {
+		&-#{$size} {
+			padding-top: (map-get($sizes, $size) / 2);
+		}
+	}
+	@media ($mdUp) {
+		@each $size in map-keys($sizes) {
+			&-#{$size} {
+				padding-top: map-get($sizes, $size);
+			}
+		}
+	}
+}
+
+.u-mx-auto[class] {
+	margin-right: auto;
+	margin-left: auto;
+}

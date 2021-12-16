@@ -1,0 +1,92 @@
+.accordion {
+	$s: &;
+	&__item {
+		margin-bottom: 10px;
+		border: 1px solid $colorBd;
+		border-radius: $borderRadiusSm;
+		transition: border-color $t;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	&__title {
+		margin: 0;
+	}
+	&__toggle {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		padding: 18px;
+		border: 0;
+		color: $colorText;
+		outline: 3px solid transparent; // MS high contrast mode
+		font-family: $fontPrimary;
+		font-weight: $medium;
+		font-size: 14px;
+		line-height: (24/14);
+		text-decoration: none;
+		transition: all $t;
+		cursor: pointer;
+
+		&:focus {
+			// add custom focus styling
+			outline: 3px solid transparent; // MS high contrast mode
+		}
+	}
+	&__arrow {
+		display: flex;
+		flex: 0 0 auto;
+		justify-content: center;
+		align-items: center;
+		width: 22px;
+		height: 22px;
+		margin-left: 5px;
+		border-radius: 100%;
+		background-color: $colorGreenLt;
+		color: $colorSecondary;
+		transition: transform $t;
+	}
+	&__content {
+		margin: 0;
+		padding: 0 $size1 $size1;
+		color: $colorGreyLt;
+		font-size: 14px;
+		line-height: (24/14);
+		> :last-child {
+			margin-bottom: 0;
+		}
+		&[hidden] {
+			display: none;
+			.no-js & {
+				display: block;
+			}
+		}
+	}
+
+	// STATEs
+	&__item.is-expanded {
+		border-color: $colorSecondary;
+		#{$s}__arrow {
+			transform: rotate(180deg);
+		}
+	}
+
+	// HOVERs
+	.hoverevents &__item:hover {
+		border-color: $colorSecondary;
+	}
+
+	// MQ
+	@media ($mdUp) {
+		&__toggle {
+			padding: 20px 18px 19px;
+			font-size: 18px;
+			line-height: (24/18);
+		}
+		&__content {
+			font-size: 16px;
+			line-height: (24/16);
+		}
+	}
+}

@@ -1,0 +1,13 @@
+.u-hide {
+	@include generateBreakpoints() {
+		display: none;
+	}
+}
+.u-show {
+	@include generateBreakpoints() {
+		display: block;
+	}
+}
+.js .u-js-hide {
+	display: none;
+}

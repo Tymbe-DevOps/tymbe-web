@@ -1,0 +1,240 @@
+.b-intro-hp {
+	$s: &;
+	padding-top: 65px; // 10px + headerHeight
+	background-color: $colorWhite;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	&__content {
+		padding-top: 80px;
+	}
+	&__img {
+		position: relative;
+		display: inline-block;
+		margin-bottom: -77px;
+		padding-top: $size4;
+		.tag {
+			position: absolute;
+			right: (-$size6);
+			bottom: $size5;
+		}
+	}
+
+	&--carousel {
+		.embla__container {
+			display: flex;
+			/* stylelint-disable-next-line declaration-no-important */
+			transform: none !important; /* override Embla */
+		}
+
+		.embla__slide {
+			counter-increment: embla;
+			top: 0;
+			/* stylelint-disable-next-line declaration-no-important */
+			right: 0 !important; /* override Embla */
+			/* stylelint-disable-next-line declaration-no-important */
+			left: 0 !important; /* override Embla */
+			flex: 0 0 auto;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+		.embla--is-ready .embla__slide {
+			position: absolute;
+		}
+		.embla__slide.is-selected {
+			position: relative;
+			z-index: 1;
+			opacity: 1;
+			transition: opacity 0.3s;
+		}
+	}
+	&__viewport {
+		position: relative;
+		overflow: hidden;
+	}
+	&__list {
+		//
+	}
+	&__item {
+		position: relative;
+		display: inline-block;
+		width: 100%;
+		#{$s}__img > img {
+			border-radius: 50%;
+			background-color: $colorSecondary;
+		}
+	}
+
+	&__title {
+		margin-bottom: $size1;
+	}
+	&__text {
+		margin-bottom: $size1;
+		color: rgba($colorBlack, 0.8);
+	}
+
+	&__btns {
+		@extend %reset-ul;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		margin: 0 0 -10px -10px;
+	}
+	&__btn {
+		@extend %reset-ul-li;
+		border: 10px solid transparent;
+		border-width: 0 0 10px 10px;
+	}
+	&__downloads {
+		@extend %reset-ul;
+		margin: 0 0 -10px 0;
+	}
+	&__download {
+		@extend %reset-ul-li;
+		border: 10px solid transparent;
+		border-width: 0 0 10px 0;
+	}
+	&__download-link {
+		display: block;
+		transition: opacity $t;
+	}
+
+	// VARIANTs
+	&--b2b {
+		#{$s}__img {
+			margin-bottom: 0;
+			padding-top: $size7;
+		}
+	}
+	&--training {
+		padding-bottom: $size7;
+		background-color: $colorPrimary;
+		#{$s}__title {
+			color: $colorSecondary;
+		}
+		#{$s}__text {
+			color: $colorWhite;
+		}
+		#{$s}__img {
+			margin-bottom: 0;
+		}
+	}
+
+	// HOVERs
+	.hoverevents &__download-link:hover {
+		opacity: 0.7;
+	}
+
+	// MQ
+	@media ($mdDown) {
+		&__download-link {
+			max-width: 118px;
+		}
+		&__img {
+			position: absolute;
+			right: 35px;
+			bottom: 45px;
+			max-width: 130px;
+			margin-bottom: 0;
+			border-width: 0;
+		}
+		&__btn {
+			.btn__text {
+				padding: 10px 12px 9px;
+			}
+		}
+
+		// VARIANTs
+		&--b2b {
+			#{$s}__content {
+				padding-top: 35px;
+			}
+			#{$s}__text {
+				margin-bottom: 0;
+			}
+			#{$s}__btns {
+				margin-top: 35px;
+			}
+			#{$s}__img {
+				position: relative;
+				right: auto;
+				bottom: auto;
+				max-width: 338px;
+				padding: 0;
+				border-width: 0 0 28px 28px;
+				img {
+					max-width: 180px;
+				}
+				.tag {
+					right: 0;
+					bottom: 13px;
+					padding: 6px 5px 5px;
+				}
+			}
+		}
+		&--training {
+			#{$s}__img {
+				right: 10px;
+				bottom: -40px;
+			}
+		}
+		@media ($xsDown) {
+			// VARIANTs
+			&--b2b {
+				#{$s}__img {
+					.tag {
+						bottom: -20px;
+					}
+				}
+			}
+		}
+	}
+	@media ($mdUp) {
+		padding-top: 87px; // size1 + headerHeight
+		&__content {
+			padding-top: $size9;
+		}
+		&__text {
+			margin-bottom: $size4;
+		}
+		&__downloads {
+			display: flex;
+			align-items: center;
+			margin: 0 0 0 -10px;
+		}
+		&__download {
+			border-width: 0 0 0 10px;
+		}
+
+		&--carousel &__item {
+			padding-right: 72px;
+		}
+
+		// VARIANTs
+		&--b2b {
+			#{$s}__img {
+				max-width: 400px;
+				max-height: 468px;
+			}
+		}
+		&--training {
+			padding-bottom: 150px;
+			#{$s}__content {
+				padding-top: 145px;
+			}
+		}
+	}
+	@media ($lgUp) {
+		&--carousel &__img > img {
+			width: 370px;
+		}
+		&__viewport {
+			.embla__btns {
+				top: 420px;
+				right: 222px;
+			}
+		}
+	}
+}

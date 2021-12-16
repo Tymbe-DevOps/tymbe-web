@@ -1,0 +1,92 @@
+{% set props = {
+	logo: props.logo | default,
+	logoAlt: props.logoAlt | default,
+	openingHours: props.openingHours | default,
+	title: props.title | default,
+	location: props.location | default,
+	fullPayment: props.fullPayment | default,
+	fullCredits: props.fullCredits | default,
+	tooltipTitle: props.tooltipTitle | default,
+	tooltipText: props.tooltipText | default,
+	btnText: props.btnText | default,
+	classes: props.classes | default([]),
+} %}
+
+{% set classes = [
+	'b-product',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<article class="{{ classes }}" data-rings-target="product">
+	<p class="b-product__top">
+		{% if  props.logo|default(false) %}
+			<span class="b-product__logo">
+				<img src="{{ assets.images }}illust/logos/{{ props.logo }}" alt="{{ props.logoAlt }}" height="16">
+			</span>
+		{% endif %}
+		<a href="{{ props.openingHoursLink|default('#') }}" class="b-product__opening-hours item-icon item-icon--md">
+			{% include '@components/core/icon-svg/icon-svg.twig' with {
+				props: {
+					classes: ['item-icon__icon'],
+					name: 'clock'
+				}
+			} %}
+			Dnes od <span data-rings-target="time">{{ props.openingHours }}</span>
+		</a>
+	</p>
+	<h3 class="b-product__title" data-rings-target="position">
+		{{ props.title }}
+	</h3>
+	<p>
+		<a href="{{ props.locationLink|default('#') }}" class="b-product__location item-icon item-icon--md">
+			{% include '@components/core/icon-svg/icon-svg.twig' with {
+				props: {
+					classes: ['item-icon__icon'],
+					name: 'location'
+				}
+			} %}
+			<span data-rings-target="place">{{ props.location }}</span>
+		</a>
+	</p>
+	<p class="b-product__payment">
+		<span class="b-product__payment-full">
+			<strong data-rings-target="price">
+				{{ props.fullPayment }}
+			</strong>
+			Kč/h
+		</span>
+		<span class="b-product__payment-credits">
+			<strong>
+				+<span data-rings-target="priceCurrent">{{ props.fullCredits }}</span>
+			</strong>
+			Kr/h
+			{% if props.tooltipTitle|default(false) or props.tooltipText|default(false) %}
+				<button type="button" class="tooltip">
+					{% include '@components/core/icon-svg/icon-svg.twig' with {
+						props: {
+							name: 'questionmark'
+						}
+					} %}
+					<span class="u-vhide">
+						Info
+					</span>
+
+					<span class="tooltip__content">
+						<span class="tooltip__title">
+							{{ props.tooltipTitle }}
+						</span>
+						<span class="tooltip__text">
+							{{ props.tooltipText }}
+						</span>
+					</span>
+				</button>
+			{% endif %}
+		</span>
+	</p>
+	<p>
+		<a href="{{ props.btnLink|default('#') }}" class="btn btn--block">
+			<span class="btn__text">
+				{{ props.btnText }}
+			</span>
+		</a>
+	</p>
+</article>

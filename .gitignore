@@ -1,0 +1,14 @@
+/node_modules
+/_zip
+/_export
+/_podklady
+/dist
+/src/css/core/generated/icons.scss
+/src/css/core/generated/icons-svg.scss
+/src/css/core/generated/sprites.scss
+/src/css/core/generated/sprites-retina.scss
+/wordpress/wp-content/themes/*/static/
+/wordpress/wp-content/uploads/
+/wordpress/wp-config.php
+/config.local.js
+*.log

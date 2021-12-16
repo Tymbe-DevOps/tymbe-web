@@ -1,0 +1,93 @@
+.inp-item {
+	$s: &;
+	position: relative;
+	display: inline-block;
+	padding-left: 25px;
+	text-align: left;
+	cursor: pointer;
+	&__inp {
+		position: absolute;
+		left: -5000px;
+	}
+	&__tool {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 15px;
+		height: 15px;
+		border: 2px solid #28367b;
+		border-radius: 2px;
+		background-color: $colorWhite;
+		color: $colorPrimary;
+		.icon-svg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 10px;
+			visibility: hidden;
+			opacity: 0;
+			transform: translate(-50%, -50%);
+			transition: opacity $t, visibility $t;
+		}
+		.has-error & {
+			border-color: $colorRed;
+			color: $colorRed;
+		}
+	}
+	&__text {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 16px;
+		line-height: (16/16);
+	}
+
+	// MODIFICATIONS
+	&--radio {
+		#{$s}__tool {
+			top: 2px;
+			width: 16px;
+			height: 16px;
+			border-width: 1px;
+			border-radius: 50%;
+			&::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 8px;
+				height: 8px;
+				border: 0;
+				border-radius: 50%;
+				background: $colorPrimary;
+				visibility: hidden;
+				opacity: 0;
+				transform: translate(-50%, -50%);
+				transition: opacity $t, visibility $t;
+			}
+		}
+	}
+	&__inp:disabled + &__text {
+		color: $colorBd;
+	}
+	&__inp:disabled + {
+		#{$s}__tool {
+			border-color: rgba($colorPrimary, 0.5);
+			background-color: $colorBd;
+		}
+	}
+
+	// STATES
+	&__inp:checked + &__text,
+	&__inp:checked + {
+		#{$s}__tool {
+			&::after {
+				visibility: visible;
+				opacity: 1;
+			}
+			.icon-svg {
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+	}
+}

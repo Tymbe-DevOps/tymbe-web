@@ -1,0 +1,40 @@
+{% set props = {
+	items: props.items | default([]),
+	classes: props.classes | default([]),
+	logoLink: props.logoLink | default("./"),
+} %}
+
+{% set classes = [
+	'm-footer',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+
+{% if props.items | length > 0 %}
+	<nav class="{{ classes }}">
+		<p class="m-footer__logo">
+			<a href="{{ props.logoLink }}">
+				{% if isTrainingPage is defined %}
+					<img src="{{ assets.images }}logo-white.svg" alt="Tymbe" width="100" height="49">
+				{% else %}
+					<img src="{{ assets.images }}logo.svg" alt="Tymbe" width="100" height="49">
+				{% endif %}
+			</a>
+		</p>
+		<div class="m-footer__content">
+			<ul class="m-footer__list">
+				{% for item in props.items %}
+					<li class="m-footer__item{% if item.isActive is defined %} is-active{% endif %}">
+						<a href="{{ item.link|default('#') }}" class="m-footer__link">
+							{% include '@components/core/icon-svg/icon-svg.twig' with {
+								props: {
+									name: item.icon
+								}
+							} %}
+							{{ item.name }}
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</nav>
+{% endif %}

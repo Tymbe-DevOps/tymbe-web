@@ -1,0 +1,26 @@
+{% set props = {
+	classes: props.classes | default([]),
+	items: props.items | default([]),
+} %}
+
+{% set classes = [
+	'steps',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+{# Code #}
+<div class="{{ classes }}">
+	<ol class="steps__list">
+		{% for item in props.items %}
+			{% set item = {
+				text: item.text | default,
+				isActive: item.isActive | default,
+				done: item.done | default,
+			} %}
+			<li class="steps__item{% if item.isActive == true %} is-active{% endif %}{% if item.done == true %} is-done{% endif %}">
+				<span class="u-vhide">
+					{{ item.text }}
+				</span>
+			</li>
+		{% endfor %}
+	</ol>
+</div>

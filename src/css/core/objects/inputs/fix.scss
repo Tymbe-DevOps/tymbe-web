@@ -1,0 +1,24 @@
+.inp-fix {
+	position: relative;
+	display: block;
+
+	.tooltip {
+		position: absolute;
+		top: 50%;
+		right: 9px;
+		z-index: 10;
+		color: $colorPrimary;
+		transform: translateY(-50%);
+	}
+
+	// STATEs
+	.has-error & {
+		color: $colorRed;
+	}
+	.has-warning & {
+		color: $colorOrange;
+	}
+	.has-ok & {
+		color: $colorGreen;
+	}
+}

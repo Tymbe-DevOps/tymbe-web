@@ -1,0 +1,45 @@
+{% set props = {
+	reversed: props.reversed | default,
+	heading: props.heading | default,
+	img: props.img | default,
+	imgWidth: props.imgWidth | default,
+	imgHeight: props.imgHeight | default,
+	items: props.items | default([]),
+	classes: props.classes | default([]),
+} %}
+
+{% set classes = [
+	'b-about',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<div class="{{ classes }}">
+	<div class="row-main">
+		{% include '@components/core/objects/heading.twig' with {
+			props: props.heading
+		} %}
+	</div>
+	<div class="b-about__inner u-pt-7">
+		<div class="row-main">
+			<div class="grid{% if props.reversed == true %} grid--reversed{% endif %} grid--x-9">
+				<div class="grid__cell size--6-12 b-about__content">
+					{% for item in props.items %}
+						{% set item = {
+							title: item.title | default,
+							text: item.text | default,
+						} %}
+						<h3>
+							{{ item.title }}
+						</h3>
+						<p>
+							{{ item.text }}
+						</p>
+					{% endfor %}
+				</div>
+
+				<div class="grid__cell size--6-12 b-about__img">
+					<img src="{{ assets.images }}illust/{{ props.img }}" alt="" width="{{ props.imgWidth }}" height="{{ props.imgHeight }}">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

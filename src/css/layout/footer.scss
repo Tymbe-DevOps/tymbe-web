@@ -1,0 +1,54 @@
+.footer {
+	padding-top: $size2;
+	background-color: $colorPrimary;
+	color: $colorWhite;
+	font-size: 16px;
+	text-align: center;
+
+	&__contact {
+		display: inline-block;
+		padding: 10px;
+		border-radius: 30px;
+		background-color: rgba($colorWhite, 0.15);
+		color: rgba($colorWhite, 0.7);
+		font-size: 14px;
+		.item-icon {
+			margin-right: 10px;
+			color: $colorWhite;
+			text-decoration: none;
+		}
+	}
+	&__copy {
+		font-size: 12px;
+	}
+
+	// HOVERs
+	.hoverevents &__contact a:hover {
+		color: $colorSecondary;
+	}
+
+	// MQ
+	@media ($mdDown) {
+		&__contact {
+			display: inline-flex;
+			align-items: flex-start;
+			font-size: 12px;
+			.item-icon {
+				width: 16px;
+				height: 16px;
+				margin: 0 5px;
+				padding: 0;
+				font-size: 0;
+				&__icon {
+					top: calc(50% + 2px);
+				}
+			}
+		}
+
+		@media ($xsDown) {
+			&__contact {
+				padding: 10px 8px;
+			}
+		}
+	}
+}

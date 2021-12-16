@@ -1,0 +1,41 @@
+.b-contact {
+	position: relative;
+	padding: $size3 0 0;
+	text-align: center;
+
+	&__title {
+		margin-bottom: $size3;
+	}
+	&__form {
+		padding: 0 $size1;
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	// MQ
+	@media ($mdDown) {
+		&__table {
+			padding-top: $size3;
+			border-top: 1px solid $colorBd;
+			table {
+				margin-bottom: 0;
+			}
+		}
+	}
+	@media ($mdUp) {
+		padding-bottom: $size2;
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 50%;
+			width: 1px;
+			background-color: $colorBd;
+		}
+		&__form {
+			padding: 0 $size4;
+		}
+	}
+}

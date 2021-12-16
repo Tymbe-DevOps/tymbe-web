@@ -1,0 +1,57 @@
+{% set props = {
+	classes: props.classes | default([]),
+	items: props.items | default([]),
+} %}
+
+{% set classes = [
+	'b-info-list',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<div class="{{ classes }}">
+	{% for item in props.items %}
+		{% set item = {
+			title: item.title | default,
+			text: item.text | default,
+			btn: item.btn | default,
+			flag: item.flag | default,
+			flagName: item.flagName | default,
+			imgCenter: item.imgCenter | default,
+			img: item.img | default,
+			width: item.width | default,
+			height: item.height | default,
+		} %}
+		<div class="b-info-list__wrapper">
+			<div class="b-info-list__list grid">
+				<div class="b-info-list__item grid__cell size--6-12@md">
+					{% if item.title %}
+						<h2 class="b-info-list__title">
+							{{ item.title|raw }}
+						</h2>
+					{% endif %}
+					<div class="b-info-list__text">
+						{{ item.text|raw }}
+					</div>
+					{% if item.btn %}
+						<p class="u-mt-3">
+							<a href="{{ item.btnLink|default('#') }}" class="btn btn--secondary">
+								<span class="btn__text">
+									{{ item.btn }}
+								</span>
+							</a>
+						</p>
+					{% endif %}
+				</div>
+				<div class="b-info-list__item grid__cell size--6-12@md">
+					<div class="b-info-list__img">
+						{% if item.flag %}
+							<span class="b-info-list__flag">
+								<img src="{{ assets.images }}illust/flags/{{ item.flag }}" alt="{{ item.flagName }}" width="69" height="69">
+							</span>
+						{% endif %}
+						<img src="{{ assets.images }}illust/{{ item.img }}" alt="" width="{{ item.width }}" height="{{ item.height }}">
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>

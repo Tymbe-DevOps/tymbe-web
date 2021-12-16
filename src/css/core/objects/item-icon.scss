@@ -1,0 +1,17 @@
+.item-icon {
+	position: relative;
+	display: inline-block;
+	padding: 0 0 0 26px;
+
+	&__icon {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		transform: translateY(-50%);
+	}
+
+	// VARIANTs
+	&--md {
+		padding: 0 0 0 18px;
+	}
+}

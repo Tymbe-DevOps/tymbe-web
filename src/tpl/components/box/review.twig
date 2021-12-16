@@ -1,0 +1,34 @@
+{% set props = {
+	quotation: props.quotation | default,
+	name: props.name | default,
+	from: props.from | default,
+	date: props.date | default,
+	classes: props.classes | default([]),
+} %}
+
+{% set classes = [
+	'b-review',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<div class="{{ classes }}">
+	<p class="b-review__logo">
+		<img src="{{ assets.images }}logo.svg" alt="Tymbe" width="100" height="49">
+	</p>
+	<p class="b-review__quotation">
+		“{{ props.quotation }}”
+	</p>
+
+	<div class="b-review__bottom">
+		<p class="b-review__name">
+			{{ props.name }}
+		</p>
+		<p class="b-review__info">
+			<span>
+				{{ props.from }}
+			</span>
+			<span>
+				{{ props.date }}
+			</span>
+		</p>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+.m-accessibility {
+	position: absolute;
+	top: 0;
+	left: -5000px;
+	a {
+		&:focus,
+		&:active {
+			position: absolute;
+			top: 0;
+			left: 5000px;
+			z-index: 900;
+			width: 200px;
+			padding: 2px 0 5px;
+			background-color: $colorWhite;
+			text-align: center;
+		}
+	}
+}

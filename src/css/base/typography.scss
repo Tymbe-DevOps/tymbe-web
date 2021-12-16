@@ -1,0 +1,219 @@
+html {
+	color: $colorText;
+	font-family: $fontPrimary;
+	font-size: $fontSize;
+	line-height: $lineHeight;
+
+	// MQ
+	@media ($mdDown) {
+		font-size: 16px;
+		line-height: (26/16);
+	}
+}
+
+// Headings
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	margin: 1.5em 0 0.5em;
+	color: $colorPrimary;
+	font-family: $fontSecondary;
+	font-weight: bold;
+	line-height: 1.2;
+}
+h1,
+.h1 {
+	font-size: 55px;
+
+	// MQ
+	@media ($mdDown) {
+		font-size: 35px;
+		line-height: (45/35);
+	}
+}
+h2,
+.h2 {
+	font-size: 35px;
+
+	// MQ
+	@media ($mdDown) {
+		font-size: 28px;
+		line-height: (38/28);
+	}
+}
+h3,
+.h3 {
+	font-size: 22px;
+}
+h4,
+.h4 {
+	font-size: 18px;
+}
+h5,
+.h5 {
+	font-size: 16px;
+}
+h6,
+.h6 {
+	font-size: 12px;
+}
+
+// Paragraph
+p {
+	margin: 0 0 $typoSpaceVertical;
+}
+hr {
+	height: 1px;
+	margin: $typoSpaceVertical 0;
+	border: solid $colorBd;
+	border-width: 1px 0 0;
+	overflow: hidden;
+}
+
+// Blockquote
+blockquote {
+	margin: 0 0 $typoSpaceVertical;
+	padding: 0;
+	p {
+		margin-bottom: 0;
+	}
+}
+
+// Links
+a {
+	color: $colorLink;
+	text-decoration: underline;
+	transition: color $t;
+	-webkit-tap-highlight-color: transparent;
+	.hoverevents &:hover {
+		color: $colorHover;
+	}
+}
+
+// Lists
+ul,
+ol,
+dl {
+	margin: 0 0 $typoSpaceVertical;
+	padding: 0;
+	list-style: none;
+}
+li {
+	margin: 0 0 ($typoSpaceVertical / 4);
+	padding: 0 0 0 20px;
+}
+ul {
+	li {
+		position: relative;
+		&::before {
+			content: '';
+			position: absolute;
+			top: 10px;
+			left: 0;
+			width: 8px;
+			height: 8px;
+			border-radius: 100%;
+			background-color: $colorPrimary;
+		}
+	}
+}
+ol {
+	counter-reset: item;
+	li {
+		position: relative;
+		&::before {
+			content: counter(item) '.';
+			counter-increment: item;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+	ol {
+		li {
+			&::before {
+				content: counter(item, lower-alpha) '.';
+			}
+		}
+	}
+}
+dt {
+	margin: 0;
+	font-weight: bold;
+}
+dd {
+	margin: 0 0 ($typoSpaceVertical / 2);
+	padding: 0;
+}
+
+// Tables
+table {
+	clear: both;
+	border-collapse: collapse;
+	border-spacing: 0;
+	empty-cells: show;
+	width: 100%;
+	margin: 0 0 $typoSpaceVertical;
+}
+caption {
+	padding: 0 0 10px;
+	font-weight: bold;
+	text-align: left;
+	caption-side: top;
+}
+td,
+th {
+	vertical-align: top;
+	padding: 22px 15px 20px;
+	border: 1px solid $colorBd;
+	border-width: 0 0 1px 0;
+	font-size: 14px;
+	text-align: left;
+	@media ($mdUp) {
+		padding: 22px 28px 20px;
+	}
+}
+th {
+	color: $colorPrimary;
+	font-weight: $medium;
+	text-transform: uppercase;
+}
+thead th {
+	background: $colorBg;
+}
+tr:first-child td,
+tr:first-child th {
+	border-width: 1px 0;
+
+	@media ($mdDown) {
+		border-top-width: 0;
+	}
+}
+tr:last-child td,
+tr:last-child th {
+	@media ($mdDown) {
+		border-bottom-width: 0;
+	}
+}
+
+// Image
+figure {
+	margin-bottom: $typoSpaceVertical;
+}
+figcaption {
+	margin-top: 0.5em;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}

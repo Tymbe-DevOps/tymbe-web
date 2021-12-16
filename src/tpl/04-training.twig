@@ -1,0 +1,179 @@
+{% extends '@layout/layout.twig' %}
+{% set pageTitle = 'Ty-školení' %}
+{% set isTrainingPage = true %}
+
+{% block content %}
+
+	<main id="main" class="main">
+		{% include '@components/box/intro-hp.twig' with {
+			props: {
+				classes: ['b-intro-hp--training'],
+				background: 'training-intro-bg.jpg',
+				contentSizes: ['size--6-12@md'],
+				imgSizes: ['size--6-12@md'],
+				title: '“Ty&#8209;školení je nový online školicí systém”',
+				text: 'Jednoduše nastav, sleduj a vyhodnocuj školení svých lidí přes mobil.',
+				buttons: [
+					{
+						name: 'Chci brigádníky'
+					},
+				],
+				img: 'training.png',
+				imgWidth: '445',
+				imgHeight: '387'
+			}
+		} %}
+		<div class="u-pt-7">
+			<div class="row-main">
+				{% include '@components/crossroad/steps.twig' with {
+					props: {
+						classes: ['c-steps--numbers u-mb-7'],
+						heading: {
+							classes: ['u-mb-7'],
+							title: 'Jak to funguje?',
+						},
+						gridSize: 'size--6-12@sm size--3-12@lg',
+						items: [
+							{
+								title: 'Možnosti školení jsou neomezené',
+								desc: 'Vyber si z předpřipravených školení a kurzů nebo vlož vlastní školicí program.',
+							},
+							{
+								title: 'Můžeš školit',
+								desc: 'Můžeš školit znalosti (př. BOZP), dovednosti (př. obsluhu strojů a zařízení), etický kodex nebo třeba předávat know-how franšízantům.',
+							},
+							{
+								title: 'Lidi můžeš školit třeba i o půlnoci',
+								desc: 'Platforma je plně dostupná 24 hodin denně, 7 dní v týdnu a po celé ČR.',
+							},
+							{
+								title: 'Už žádné zbytečné papíry',
+								desc: 'Všechny informace a dokumenty máš online a přístup k nim nonstop.',
+							},
+						]
+					}
+				}%}
+			</div>
+			<div class="u-bg-secondary u-pt-7 u-mb-7">
+				<div class="row-main">
+					{% include '@components/crossroad/benefits.twig' with {
+						props: {
+							classes: ['u-mb-7'],
+							heading: {
+								classes: ['u-mb-7'],
+								title: 'Ty&#8209;školení doručí všechno, co od školení chceš',
+							},
+							gridSize: 'size--4-12@md',
+							items: [
+								{
+									img: 'benefits.png',
+									title: 'Školení přesně podle potřeb vaší firmy',
+									desc: 'Má práce u vás zvláštní požadavky nebo chceš mít školení, které nemá nikdo jiný? Navrhni ho sám anebo s naší telefonickou podporou. Už máš školení a chceš ho jen převést do onlinu? Integrace je naše silná stránka!',
+								},
+								{
+									img: 'benefits.png',
+									title: 'Jednoduchá správa veškerých dokumentů na jednom místě',
+									desc: 'Vše najdeš přehledně rozdělené podle typů školení a provozoven nebo pracovišť. Konečně budeš mít o všem opravdu přehled! Výstupy navíc dokážeme propojit do vašeho interního informačního či HR systému.',
+								},
+								{
+									img: 'benefits.png',
+									title: 'Všichni budou přesně vědět, co už mají hotové a co je ještě čeká',
+									desc: 'Zaměstnanci, brigádníci i dodavatelé budou mít jasno v tom, jaká školení musí zvládnout. A ty budeš vědět, jestli už je absolvovali ;) Reporty pro manažery jsou samozřejmostí.',
+								},
+								{
+									img: 'benefits.png',
+									title: '„Paperless řešení“ jsme dovedli k dokonalosti',
+									desc: 'Opravdu nebudeme nikoho nutit, aby si vytiskl certifikát. Všechno je přece vidět online!',
+								},
+								{
+									img: 'benefits.png',
+									title: 'Platnost školení nehlídají lidi, ale systém, který se nesplete',
+									desc: 'Už žádná otravná úředničina. Pokud je třeba školení pravidelně opakovat, nastavíš to v systému. A systém sám vyzve lidi, aby školením znovu prošli.',
+								},
+								{
+									img: 'benefits.png',
+									title: 'Všechno je podle platných zákonů',
+									desc: 'Geniálně jsme zjednodušili procesy, ale nic nešidíme. Rozsah a podrobnost školení zcela odpovídá zákonným požadavkům.',
+								},
+							]
+						}
+					}%}
+				</div>
+			</div>
+			{% include '@components/box/about.twig' with {
+				props: {
+					classes: ['u-mb-10'],
+					heading: {
+						classes: ['u-mb-0'],
+						title: 'Ty&#8209;školení jsme stavěli pro dobu mobilní',
+					},
+					img: 'phone-bubbles.jpg',
+					imgWidth: '550',
+					imgHeight: '532',
+					items: [
+						{
+							title: 'Lidi mají rádi mobily. Budou mít rádi i Ty–školení',
+							text: 'Optimalizace pro tablet nebo mobil je naše pýcha. Přes mobily ti vyškolíme tým a ty si přes mobil můžeš kdykoliv zkontrolovat, jak to krásně frčí.',
+						},
+						{
+							title: 'Rozhraní je dělané pro hraní!',
+							text: 'Hlavně přehledně. Celá aplikace je přístupná přes firemní profil nebo mobilní apku. Zobrazení si přizpůsobíš a v menu na tebe budeme mluvit česky. Nebo jak si vybereš.',
+						},
+						{
+							title: 'Odpovídáš za školení u vás? Blahopřejeme!',
+							text: 'Bude ti stačit mobil a wifi a o všem budeš mít permanentní přehled třeba i z druhé strany zeměkoule. Rádi jsme ti ušetřili práci.',
+						},
+						{
+							title: 'Je to v cajku. Je to v cloudu.',
+							text: 'Všechny citlivé informace jsou zašifrovány a uloženy na partnerských zabezpečených cloudových serverech společnosti Google Inc.',
+						},
+					]
+				}
+			}%}
+
+			{% include '@components/box/about.twig' with {
+				props: {
+					classes: ['u-mb-11'],
+					reversed: true,
+					heading: {
+						classes: ['u-mb-0'],
+						title: 'Klik – a je tu vyškolený pracovník!',
+						annot: 'Školení by mělo bavit toho, kdo školí, i toho, kdo je školen. Vyber si svůj styl a jdeme na to. Školení hrou!'
+					},
+					img: 'hand-bubbles.jpg',
+					imgWidth: '548',
+					imgHeight: '446',
+					items: [
+						{
+							title: 'Pytel předpřipravených firemních školení',
+							text: 'Znáš to, některé věci prostě musí absolvovat všichni. Stačí když přihlásíš vaši firmu do systému, a hned můžeš vybírat ze seznamu „klasiky“.',
+						},
+						{
+							title: 'Udělej si sám.',
+							text: 'Potřebuješ něco speciálního? Paráda! Máme na to krásný nástroj, intuitivní editor. Krok za krokem tě provede nastavením školení na míru.',
+						},
+						{
+							title: 'Pojďme na to v týmu.',
+							text: 'Nové školení můžeme postavit společně. Jednoduše si zavoláš s naší zákaznickou podporu a naše milá kolegyně nebo příjemný kolega se ti budou věnovat. Všechno společně proberete a nastavíte a finální schválenou podobu nového firemního školení vložíte do vašeho firemního profilu. Pohoda.',
+						},
+					]
+				}
+			}%}
+
+			<div class="row-main">
+				{% include '@components/box/bnr.twig' with {
+					props: {
+						classes: ['u-mb-9'],
+						background: 'bnr-bg.jpg',
+						title: 'Rádi tě zaškolíme do všech výhod Ty&#8209;školení! ',
+						btn: 'Chci vědět víc',
+						img: 'hand.png',
+						width: '352',
+						height: '440'
+					}
+				}%}
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

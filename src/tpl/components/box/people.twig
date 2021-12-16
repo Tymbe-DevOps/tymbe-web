@@ -1,0 +1,56 @@
+{% set props = {
+	title: props.title | default,
+	items: props.items | default([]),
+	annot: props.annot | default,
+	btn: props.btn | default,
+	classes: props.classes | default([])
+} %}
+
+{% set classes = [
+	'b-people embla',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<section class="{{ classes }}" data-controller="Embla">
+	<div class="row-main">
+		<h2 class="b-people__title">
+			{{ props.title|raw }}
+		</h2>
+		<div class="b-people__wrapper embla__viewport" data-embla-target="viewport">
+			<ul class="b-people__list embla__container grid grid--middle grid--y-0 grid--nowrap">
+				{% for item in props.items %}
+					{% set item = {
+						isBiggest: item.isBiggest | default,
+						isSmallest: item.isSmallest | default,
+						img: item.img | default,
+						tag: item.tag | default,
+					} %}
+					<li class="b-people__item{% if item.isBiggest == true %} is-biggest{% elseif item.isSmallest == true %} is-smallest{% endif %} embla__slide grid__cell size--auto">
+						<div class="b-people__img">
+							<img src="{{ assets.images }}illust/people/{{ item.img }}" alt="">
+						</div>
+						{% if item.tag | length > 0 %}
+							{% include '@components/core/objects/tag.twig' with {
+								props: item.tag
+							} %}
+						{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<!-- Dots -->
+		<div class="b-people__dots embla__dots" data-embla-target="dots"></div>
+		<p class="b-people__annot">
+			{{ props.annot|raw }}
+		</p>
+
+		{% if props.btn %}
+			<p class="u-mt-5 u-mb-0 u-text-center">
+				<a href="{{ props.btnLink|default('#') }}" class="btn">
+					<span class="btn__text">
+						{{ props.btn }}
+					</span>
+				</a>
+			</p>
+		{% endif %}
+	</div>
+</section>

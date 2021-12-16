@@ -1,0 +1,11 @@
+.inp-select {
+	@extend %inp;
+	padding-right: 40px;
+	background-image: url($svgSelect);
+	background-position: top 50% right 15px;
+	background-repeat: no-repeat;
+	background-size: 10px 5px;
+	&::-ms-expand {
+		display: none;
+	}
+}

@@ -1,0 +1,74 @@
+.steps {
+	$s: &;
+	margin-right: auto;
+	margin-left: auto;
+	font-weight: 500;
+	font-size: 10px;
+	line-height: (15/10);
+	&__list {
+		counter-reset: item;
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		margin: 0;
+	}
+	&__item {
+		position: relative;
+		width: 33.3%;
+		margin: 0;
+		padding: 0;
+		&::before {
+			content: counter(item);
+			counter-increment: item;
+			position: relative;
+			z-index: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 32px;
+			height: 32px;
+			margin: 0 auto;
+			border: 7px solid $colorWhite;
+			border-radius: 100%;
+			background-color: #edf2c7;
+			color: $colorWhite;
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			height: 1px;
+			background-color: #edf2c7;
+		}
+		&:last-child {
+			&::after {
+				display: none;
+			}
+		}
+	}
+	&__link {
+		color: inherit;
+	}
+	&__text {
+		white-space: nowrap;
+	}
+
+	//STATEs
+	&__item.is-done {
+		&::before {
+			background: $colorSecondary;
+		}
+		&::after {
+			background: $colorSecondary;
+		}
+	}
+	&__item.is-active {
+		&::before {
+			background: $colorSecondary;
+		}
+	}
+}

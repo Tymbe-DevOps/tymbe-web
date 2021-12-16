@@ -1,0 +1,20 @@
+{% set props = {
+	title: props.title | default,
+	annot: props.annot | default,
+	classes: props.classes | default([])
+} %}
+
+{% set classes = [
+	'heading',
+] | merge(props.classes) | filter(i => i) | join(' ') %}
+
+<div class="{{ classes }}">
+	<h2 class="heading__title">
+		{{ props.title|raw }}
+	</h2>
+	{% if props.annot %}
+		<p class="heading__annot">
+			{{ props.annot|raw }}
+		</p>
+	{% endif %}
+</div>

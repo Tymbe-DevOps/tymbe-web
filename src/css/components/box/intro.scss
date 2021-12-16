@@ -1,0 +1,56 @@
+.b-intro {
+	$s: &;
+	padding-top: 65px; // 10px + headerHeight
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+
+	&__inner {
+		padding: $size8 0;
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&__title {
+		margin-bottom: $size1;
+	}
+	&__text {
+		max-width: 570px;
+		margin: 0 auto;
+		margin-bottom: $size4;
+		color: rgba($colorBlack, 0.8);
+	}
+
+	// VARIANTs
+	&--cut {
+		#{$s}__inner {
+			padding-bottom: 150px;
+		}
+		#{$s}__text {
+			max-width: none;
+		}
+	}
+
+	// HOVERs
+	.hoverevents &__down:hover {
+		background-color: $colorHover;
+		color: $colorWhite;
+	}
+
+	// MQ
+	@media ($mdUp) {
+		padding-top: 87px; // size1 + headerHeight
+		&__inner {
+			padding: $size10 0 $size9;
+		}
+	}
+
+	// MQ
+	@media ($mdUp) {
+		// VARIANTs
+		&--cut &__inner {
+			padding-bottom: 239px;
+		}
+	}
+}

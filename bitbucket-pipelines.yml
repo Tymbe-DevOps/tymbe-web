@@ -1,0 +1,32 @@
+image: node:12
+
+pipelines:
+    tags:
+        v*:
+            - step:
+                  name: Build
+                  caches:
+                      - node
+                  script:
+                      - npm ci
+                      - npm run build
+                  artifacts:
+                      - dist/**
+            - step:
+                  name: Deploy artifacts using FTP to STAGE
+                  deployment: staging
+                  script:
+                      - pipe: atlassian/ftp-deploy:0.3.2
+                        variables:
+                            USER: $USER
+                            PASSWORD: $PASSWORD
+                            SERVER: $SERVER
+                            REMOTE_PATH: '$REMOTE_PATH'
+                            LOCAL_PATH: 'dist' # Optional.
+                            # SSH_KEY: '<string>' # Optional.
+                            # EXTRA_ARGS: '<string>' # Optional.
+                            # DEBUG: '<boolean>' # Optional.
+                      - export VERSION=$(npm run print-version --silent)
+                      - pipe: docker://josefhrabecsuperkoderscom/bitbucket-pipes-deploy-log:latest
+                        variables:
+                            VERSION: $VERSION
