@@ -14,6 +14,7 @@ const src = {
 	templates: `${basePath.src}tpl/`,
 	components: `${basePath.src}tpl/components/`,
 	layout: `${basePath.src}tpl/layout/`,
+	pages: `${basePath.src}tpl/pages/`,
 };
 
 const twigNamespaces = {
@@ -21,6 +22,7 @@ const twigNamespaces = {
 	layout: src.layout,
 	images: src.images,
 	templates: src.templates,
+	pages: src.pages,
 };
 
 const dest = {
@@ -29,6 +31,7 @@ const dest = {
 	scripts: `${basePath.dest}js/`,
 	styles: `${basePath.dest}css/`,
 	templates: `${basePath.dest}/`,
+	pages: `${basePath.dest}pages/`,
 };
 
 const assets = {

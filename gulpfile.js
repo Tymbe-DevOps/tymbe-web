@@ -14,17 +14,21 @@ const spriteRetina = require('./tasks/spriteRetina');
 const sprite = require('./tasks/sprite');
 
 const twig = require('./tasks/twig');
+const templatePages = require('./tasks/templatePages');
 const sass = require('./tasks/sass');
 const webpack = require('./tasks/webpack');
+const isProduction = require('./tasks/helpers/isProduction');
 
 const validate = require('./tasks/validate');
 const watch = require('./tasks/watch');
 
 const build = function build(done) {
+	const twigTpl = !isProduction() ? [templatePages, twig] : twig;
+
 	return series(
 		clean,
 		parallel(iconSvg, iconFont, spriteRetina, sprite),
-		parallel(sass, webpack, twig, copyImages, copyJs, copyRoot),
+		parallel(sass, webpack, twigTpl, copyImages, copyJs, copyRoot),
 	)(done);
 };
 
@@ -55,6 +59,7 @@ module.exports = {
 	iconFont,
 	imagemin,
 	twig,
+	templatePages,
 	sass,
 	spriteRetina,
 	sprite,

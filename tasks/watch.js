@@ -7,6 +7,7 @@ const config = require('./helpers/getConfig.js');
 
 const sass = require('./sass');
 const twig = require('./twig');
+const templatePages = require('./templatePages');
 const sprite = require('./sprite');
 const spriteRetina = require('./spriteRetina');
 const iconFont = require('./iconFont');
@@ -27,6 +28,7 @@ module.exports = function watch(done) {
 		function watching() {
 			watchGulp(`${config.src.styles}**/*.scss`, sass);
 			watchGulp(`${config.src.templates}**/*.twig`, twig);
+			watchGulp(`${config.src.pages}**/*.twig`, templatePages);
 			watchGulp(`${config.src.images}bg/sprites/*.png`, sprite);
 			watchGulp(`${config.src.images}bg/sprites-retina/*.png`, spriteRetina);
 			watchGulp(`${config.src.icons}*.svg`, iconFont);
@@ -53,6 +55,7 @@ module.exports = function watch(done) {
 					`!${config.src.scripts}**/*`,
 					`!${config.src.images}**/*`,
 					`!${config.src.templates}**/*`,
+					`!${config.src.pages}**/*`,
 				],
 				copyRoot,
 			);
