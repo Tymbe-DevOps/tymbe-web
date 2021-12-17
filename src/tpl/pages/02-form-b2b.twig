@@ -1,0 +1,114 @@
+{% extends '@layout/layout.twig' %}
+{% set pageTitle = 'Formulář B2B' %}
+
+{% block content %}
+
+	<main id="main" class="main">
+		<div class="p-form p-form--b2c u-pt-12">
+			<div class="row-main">
+				<div class="p-form__content">
+					<h1 class="u-vhide">
+						Registrace
+					</h1>
+					<div class="grid grid--x-5">
+						<div class="grid__cell size--6-12@md size--5-12@lg">
+							{% include '@components/form/registration.twig' with {
+								props: {
+									classes: ['b-white'],
+									controller: 'RegistrationB2B',
+									apiUrl: 'https://api.tymbe.com/company/registration',
+									title: 'Registrace firmy',
+									btn: 'Registrovat',
+									text: 'Už máš u nás účet? <a href="#">Přihlas se.</a>',
+									inpGroups: [
+										{
+											inputs: [
+												{
+													label: 'Název firmy',
+													name: 'companyName',
+													required: true,
+													type: 'text'
+												},
+												{
+													label: 'IČO',
+													name: 'ic',
+													required: true,
+													type: 'text'
+												},
+												{
+													label: 'Jméno',
+													name: 'sureName',
+													required: true,
+													type: 'text'
+												},
+												{
+													label: 'Příjmení',
+													name: 'familyName',
+													required: true,
+													type: 'text'
+												},
+												{
+													label: 'Email',
+													name: 'email',
+													required: true,
+													type: 'email'
+												},
+												{
+													label: 'Telefon',
+													name: 'phone',
+													required: true,
+													type: 'tel',
+													pattern: "^\+(420|421)?[0-9]{3}?[0-9]{3}?[0-9]{3}$",
+													tooltipText: 'Telefonní číslo zadávejte ve formátu: +420123456789'
+												},
+											]
+										},
+									]
+								}
+							}%}
+						</div>
+						<div class="grid__cell size--6-12@md size--7-12@lg">
+							<div class="grid grid--x-2 grid--bottom">
+								<div class="grid__cell size--6-12@lg">
+									<div class="u-mt-2 u-mb-6">
+										<h3>
+											Tisíce prověřených brigádníků
+										</h3>
+										<p>
+											Online ověření identity a zasmluvnění brigádníků v souladu s evropskými pravidly eIDAS přesně tak, jak vyžaduje Zákoník práce.
+										</p>
+										<h3>
+											Onboardingové online kurzy
+										</h3>
+										<p>
+											Vše, co lze ukázat dopředu, umíme brigádníkovi předat dříve, než dorazí na první směnu. Nezatěžujeme pracoviště školením nováčků.
+										</p>
+										<h3>
+											Jednoduché a intuitivní rozhraní
+										</h3>
+										<p>
+											Vytvořit požadavek na brigádníka a potvrdit docházku lze vždy na pár kliknutí, bez nutnosti dopředu zaškolovat vedoucí pracovníky.
+										</p>
+									</div>
+								</div>
+
+								<div class="p-form__img grid__cell size--6-12">
+									<img src="{{ assets.images }}illust/people/lucie.png" alt="Lucie Dudová" width="350" height="350">
+									{% include '@components/core/objects/tag.twig' with {
+										props: {
+											logo: 'pilulka.svg',
+											logoName: 'Pilulka',
+											name: 'Lucie Dudová',
+											job: 'HR Partner'
+										}
+									} %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

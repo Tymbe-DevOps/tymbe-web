@@ -1,5 +1,6 @@
 import { Controller } from 'stimulus';
 import EmblaCarousel from 'embla-carousel';
+import { readSlideHeights, adaptContainerToSlide } from './carousel/adaptiveHeight';
 import { disablePrevNextBtns } from './carousel/prevAndNextButtons';
 import { setupDotBtns, generateDotBtns, selectDotBtn } from './carousel/dotButtons';
 
@@ -7,11 +8,15 @@ export default class Embla extends Controller {
 	static targets = ['viewport', 'prevButton', 'nextButton', 'dots'];
 
 	carousel = null;
+	slideHeights = [];
 
 	connect() {
 		const optionsDefault = { loop: false, align: 'start', containScroll: 'trimSnaps' };
 
 		this.carousel = EmblaCarousel(this.viewportTarget, optionsDefault);
+
+		const storeSlideHeights = () => (this.slideHeights = readSlideHeights(this.carousel));
+		const setContainerHeight = () => adaptContainerToSlide(this.carousel, this.slideHeights);
 
 		const toggleEmblaReady = (event) => {
 			const isResizeEvent = event === 'resize';
@@ -26,8 +31,15 @@ export default class Embla extends Controller {
 			this.carousel.on('select', disablePrevAndNextBtns);
 			this.carousel.on('init', disablePrevAndNextBtns);
 			this.carousel.on('init', toggleEmblaReady);
+			this.carousel.on('init', storeSlideHeights);
+			this.carousel.on('init', setContainerHeight);
 			this.carousel.on('resize', toggleEmblaReady);
+			this.carousel.on('resize', storeSlideHeights);
+			this.carousel.on('resize', setContainerHeight);
 			this.carousel.on('reInit', toggleEmblaReady);
+			this.carousel.on('reInit', storeSlideHeights);
+			this.carousel.on('reInit', setContainerHeight);
+			this.carousel.on('select', setContainerHeight);
 		}
 
 		if (this.hasDotsTarget) {

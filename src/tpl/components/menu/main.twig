@@ -15,7 +15,7 @@
 	<div class="m-main__content" data-SiteNav-target="menu">
 		<ul class="m-main__list">
 			{% for item in props.items %}
-				<li class="m-main__item{% if item.isActive is defined %} is-active{% endif %}">
+				<li class="m-main__item{% if item.isActive|default(false) %} is-active{% endif %}">
 					<a href="{{ item.link|default('#') }}" class="m-main__link">
 						{% include '@components/core/icon-svg/icon-svg.twig' with {
 							props: {

@@ -1,0 +1,129 @@
+{% extends '@layout/layout.twig' %}
+{% set pageTitle = 'Provizorní formulář - 1. krok' %}
+
+{% block content %}
+
+	<main id="main" class="main">
+		<div class="p-form p-form--b2b u-pt-12">
+			<div class="row-main">
+				<div class="p-form__content">
+					<h1 class="u-vhide">
+						Registrace
+					</h1>
+					<div class="grid grid--x-5">
+						<div class="grid__cell size--6-12@md size--5-12@lg">
+							{% include '@components/form/registration.twig' with {
+								props: {
+									classes: ['b-white'],
+									controller: 'Registration',
+									title: 'Staň se Tymberem',
+									apiUrl: 'https://api.tymbe.com/registration',
+									nextStep: './registrace-krok-2.html',
+									steps: {
+										classes: ['u-mt-3 u-mb-3'],
+										items: [
+											{
+												isActive: true,
+												text: 'První krok'
+											},
+											{
+												text: 'Druhý krok'
+											},
+											{
+												text: 'Třetí krok'
+											},
+										]
+									},
+									btnNext: 'Další',
+									text: 'Už máš u nás účet? <a href="#">Přihlas se.</a>',
+									inpGroupsName: 'user',
+									inpGroups: [
+										{
+											inputs: [
+												{
+													label: 'Jméno',
+													name: 'sureName',
+													required: true,
+													type: 'text'
+												},
+												{
+													label: 'Příjmení',
+													name: 'familyName',
+													required: true,
+													type: 'text'
+												},
+												{
+													label: 'Místo narození',
+													name: 'birthPlace',
+													required: true,
+													type: 'text'
+												},
+												{
+													label: 'Číslo občanského průkazu',
+													name: 'idNumber',
+													required: true,
+													type: 'number'
+												},
+												{
+													label: 'Datum narození',
+													name: 'birthDate',
+													required: true,
+													type: 'date'
+												},
+												{
+													label: 'Rodné číslo',
+													name: 'birthNumber',
+													required: true,
+													type: 'number',
+													tooltipText: 'Zadávejte rodné číslo bez lomítka'
+												},
+											],
+										}
+									],
+									radiosTitle: 'Pohlaví',
+									radios: [
+										{
+											label: 'Muž',
+											name: 'gender',
+											value: '1',
+											required: true
+										},
+										{
+											label: 'Žena',
+											name: 'gender',
+											value: '2'
+										},
+									]
+								}
+							}%}
+						</div>
+						<div class="grid__cell size--6-12@md size--7-12@lg">
+							<div class="grid grid--x-2 grid--bottom">
+								<div class="grid__cell size--6-12@lg">
+									<div class="u-mt-2">
+										<h3 class="u-mb-3">
+											Proč od tebe potřebujeme tyto údaje? Ze dvou důvodů:
+										</h3>
+										<ol class="list-horizontal">
+											<li>
+												Ověříme si, že to jsi opravdu ty a že jsi skutečně dosáhl minimálního věku pro nástup na brigádu.
+											</li>
+											<li>
+												Bez těchto údajů nemůžeš dělat žádné pracovněprávní kroky, třeba sepsat Dohodu o provedení práce. Neměj obavy. Tymbe tvé osobní údaje nezneužije, ale naopak je využije ve tvůj prospěch.
+											</li>
+										</ol>
+									</div>
+								</div>
+
+								<div class="p-form__img grid__cell size--6-12">
+									<img src="{{ assets.images }}illust/hand-dot.png" alt="" width="385" height="635">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

@@ -25,6 +25,7 @@
 			display: flex;
 			/* stylelint-disable-next-line declaration-no-important */
 			transform: none !important; /* override Embla */
+			transition: height $t;
 		}
 
 		.embla__slide {

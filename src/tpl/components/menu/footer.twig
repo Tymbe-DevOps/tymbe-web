@@ -23,7 +23,7 @@
 		<div class="m-footer__content">
 			<ul class="m-footer__list">
 				{% for item in props.items %}
-					<li class="m-footer__item{% if item.isActive is defined %} is-active{% endif %}">
+					<li class="m-footer__item{% if item.isActive|default(false) %} is-active{% endif %}">
 						<a href="{{ item.link|default('#') }}" class="m-footer__link">
 							{% include '@components/core/icon-svg/icon-svg.twig' with {
 								props: {
