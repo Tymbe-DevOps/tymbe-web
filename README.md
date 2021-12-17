@@ -13,6 +13,9 @@ The things you need to install (minimal versions). Ideal is using something like
 ```
 node 12.6.0
 npm	6.9.0
+
+recommend node version is up to version 14.x.x
+OS window - need to install Build Tools for Visual Studio 2017/2019
 ```
 
 ### Installing
@@ -31,8 +34,12 @@ Command `$ npm start` will install or update all dependencies and starts a virtu
 
 ### Other Commands
 ```
+# command for build non production verion of templates
+$ npm run dev
+
 # command for build production verion of templates
 $ npm run build
+this command build all templates except /pages folder
 
 # command for build compressed templetes with compress to zip file
 $ npm run export
