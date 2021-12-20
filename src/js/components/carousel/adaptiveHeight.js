@@ -1,7 +1,7 @@
 export const readSlideHeights = (embla) =>
 	embla.slideNodes().map((slideNode) => {
-		const slideInner = slideNode.querySelector('*');
-		return slideInner.getBoundingClientRect().height;
+		//const slideInner = slideNode.querySelector('*');
+		return slideNode.getBoundingClientRect().height;
 	});
 
 export const adaptContainerToSlide = (embla, slideHeights) => {
