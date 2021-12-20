@@ -1,7 +1,7 @@
 const basePath = {
 	src: 'src/',
 	dest: 'dist/',
-	assets: '../',
+	assets: './',
 };
 
 const src = {

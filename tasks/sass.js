@@ -9,6 +9,13 @@ const globImporter = require('node-sass-glob-importer');
 
 const isProduction = require('./helpers/isProduction.js');
 const config = require('./helpers/getConfig.js');
+const path = require('path');
+
+const paths = Object.fromEntries(
+	Object.entries(config.assets)
+		.map(([key, relPath]) => [key, path.relative(config.basePath.dest, relPath)])
+		.map(([key, relPath]) => [key, `${relPath.split('\\').join('/')}/`]),
+);
 
 module.exports = function sass(done) {
 	const { breakpoints = {}, rules = {}, breakpointsVars = {} } = config.mediaQueries;
@@ -46,7 +53,7 @@ module.exports = function sass(done) {
 					...rules,
 					breakpoints,
 					breakpointsVars,
-					paths: config.assets,
+					paths,
 				},
 				{ verbose: false },
 			),
