@@ -38,6 +38,7 @@
 	}
 	&__opening-hours {
 		margin-left: auto;
+		color: $colorLink;
 		font-size: 14px;
 	}
 	&__title {
@@ -46,6 +47,7 @@
 		font-size: 16px;
 	}
 	&__location {
+		color: $colorLink;
 		font-size: 14px;
 		text-decoration: none;
 	}
@@ -104,9 +106,10 @@
 	.hoverevents &__opening-hours:hover {
 		text-decoration: none;
 	}
-	.hoverevents &__location:hover {
-		text-decoration: underline;
-	}
+
+	// .hoverevents &__location:hover {
+	// 	text-decoration: underline;
+	// }
 
 	// STATEs
 	&:not(.loaded) &__title,

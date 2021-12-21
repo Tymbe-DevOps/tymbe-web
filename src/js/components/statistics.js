@@ -1,5 +1,7 @@
 import { Controller } from 'stimulus';
 
+const HIDE = 'u-hide';
+
 export default class Statistics extends Controller {
 	static targets = ['number'];
 	static values = {
@@ -28,8 +30,10 @@ export default class Statistics extends Controller {
 				this.numberTargets.forEach((element) => {
 					element.classList.add('loaded');
 				});
+				this.element.classList.remove(HIDE);
 			})
 			.catch((error) => {
+				this.element.classList.add(HIDE);
 				console.error('Request Failed', error);
 			});
 	}

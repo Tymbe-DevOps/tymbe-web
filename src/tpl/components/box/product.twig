@@ -9,6 +9,7 @@
 	tooltipTitle: props.tooltipTitle | default,
 	tooltipText: props.tooltipText | default,
 	btnText: props.btnText | default,
+	btnLink: props.btnLink | default,
 	classes: props.classes | default([]),
 } %}
 
@@ -23,7 +24,7 @@
 				<img src="{{ assets.images }}illust/logos/{{ props.logo }}" alt="{{ props.logoAlt }}" height="16">
 			</span>
 		{% endif %}
-		<a href="{{ props.openingHoursLink|default('#') }}" class="b-product__opening-hours item-icon item-icon--md">
+		<span class="b-product__opening-hours item-icon item-icon--md">
 			{% include '@components/core/icon-svg/icon-svg.twig' with {
 				props: {
 					classes: ['item-icon__icon'],
@@ -31,13 +32,13 @@
 				}
 			} %}
 			Dnes od <span data-rings-target="time">{{ props.openingHours }}</span>
-		</a>
+		</span>
 	</p>
 	<h3 class="b-product__title" data-rings-target="position">
 		{{ props.title }}
 	</h3>
 	<p>
-		<a href="{{ props.locationLink|default('#') }}" class="b-product__location item-icon item-icon--md">
+		<span class="b-product__location item-icon item-icon--md">
 			{% include '@components/core/icon-svg/icon-svg.twig' with {
 				props: {
 					classes: ['item-icon__icon'],
@@ -45,7 +46,7 @@
 				}
 			} %}
 			<span data-rings-target="place">{{ props.location }}</span>
-		</a>
+		</span>
 	</p>
 	<p class="b-product__payment">
 		<span class="b-product__payment-full">

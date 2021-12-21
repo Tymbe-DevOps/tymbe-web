@@ -3,6 +3,7 @@
 	heading: props.heading | default,
 	items: props.items | default([]),
 	btn: props.btn | default,
+	btnLink: props.btnLink | default('#'),
 	gridSize: props.gridSize | default,
 	classes: props.classes | default([])
 } %}
@@ -48,7 +49,7 @@
 
 	{% if props.btn %}
 		<p class="u-mt-3 u-mb-0 u-text-center">
-			<a href="{{ props.btnLink|default('#') }}" class="btn">
+			<a href="{{ props.btnLink }}" class="btn">
 				<span class="btn__text">
 					{{ props.btn }}
 				</span>
