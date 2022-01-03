@@ -2,6 +2,9 @@
 	&__list {
 		margin: 0 0 -20px -20px;
 	}
+	&__viewport {
+		overflow: hidden;
+	}
 	&__item {
 		border-width: 0 0 20px 20px;
 		text-align: left;

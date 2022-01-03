@@ -9,25 +9,29 @@
 	'c-customers',
 ] | merge(props.classes) | filter(i => i) | join(' ') %}
 
-<section class="{{ classes }}">
+<section class="{{ classes }}" data-controller="Embla">
 	{% include '@components/core/objects/heading.twig' with {
 		props: props.heading
 	} %}
-	<ul class="c-customers__list grid">
-		{% for item in props.items %}
-			{% set item = {
-				img: item.img | default,
-				name: item.name | default,
-				width: item.width | default,
-				height: item.height | default,
-			} %}
-			<li class="c-customers__item grid__cell size--6-12 size--3-12@md">
-				<p class="c-customers__img">
-					<img src="{{ assets.images }}illust/logos/{{ item.img }}" alt="{{ item.name }}" width="{{ item.width }}" height="{{ item.height }}">
-				</p>
-			</li>
-		{% endfor %}
-	</ul>
+	<div class="embla__viewport c-customers__viewport" data-embla-target="viewport">
+		<ul class="c-customers__list grid embla__container grid--nowrap">
+			{% for item in props.items %}
+				{% set item = {
+					img: item.img | default,
+					name: item.name | default,
+					width: item.width | default,
+					height: item.height | default,
+				} %}
+				<li class="c-customers__item grid__cell size--6-12 size--3-12@md embla__slide">
+					<p class="c-customers__img">
+						<img src="{{ assets.images }}illust/logos/{{ item.img }}" alt="{{ item.name }}" width="{{ item.width }}" height="{{ item.height }}">
+					</p>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<!-- Dots -->
+	<div class="embla__dots" data-embla-target="dots"></div>
 
 	{% if props.btn %}
 		<p class="u-mt-6 u-mb-0 u-text-center">
