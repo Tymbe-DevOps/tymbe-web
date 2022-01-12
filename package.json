@@ -69,7 +69,8 @@
     "smoothscroll-polyfill": "0.4.4",
     "stimulus": "3.0.1",
     "stimulus-use": "0.41.0",
-    "svg4everybody": "^2.1.9"
+    "svg4everybody": "^2.1.9",
+    "yup": "0.32.11"
   },
   "scripts": {
     "preversion": "npm run build",

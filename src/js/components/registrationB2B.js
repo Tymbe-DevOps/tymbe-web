@@ -1,4 +1,5 @@
 import { Controller } from 'stimulus';
+import { object, string, number, setLocale } from 'yup';
 
 // constants
 const HASERROR = 'has-error';
@@ -7,12 +8,61 @@ const INPFIX = '.inp-fix';
 const TOOLTIP = '.tooltip:not([data-registrationb2b-target="tooltip"])';
 const HIDE = 'u-hide';
 
+// Validation schema
+let registrationSchema = object({
+	companyName: string().required('Vyplňte prosím název firmy'),
+	ic: number()
+		.required('Tato položka je povinná')
+		.typeError('Položka musí být číslo')
+		.positive()
+		.integer('Prosím zadejte číslo'),
+	sureName: string().required('Vyplňte prosím jméno'),
+	familyName: string().required('Vyplňte prosím příjmení'),
+	email: string()
+		.required('Vyplňte prosím e-mail')
+		.typeError('E-mail není ve správném formátu')
+		.email('E-mail není ve správném formátu'),
+	phone: string()
+		.required('Vyplňte prosím telefonní číslo')
+		.typeError('Políčko není v požadovaném formátu')
+		.matches(
+			/^\+(420|421)[ ]{0,1}[0-9]{3}[ ]{0,1}[0-9]{3}[ ]{0,1}[0-9]{3}$/,
+			'Zadejte telefonní číslo v požadovaném formátu +420123456789',
+		),
+	reCaptcha: string()
+		.nullable()
+		.required('Potvrďte prosím, že nejste robot.'),
+});
+
+// set locale fro reqired input
+setLocale({
+	mixed: {
+		required: 'Políčko je povinné',
+	},
+});
+
 export default class RegistrationB2C extends Controller {
 	// stimulus variables
-	static targets = ['message', 'success', 'tooltip'];
+	static targets = ['message', 'success', 'tooltip', 'errorTooltip'];
 	static values = {
 		url: String,
 	};
+
+	// tooltip template
+	tooltipTemplate(message) {
+		return `
+		<button type="button" class="tooltip" data-registrationb2b-target="errorTooltip">
+			<span class="icon-svg icon-svg--info" aria-hidden="true">
+				<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<use xlink:href="../img/bg/icons-svg.svg#icon-info" width="100%" height="100%" focusable="false"></use>
+				</svg>
+			</span>
+			<span class="u-vhide"> Info </span>
+			<span class="tooltip__content">
+				<span class="tooltip__text">${message}</span>
+			</span>
+		</button>`;
+	}
 
 	// set formdata to object
 	paramsToObject(entries) {
@@ -24,18 +74,7 @@ export default class RegistrationB2C extends Controller {
 					enumerable: true,
 				});
 			}
-			if (key === 'birthDate') {
-				const date = new Date(value);
-				const options = {
-					day: '2-digit',
-					month: '2-digit',
-					year: 'numeric',
-				};
-				// have to format by using de-EN because cs-CZ have spacing
-				result[key] = new Intl.DateTimeFormat('de-EN', options).format(date);
-			} else {
-				result[key] = value;
-			}
+			result[key] = value;
 		}
 		return result;
 	}
@@ -47,20 +86,29 @@ export default class RegistrationB2C extends Controller {
 		hasError.forEach((element) => {
 			element.classList.remove(HASERROR);
 		});
-		this.tooltipTargets.forEach((tooltip) => {
-			tooltip.classList.add(HIDE);
+		this.errorTooltipTargets.forEach((tooltip) => {
+			tooltip.remove();
 		});
 
-		if (!this.element.checkValidity()) {
-			for (const element of this.element.querySelectorAll('[required]')) {
-				const wrapper = element.closest(REGISTRATION_INP);
+		const form = this.element;
+		let data = new FormData(form);
+		data = this.paramsToObject(new URLSearchParams(data));
 
-				if ((!element.value && !element.validity.valid) || element.validity.typeMismatch || element.validity.patternMismatch) {
-					wrapper.classList.add(HASERROR);
+		registrationSchema.validate(data, { abortEarly: false }).catch((err) => {
+			for (const error of err.inner) {
+				const element = this.element.querySelector(`#${error.path}`);
+				const wrapper = element.closest(REGISTRATION_INP);
+				const inpfix = wrapper.querySelector(INPFIX);
+
+				wrapper.classList.add(HASERROR);
+				if (!inpfix) {
+					this.messageTarget.innerHTML = error.message;
+					this.messageTarget.classList.remove(HIDE);
+				} else {
+					inpfix.insertAdjacentHTML('beforeend', this.tooltipTemplate(error.message));
 				}
 			}
-			return;
-		}
+		});
 	}
 
 	// send method
@@ -77,18 +125,6 @@ export default class RegistrationB2C extends Controller {
 			// check form validity
 			if (response.status === 400) {
 				response.data.inner.forEach((error) => {
-					const tooltipTemplate = `
-						<button type="button" class="tooltip" data-registrationb2b-target="tooltip">
-							<span class="icon-svg icon-svg--info" aria-hidden="true">
-								<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-									<use xlink:href="../img/bg/icons-svg.svg#icon-info" width="100%" height="100%" focusable="false"></use>
-								</svg>
-							</span>
-							<span class="u-vhide"> Info </span>
-							<span class="tooltip__content">
-								<span class="tooltip__text">${error.message}</span>
-							</span>
-						</button>`;
 					const element = this.element.querySelector(`[name=${error.path}]`);
 
 					if (error.type === 'recaptcha-fail') {
@@ -107,7 +143,7 @@ export default class RegistrationB2C extends Controller {
 								text.innerHTML = error.message;
 								tooltip.classList.remove(HIDE);
 							} else if (inpfix !== null) {
-								inpfix.insertAdjacentHTML('beforeend', tooltipTemplate);
+								inpfix.insertAdjacentHTML('beforeend', this.tooltipTemplate(error.message));
 							}
 						}
 					}
