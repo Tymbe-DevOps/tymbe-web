@@ -14,7 +14,7 @@
 		<ul class="m-socials__list">
 			{% for item in props.items %}
 				<li class="m-socials__item">
-					<a href="{{ item.link|default('#') }}" class="m-socials__link">
+					<a href="{{ item.link|default('#') }}" class="m-socials__link" target="_blank">
 						{% include '@components/core/icon-svg/icon-svg.twig' with {
 							props: {
 								name: item.icon

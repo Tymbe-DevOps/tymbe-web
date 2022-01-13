@@ -8,4 +8,8 @@
 	&::-ms-expand {
 		display: none;
 	}
+
+	& + .tooltip {
+		right: 29px;
+	}
 }

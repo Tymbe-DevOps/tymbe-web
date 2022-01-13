@@ -23,10 +23,10 @@
 									{% include '@components/core/icon-svg/icon-svg.twig' with {
 										props: {
 											classes: ['item-icon__icon'],
-											name: 'building'
+											name: 'work'
 										}
 									} %}
-									Pro firmy
+									Pro brigádníky
 								</span>
 							</a>
 						</li>
@@ -36,47 +36,15 @@
 									{% include '@components/core/icon-svg/icon-svg.twig' with {
 										props: {
 											classes: ['item-icon__icon'],
-											name: 'work'
+											name: 'building'
 										}
 									} %}
-									Pro brigádníky
+									Pro firmy
 								</span>
 							</a>
 						</li>
 					</ul>
 					<div id="first" class="b-tabs__fragment is-active" data-Tabs-target="content">
-						<h2 class="u-js-hide">
-							Pro firmy
-						</h2>
-						{% include '@components/core/objects/accordion.twig' with {
-							props: {
-								classes: ['u-mb-20 u-mb-30@md'],
-								items: [
-									{
-										title: 'Co je Tymbe?',
-										content: 'Tymbe a.s. je rychle rostoucí tým nadšených Evropanů s chutí měnit zarezlé procesy v oblasti, které se ošklivě říká „lidské zdroje“, a přitom jde o většinu života většiny nás. Tymbe je tu od toho, aby se všechno kolem práce zjednodušilo, zrychlilo a zlevnilo na úrovni firem i jednotlivců.'
-									},
-									{
-										title: 'Jaké výhody má Tymbe pro firmy?',
-										content: 'Všechno, co Tymbe dělá, je postavené pro online management. Nechceme ti práci přidělávat, ale ušetřit. Naše služby fungují po celém Česku i v zahraničí a chytré nástroje Tymbe vyřeší spoustu otravné administrativy místo tebe. A co ti šetří čas, to ti šetří i peníze.'
-									},
-									{
-										title: 'Proč najímat lidi přes Ty–brigády?',
-										content: 'Ty–brigády jsou jediná online platforma na trhu, která tě zbaví starostí a doručí ti kvalitní brigádníky třeba už zítra. Je to chytrá služba, která znamená definitivní konec papírování, šetří častvých lidí, nasbírá ti hromadu užitečných dat a brigádníkům vyplácí hodinovku, která je pro tebe vždy výhodná.Ty–brigády navíc jedou 24 hodin denně, 7 dní v týdnu a po celé ČR.'
-									},
-									{
-										title: 'Umí Tymbe postavit službu na míru?',
-										content: 'Na to se u nás specializujeme. Tvoje lidi dokážeme online proškolit, v čem si vzpomeneš, a zařídíme pro ně i pracovní pomůcky, když na to přijde. Pojď to s námi probrat a určitě to vymyslíme. Volej +420 602 200 114 nebo piš na firma@tymbe.com a my se do 24 hodin ozveme.'
-									},
-									{
-										title: 'Všechno online je super, ale co když chci jednat s lidmi?',
-										content: 'Nejsme žádní IT roboti. I my se rádi potkáváme a řešíme zakázky a kontrakty osobně. Máme tým zkušené zákaznické podpory, který s tebou nastaví všechno přesně podle potřeb vaší firmy. Tymbe je tu pro lidi, ne pro automaty :)'
-									}
-								]
-							}
-						} %}
-					</div>
-					<div id="second" class="b-tabs__fragment" data-Tabs-target="content">
 						<h2 class="u-js-hide">
 							Pro brigádníky
 						</h2>
@@ -123,6 +91,38 @@
 									{
 										title: 'Pomóc! Něco mi nefunguje, co mám dělat?',
 										content: 'Od toho tu jsme. Poradíme, vyřešíme. Piš na e-mail trener@tymbe.cz nebo na FB Messenger @tymbecz. Jsme tu pro tebe od pondělí do neděle a od 8.00 do 18.00, takže vlastně furt ;)'
+									}
+								]
+							}
+						} %}
+					</div>
+					<div id="second" class="b-tabs__fragment" data-Tabs-target="content">
+						<h2 class="u-js-hide">
+							Pro firmy
+						</h2>
+						{% include '@components/core/objects/accordion.twig' with {
+							props: {
+								classes: ['u-mb-20 u-mb-30@md'],
+								items: [
+									{
+										title: 'Co je Tymbe?',
+										content: 'Tymbe a.s. je rychle rostoucí tým nadšených Evropanů s chutí měnit zarezlé procesy v oblasti, které se ošklivě říká „lidské zdroje“, a přitom jde o většinu života většiny nás. Tymbe je tu od toho, aby se všechno kolem práce zjednodušilo, zrychlilo a zlevnilo na úrovni firem i jednotlivců.'
+									},
+									{
+										title: 'Jaké výhody má Tymbe pro firmy?',
+										content: 'Všechno, co Tymbe dělá, je postavené pro online management. Nechceme ti práci přidělávat, ale ušetřit. Naše služby fungují po celém Česku i v zahraničí a chytré nástroje Tymbe vyřeší spoustu otravné administrativy místo tebe. A co ti šetří čas, to ti šetří i peníze.'
+									},
+									{
+										title: 'Proč najímat lidi přes Ty–brigády?',
+										content: 'Ty–brigády jsou jediná online platforma na trhu, která tě zbaví starostí a doručí ti kvalitní brigádníky třeba už zítra. Je to chytrá služba, která znamená definitivní konec papírování, šetří častvých lidí, nasbírá ti hromadu užitečných dat a brigádníkům vyplácí hodinovku, která je pro tebe vždy výhodná.Ty–brigády navíc jedou 24 hodin denně, 7 dní v týdnu a po celé ČR.'
+									},
+									{
+										title: 'Umí Tymbe postavit službu na míru?',
+										content: 'Na to se u nás specializujeme. Tvoje lidi dokážeme online proškolit, v čem si vzpomeneš, a zařídíme pro ně i pracovní pomůcky, když na to přijde. Pojď to s námi probrat a určitě to vymyslíme. Volej +420 602 200 114 nebo piš na firma@tymbe.com a my se do 24 hodin ozveme.'
+									},
+									{
+										title: 'Všechno online je super, ale co když chci jednat s lidmi?',
+										content: 'Nejsme žádní IT roboti. I my se rádi potkáváme a řešíme zakázky a kontrakty osobně. Máme tým zkušené zákaznické podpory, který s tebou nastaví všechno přesně podle potřeb vaší firmy. Tymbe je tu pro lidi, ne pro automaty :)'
 									}
 								]
 							}
