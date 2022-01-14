@@ -37,7 +37,7 @@
 									},
 									btnBack: 'Zpět',
 									btnNext: 'Další',
-									text: 'Už máš u nás účet? <a href="#">Přihlas se.</a>',
+									text: 'Už máš u nás účet? <a href="https://tymbe.com/tymber/login">Přihlas se.</a>',
 									inpGroupsName: 'contact',
 									inpGroups: [
 										{
@@ -48,7 +48,7 @@
 											options: [
 												{
 													value: '',
-													disable: true,
+													disabled: true,
 													title: 'Stát - trvalé bydliště'
 												},
 												{
@@ -85,10 +85,11 @@
 											inpTitle: 'Kontaktní adresa',
 											selectLabel: 'Stát - kontaktní adresa',
 											selectName: 'contactAddress.country',
+											disabled: true,
 											options: [
 												{
 													value: '',
-													disable: true,
+													disabled: true,
 													title: 'Stát - kontaktní adresa'
 												},
 												{
@@ -104,16 +105,19 @@
 												{
 													label: 'Ulice',
 													name: 'contactAddress.street',
+													disabled: true,
 													type: 'text'
 												},
 												{
 													label: 'Město',
 													name: 'contactAddress.city',
+													disabled: true,
 													type: 'text'
 												},
 												{
 													label: 'PSČ',
 													name: 'contactAddress.zip',
+													disabled: true,
 													type: 'text'
 												}
 											],

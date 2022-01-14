@@ -41,22 +41,26 @@ export default class Registration extends Controller {
 				.matches(/^[0-9]{3}[ ]?[0-9]{2}$/, 'Chybný formát PSČ.'),
 			country: string().required('Zvolte prosím stát.'),
 		}),
-		contactAddress: object()
-			.shape({
-				street: string(),
-				city: string(),
-				zip: string(),
-				country: string(),
-			})
-			.when('permanentAddress', ({ country }, contactAddress) =>
-				country === 'sk' ? contactAddress.required('Políčko je povinné.') : contactAddress,
-			)
-			.test('has-contact-address', 'Zadejte kontaktní adresu v ČR', function(value) {
-				return !(this.parent.permanentAddress.country === 'sk' && value.country !== 'cz');
-			}),
+		contactAddress: object({
+			street: string().optional(),
+			city: string().optional(),
+			zip: string()
+				.optional()
+				.matches(/^[0-9]{3}[ ]?[0-9]{2}$/, 'Chybný formát PSČ.'),
+			country: string().optional(),
+		}),
+		// .when('permanentAddress', ({ country }, contactAddress) =>
+		// 	country === 'sk' ? contactAddress.required() : contactAddress.notRequired(),
+		// )
+		// .test('has-contact-address', 'Zadejte kontaktní adresu v ČR', function(value) {
+		// 	return !(this.parent.permanentAddress.country === 'sk' && value.country !== 'cz');
+		// }),
 		phone: string()
 			.required('Vyplňte prosím telefonní číslo.')
-			.matches(/^\+(420|421)[ ]{0,1}[0-9]{3}[ ]{0,1}[0-9]{3}[ ]{0,1}[0-9]{3}$/, 'Zadejte telefonní číslo v požadovaném formátu.'),
+			.matches(
+				/^\+(420|421)[ ]{0,1}[0-9]{3}[ ]{0,1}[0-9]{3}[ ]{0,1}[0-9]{3}$/,
+				'Zadejte telefonní číslo v požadovaném formátu: +420123456789',
+			),
 	});
 
 	loginInfo = object({
@@ -236,6 +240,22 @@ export default class Registration extends Controller {
 		} else if (this.typeValue === 'login') {
 			this.loginInfo.validate(data, { abortEarly: false }).catch((err) => {
 				this.setError(err);
+			});
+		}
+	}
+
+	addressValidate(event) {
+		const isSK = event.target.value === 'sk';
+		const elements = this.context.element.querySelectorAll('[name*="contactAddress"]');
+
+		if (elements.length > 0) {
+			elements.forEach((element) => {
+				if (isSK) {
+					element.removeAttribute('disabled');
+				} else {
+					element.setAttribute('disabled', 'disabled');
+					element.value = '';
+				}
 			});
 		}
 	}

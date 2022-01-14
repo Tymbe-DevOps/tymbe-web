@@ -54,19 +54,22 @@
 			{% set select = {
 				selectName: inpGroup.selectName | default,
 				selectLabel: inpGroup.selectLabel | default,
+				disabled: inpGroup.disabled | default,
+				dataTarget: inpGroup.dataTarget | default,
 			} %}
 			<p class="f-registration__inp inp has-focus" data-controller="FocusInput">
 				<label for="select" class="inp-label">
 					{{ select.selectLabel }}
 				</label>
 				<span class="inp-fix">
-					<select name="{{ select.selectName }}" id="{{ select.selectName }}" {% if inpGroup.disable|default(false) %}disable{% endif %} {% if inpGroup.selectRequired|default(false) %}required{% endif %} class="inp-select">
+					<select name="{{ select.selectName }}" id="{{ select.selectName }}" {% if select.disabled|default(false) %}disabled{% endif %} {% if inpGroup.selectRequired|default(false) %}required{% endif %} class="inp-select" data-action="change->Registration#addressValidate">
 						{% for option in inpGroup.options %}
 							{% set option = {
 								value: option.value | default,
-								title: option.title | default
+								title: option.title | default,
+								disabled: option.disabled | default,
 							} %}
-							<option value="{{ option.value }}">
+							<option value="{{ option.value }}" {% if option.disabled|default(false) %}disabled{% endif %}>
 								{{ option.title }}
 							</option>
 						{% endfor %}
@@ -81,6 +84,7 @@
 				name: input.name | default,
 				type: input.type | default,
 				required: input.required | default,
+				disabled: input.disabled | default,
 				pattern: input.pattern | default,
 				tooltipText: input.tooltipText | default,
 				tooltipTitle: input.tooltipTitle | default
@@ -90,7 +94,7 @@
 					{{ input.label }}
 				</label>
 				<span class="inp-fix">
-					<input type="{{ input.type }}" value="" name="{{ input.name }}" id="{{ input.name }}" placeholder="{{ input.label }}" {% if input.required|default(false) %}required{% endif %} {% if input.pattern|default(false) %}pattern="{{ input.pattern }}"{% endif %} class="inp-text" data-action="focus->FocusInput#focus blur->FocusInput#blur">
+					<input type="{{ input.type }}" value="" name="{{ input.name }}" id="{{ input.name }}" placeholder="{{ input.label }}" {% if input.required|default(false) %}required{% endif %} {% if input.pattern|default(false) %}pattern="{{ input.pattern }}"{% endif %}  {% if input.disabled|default(false) %}disabled{% endif %} class="inp-text" data-action="focus->FocusInput#focus blur->FocusInput#blur">
 					{% if input.tooltipText|default(false) or input.tooltipTitle|default(false) %}
 						<button type="button" class="tooltip">
 							<span class="icon-svg icon-svg--info" aria-hidden="true">
