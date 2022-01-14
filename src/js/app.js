@@ -14,6 +14,7 @@ import Statistics from './components/Statistics';
 import Rings from './components/Rings';
 import Registration from './components/registration';
 import RegistrationB2B from './components/registrationB2B';
+import Contact from './components/contact';
 
 const components = {
 	FocusInput,
@@ -26,6 +27,7 @@ const components = {
 	Rings,
 	Registration,
 	RegistrationB2B,
+	Contact,
 };
 
 window.App = {
