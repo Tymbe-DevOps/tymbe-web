@@ -31,7 +31,7 @@
 			<ul class="m-main__list m-main__list--buttons">
 				{% for button in props.buttons %}
 					<li class="m-main__item">
-						<a href="{{ button.link|default('#') }}" class="m-main__btn btn{% if button.type is defined %} btn--{{ button.type }}{% endif %}">
+						<a href="{{ button.link|default('#') }}"{% if button.targetBlank|default(false) %} target="_blank"{% endif %} class="m-main__btn btn{% if button.type is defined %} btn--{{ button.type }}{% endif %}">
 							<span class="btn__text">
 								{{ button.name }}
 							</span>

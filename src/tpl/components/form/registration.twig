@@ -36,7 +36,7 @@
 	<h2 class="f-registration__title">
 		{{ props.title }}
 	</h2>
-	<p class="message message--ok u-hide" data-{{ props.controller|lower }}-target="success"><p>
+	<p class="message message--ok u-hide" data-{{ props.controller|lower }}-target="success">{{ props.success }}<p>
 	<p class="message message--error u-hide" data-{{ props.controller|lower }}-target="message"><p>
 	{% if props.steps | length > 0 %}
 		{% include '@components/core/objects/steps.twig' with {
