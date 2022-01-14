@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus';
-import { object, string, number, setLocale } from 'yup';
+import { object, string, number } from 'yup';
 
 // constants
 const HASERROR = 'has-error';
@@ -8,45 +8,38 @@ const INPFIX = '.inp-fix';
 const TOOLTIP = '.tooltip:not([data-registrationb2b-target="tooltip"])';
 const HIDE = 'u-hide';
 
-// Validation schema
-let registrationSchema = object({
-	companyName: string().required('Vyplňte prosím název firmy'),
-	ic: number()
-		.required('Tato položka je povinná')
-		.typeError('Položka musí být číslo')
-		.positive()
-		.integer('Prosím zadejte číslo'),
-	sureName: string().required('Vyplňte prosím jméno'),
-	familyName: string().required('Vyplňte prosím příjmení'),
-	email: string()
-		.required('Vyplňte prosím e-mail')
-		.typeError('E-mail není ve správném formátu')
-		.email('E-mail není ve správném formátu'),
-	phone: string()
-		.required('Vyplňte prosím telefonní číslo')
-		.typeError('Políčko není v požadovaném formátu')
-		.matches(
-			/^\+(420|421)[ ]{0,1}[0-9]{3}[ ]{0,1}[0-9]{3}[ ]{0,1}[0-9]{3}$/,
-			'Zadejte telefonní číslo v požadovaném formátu +420123456789',
-		),
-	reCaptcha: string()
-		.nullable()
-		.required('Potvrďte prosím, že nejste robot.'),
-});
-
-// set locale fro reqired input
-setLocale({
-	mixed: {
-		required: 'Políčko je povinné',
-	},
-});
-
 export default class RegistrationB2C extends Controller {
 	// stimulus variables
 	static targets = ['message', 'success', 'tooltip', 'errorTooltip'];
 	static values = {
 		url: String,
 	};
+
+	// Validation schema
+	registrationSchema = object({
+		companyName: string().required('Vyplňte prosím název firmy'),
+		ic: number()
+			.required('Tato položka je povinná')
+			.typeError('Položka musí být číslo')
+			.positive()
+			.integer('Prosím zadejte číslo'),
+		sureName: string().required('Vyplňte prosím jméno'),
+		familyName: string().required('Vyplňte prosím příjmení'),
+		email: string()
+			.required('Vyplňte prosím e-mail')
+			.typeError('E-mail není ve správném formátu')
+			.email('E-mail není ve správném formátu'),
+		phone: string()
+			.required('Vyplňte prosím telefonní číslo')
+			.typeError('Políčko není v požadovaném formátu')
+			.matches(
+				/^\+(420|421)[ ]{0,1}[0-9]{3}[ ]{0,1}[0-9]{3}[ ]{0,1}[0-9]{3}$/,
+				'Zadejte telefonní číslo v požadovaném formátu +420123456789',
+			),
+		reCaptcha: string()
+			.nullable()
+			.required('Potvrďte prosím, že nejste robot.'),
+	});
 
 	// tooltip template
 	tooltipTemplate(message) {
@@ -94,7 +87,7 @@ export default class RegistrationB2C extends Controller {
 		let data = new FormData(form);
 		data = this.paramsToObject(new URLSearchParams(data));
 
-		registrationSchema.validate(data, { abortEarly: false }).catch((err) => {
+		this.registrationSchema.validate(data, { abortEarly: false }).catch((err) => {
 			for (const error of err.inner) {
 				const element = this.element.querySelector(`#${error.path}`);
 				const wrapper = element.closest(REGISTRATION_INP);

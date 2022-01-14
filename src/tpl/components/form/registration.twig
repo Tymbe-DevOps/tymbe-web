@@ -17,7 +17,7 @@
 	controller: props.controller | default('Registration'),
 	nextStep: props.nextStep | default(),
 	apiUrl: props.apiUrl | default(),
-	sitekey: props.sitekey | default('6LfNCnMUAAAAAMwWYCZaqQvtn5TmuA3Uau07nj5g'),
+	sitekey: props.sitekey | default('6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'),
 	showRecaptcha: props.showRecaptcha | default(),
 	success: props.success | default('Děkujeme za vaši registraci.')
 } %}
@@ -60,7 +60,7 @@
 					{{ select.selectLabel }}
 				</label>
 				<span class="inp-fix">
-					<select name="{{ select.selectName }}" id="{{ select.selectName }}" {% if inpGroup.disable|default(false) %}disable{% endif %} {% if inpGroup.selectRequired|default(false) %}required{% endif %} class="inp-select" data-action="focus->FocusInput#focus blur->FocusInput#blur">
+					<select name="{{ select.selectName }}" id="{{ select.selectName }}" {% if inpGroup.disable|default(false) %}disable{% endif %} {% if inpGroup.selectRequired|default(false) %}required{% endif %} class="inp-select">
 						{% for option in inpGroup.options %}
 							{% set option = {
 								value: option.value | default,
@@ -137,7 +137,7 @@
 	{% if props.checkboxLabel %}
 		<p class="f-registration__checkbox">
 			<label class="inp-item inp-item--checkbox">
-				<input type="checkbox" name="acceptDataProcessing" value="1" class="inp-item__inp" required>
+				<input type="checkbox" name="acceptDataProcessing" value="1" class="inp-item__inp" required data-{{ props.controller|lower }}-target="acceptDataProcessing">
 				<span class="inp-item__text">
 					<span class="inp-item__tool">
 						{% include '@components/core/icon-svg/icon-svg.twig' with {
