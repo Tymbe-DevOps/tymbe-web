@@ -105,6 +105,7 @@
 	}
 
 	// HOVERs
+	.is-visible &__content,
 	.hoverevents &:hover &__content {
 		visibility: visible;
 		opacity: 1;
