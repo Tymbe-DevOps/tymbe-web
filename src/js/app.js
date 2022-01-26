@@ -12,9 +12,10 @@ import Tabs from './components/Tabs';
 import Accordion from './components/Accordion';
 import Statistics from './components/Statistics';
 import Rings from './components/Rings';
-import Registration from './components/registration';
-import RegistrationB2B from './components/registrationB2B';
-import Contact from './components/contact';
+import Registration from './components/Registration';
+import RegistrationB2B from './components/RegistrationB2B';
+import Contact from './components/Contact';
+import Tooltip from './components/Tooltip';
 
 const components = {
 	FocusInput,
@@ -28,6 +29,7 @@ const components = {
 	Registration,
 	RegistrationB2B,
 	Contact,
+	Tooltip,
 };
 
 window.App = {

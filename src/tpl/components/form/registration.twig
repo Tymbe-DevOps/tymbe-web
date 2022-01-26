@@ -36,8 +36,7 @@
 	<h2 class="f-registration__title">
 		{{ props.title }}
 	</h2>
-	<p class="message message--ok u-hide" data-{{ props.controller|lower }}-target="success">{{ props.success }}<p>
-	<p class="message message--error u-hide" data-{{ props.controller|lower }}-target="message"><p>
+	<p class="message u-hide" data-{{ props.controller|lower }}-target="message">{{ props.success }}<p>
 	{% if props.steps | length > 0 %}
 		{% include '@components/core/objects/steps.twig' with {
 			props: props.steps
@@ -57,7 +56,7 @@
 				disabled: inpGroup.disabled | default,
 				dataTarget: inpGroup.dataTarget | default,
 			} %}
-			<p class="f-registration__inp inp has-focus" data-controller="FocusInput">
+			<p class="f-registration__inp inp has-focus">
 				<label for="select" class="inp-label">
 					{{ select.selectLabel }}
 				</label>
@@ -85,6 +84,7 @@
 				type: input.type | default,
 				required: input.required | default,
 				disabled: input.disabled | default,
+				autocomplete: input.autocomplete | default,
 				pattern: input.pattern | default,
 				tooltipText: input.tooltipText | default,
 				tooltipTitle: input.tooltipTitle | default
@@ -94,9 +94,9 @@
 					{{ input.label }}
 				</label>
 				<span class="inp-fix">
-					<input type="{{ input.type }}" value="" name="{{ input.name }}" id="{{ input.name }}" placeholder="{{ input.label }}" {% if input.required|default(false) %}required{% endif %} {% if input.pattern|default(false) %}pattern="{{ input.pattern }}"{% endif %}  {% if input.disabled|default(false) %}disabled{% endif %} class="inp-text" data-action="focus->FocusInput#focus blur->FocusInput#blur">
+					<input type="{{ input.type }}" value="" name="{{ input.name }}" id="{{ input.name }}" placeholder="{{ input.label }}" {% if input.required|default(false) %}required{% endif %} {% if input.pattern|default(false) %}pattern="{{ input.pattern }}"{% endif %}  {% if input.disabled|default(false) %}disabled{% endif %} {% if input.autocomplete|default(false) %}autocomplete="{{ input.autocomplete }}"{% endif %} class="inp-text" data-action="focus->FocusInput#focus blur->FocusInput#blur input->{{ props.controller }}#inputValidate">
 					{% if input.tooltipText|default(false) or input.tooltipTitle|default(false) %}
-						<button type="button" class="tooltip">
+						<button type="button" class="tooltip" data-controller="Tooltip" data-action="click->Tooltip#showTooltip">
 							<span class="icon-svg icon-svg--info" aria-hidden="true">
 								<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 									<use xlink:href="../img/bg/icons-svg.svg#icon-info" width="100%" height="100%" focusable="false"></use>
@@ -128,7 +128,7 @@
 				} %}
 				<p class="f-registration__radio">
 					<label class="inp-item inp-item--radio inp-label">
-						<input type="radio" name="{{ radio.name }}" value="{{ radio.value }}" class="inp-item__inp" {% if radio.required|default(false) %}required{% endif %}>
+						<input type="radio" name="{{ radio.name }}" value="{{ radio.value }}" class="inp-item__inp" {% if radio.required|default(false) %}required{% endif %} data-action="input->{{ props.controller }}#inputValidate">
 						<span class="inp-item__text">
 							<span class="inp-item__tool"></span>
 							{{ radio.label }}

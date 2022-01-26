@@ -1,5 +1,5 @@
 {% extends '@layout/layout.twig' %}
-{% set pageTitle = 'Provizorní formulář - 3. krok' %}
+{% set pageTitle = 'Registrace úspěšná' %}
 
 {% block content %}
 
@@ -12,61 +12,16 @@
 					</h1>
 					<div class="grid grid--x-5">
 						<div class="grid__cell size--6-12@md size--5-12@lg">
-							{% include '@components/form/registration.twig' with {
-								props: {
-									classes: ['b-white'],
-									controller: 'Registration',
-									apiUrl: 'https://api.tymbeos1.cz/registration',
-									title: 'Staň se Tymberem',
-									nextStep: './registrace-odeslano.html',
-									showRecaptcha: true,
-									steps: {
-										classes: ['u-mt-3 u-mb-3'],
-										items: [
-											{
-												done: true,
-												text: 'První krok'
-											},
-											{
-												done: true,
-												text: 'Druhý krok'
-											},
-											{
-												isActive: true,
-												text: 'Třetí krok'
-											},
-										]
-									},
-									btnBack: 'Zpět',
-									btnNext: 'Odeslat',
-									text: 'Už máš u nás účet? <a href="https://tymbe.com/tymber/login" target="_blank">Přihlas se.</a>',
-									inpGroupsName: 'login',
-									inpGroups: [
-										{
-											inputs: [
-												{
-													label: 'Email',
-													name: 'email',
-													type: 'email'
-												},
-												{
-													label: 'Heslo',
-													name: 'password',
-													type: 'password',
-													autocomplete: 'off'
-												},
-												{
-													label: 'Ověřit heslo',
-													name: 'passwordCheck',
-													type: 'password',
-													autocomplete: 'off'
-												}
-											],
-										}
-									],
-									checkboxLabel: 'Souhlasím se zpracováním svých osobních údajů',
-								}
-							}%}
+							<div class="b-white b-std u-text-center">
+							<h2>Děkujeme za registraci.</h2>
+							<p>Blížíme se do finále, údaje potřebné k zaměstnání už máme pohoromadě.</p>
+							<p>
+							Teď prosím koukni do emailu, měl by Tě tam čekat link k ověření vyplněných údajů, je to už jen pár kontrolních políček a doplnění čísla účtu, kam bys rád dostával výplaty. Pár minut a máme hotovo.</p>
+							<p>
+							Díky, že ses rozhodl najít si férově placenou brigádu.</p>
+							<p>
+							Tým Tymbe</p>
+							</div>
 						</div>
 						<div class="grid__cell size--6-12@md size--7-12@lg">
 							<div class="grid grid--x-2 grid--bottom">

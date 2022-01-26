@@ -44,7 +44,7 @@ export default class RegistrationB2C extends Controller {
 	// tooltip template
 	tooltipTemplate(message) {
 		return `
-		<button type="button" class="tooltip" data-registrationb2b-target="errorTooltip">
+		<button type="button" class="tooltip" data-controller="Tooltip" data-action="click->Tooltip#showTooltip" data-registrationb2b-target="errorTooltip">
 			<span class="icon-svg icon-svg--info" aria-hidden="true">
 				<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 					<use xlink:href="../img/bg/icons-svg.svg#icon-info" width="100%" height="100%" focusable="false"></use>
