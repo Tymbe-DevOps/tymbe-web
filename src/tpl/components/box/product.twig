@@ -61,7 +61,7 @@
 			</strong>
 			Kr/h
 			{% if props.tooltipTitle|default(false) or props.tooltipText|default(false) %}
-				<button type="button" class="tooltip">
+				<button type="button" class="tooltip" data-controller="Tooltip" data-action="click->Tooltip#showTooltip">
 					{% include '@components/core/icon-svg/icon-svg.twig' with {
 						props: {
 							name: 'questionmark'
