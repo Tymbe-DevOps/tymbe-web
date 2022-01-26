@@ -18,35 +18,35 @@
 				<div class="b-white b-contact">
 					<div class="grid grid--x-0">
 						<div class="grid__cell size--6-12@md">
-							<form class="b-contact__form" action="?" data-controller="Contact" data-contact-url-value="https://api.tymbeos1.cz/contact" data-action="submit->Contact#send">
+							<form class="b-contact__form" action="?" data-controller="Contact" data-contact-url-value="https://api.tymbeos1.cz/contactForm" data-action="submit->Contact#send">
 								<h2 class="b-contact__title h3">
 									Spoj se s námi
 								</h2>
-								<p class="message message--ok u-hide" data-contact-target="success">Děkujeme. Budeme tě kontaktovat co nejdříve.<p>
+								<p class="message message--ok u-hide" data-contact-target="success">Děkujeme.<br>Budeme tě kontaktovat co nejdříve.<p>
 								<p class="message message--error u-hide" data-contact-target="message"><p>
 								<p class="inp" data-controller="FocusInput">
-									<label for="sureName" class="inp-label">
+									<label for="contactInputName" class="inp-label">
 										Jméno
 									</label>
 									<span class="inp-fix">
-										<input type="text" name="sureName" id="sureName" placeholder="Jméno" class="inp-text" required data-action="focus->FocusInput#focus blur->FocusInput#blur">
+										<input type="text" name="contactInputName" id="contactInputName" placeholder="Jméno" class="inp-text" required data-action="focus->FocusInput#focus blur->FocusInput#blur">
 									</span>
 								</p>
 								<p class="inp" data-controller="FocusInput">
-									<label for="email" class="inp-label">
+									<label for="contactInputEmail" class="inp-label">
 										E-mail
 									</label>
 									<span class="inp-fix">
-										<input type="email" name="email" id="email" placeholder="E-mail" class="inp-text"
+										<input type="email" name="contactInputEmail" id="contactInputEmail" placeholder="E-mail" class="inp-text"
 										required data-action="focus->FocusInput#focus blur->FocusInput#blur">
 									</span>
 								</p>
 								<p class="inp" data-controller="FocusInput">
-									<label for="message" class="inp-label">
+									<label for="contactInputMessage" class="inp-label">
 										Zpráva
 									</label>
 									<span class="inp-fix">
-										<textarea name="message" id="message" placeholder="Zpráva" class="inp-text" cols="40" rows="6"
+										<textarea name="contactInputMessage" id="contactInputMessage" placeholder="Zpráva" class="inp-text" cols="40" rows="6"
 										required data-action="focus->FocusInput#focus blur->FocusInput#blur"></textarea>
 									</span>
 								</p>

@@ -17,18 +17,18 @@ export default class Contact extends Controller {
 
 	// Validation schema
 	contactSchema = object({
-		sureName: string().required('Vyplňte prosím jméno.'),
-		email: string()
+		contactInputName: string().required('Vyplňte prosím jméno.'),
+		contactInputEmail: string()
 			.required('Vyplňte prosím e-mail.')
 			.typeError('E-mail není ve správném formátu.')
 			.email('E-mail není ve správném formátu.'),
-		message: string().required('Vyplňte prosím zprávu.'),
+		contactInputMessage: string().required('Vyplňte prosím zprávu.'),
 	});
 
 	// tooltip template
 	tooltipTemplate(message) {
 		return `
-		<button type="button" class="tooltip" data-registrationb2b-target="errorTooltip">
+		<button type="button" class="tooltip" data-controller="Tooltip" data-action="click->Tooltip#showTooltip" data-registrationb2b-target="errorTooltip">
 			<span class="icon-svg icon-svg--info" aria-hidden="true">
 				<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 					<use xlink:href="../img/bg/icons-svg.svg#icon-info" width="100%" height="100%" focusable="false"></use>
@@ -98,10 +98,7 @@ export default class Contact extends Controller {
 				response.data.inner.forEach((error) => {
 					const element = this.element.querySelector(`[name=${error.path}]`);
 
-					if (error.type === 'recaptcha-fail') {
-						this.messageTarget.innerHTML = error.message;
-						this.messageTarget.classList.remove(HIDE);
-					} else if (element !== null) {
+					if (element !== null) {
 						const wrapper = element.closest(INP);
 
 						if (wrapper !== null) {
@@ -120,11 +117,6 @@ export default class Contact extends Controller {
 					}
 				});
 			}
-			if (response.ok) {
-				this.successTarget.classList.remove(HIDE);
-			} else {
-				console.error('AJAX response error', response);
-			}
 		} catch (err) {
 			console.error('AJAX response error', err);
 		}
@@ -142,8 +134,13 @@ export default class Contact extends Controller {
 			body: JSON.stringify(data),
 		});
 
-		if (!response.ok && response.status !== 400) {
+		if (response.ok) {
+			this.successTarget.classList.remove(HIDE);
+			this.element.reset();
+		} else if (!response.ok && response.status !== 400) {
 			throw new Error('Network response was not ok.');
+		} else {
+			console.error('AJAX response error', response);
 		}
 
 		return await response.json();
