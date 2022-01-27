@@ -153,6 +153,8 @@ export default class Registration extends Controller {
 
 		if (response.ok) {
 			sessionStorage.removeItem('formValues');
+			sessionStorage.removeItem('validationError');
+			sessionStorage.removeItem('userUrl');
 			window.location.href = this.nextValue;
 		} else if (!response.ok && response.status !== 400) {
 			throw new Error('Network response was not ok.');
