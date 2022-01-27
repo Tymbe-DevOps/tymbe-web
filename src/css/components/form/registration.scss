@@ -1,3 +1,4 @@
+/* stylelint-disable declaration-no-important */
 .f-registration {
 	padding: $size1;
 	text-align: center;
@@ -12,6 +13,8 @@
 		font-size: 16px;
 		text-align: left;
 	}
+	&__captcha,
+	&__checkbox,
 	&__radios {
 		position: relative;
 		margin-top: $size2;
@@ -23,11 +26,22 @@
 			z-index: 10;
 			transform: translateY(-50%);
 		}
+		&.has-error {
+			padding-right: 35px;
+		}
 	}
 	&__radio {
 		margin-bottom: 7px;
 		&:last-child {
 			margin-bottom: 0;
+		}
+	}
+	&__captcha,
+	&__checkbox {
+		padding-right: 35px;
+		.tooltip {
+			top: 0;
+			transform: none;
 		}
 	}
 

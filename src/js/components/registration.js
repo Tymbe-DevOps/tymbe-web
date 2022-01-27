@@ -1,14 +1,11 @@
 import { Controller } from 'stimulus';
-import { resetError, setError } from './validation/setError';
+import { resetError, setError, setInputError } from './validation/setError';
 import { paramsToObject } from './validation/paramsToObject';
 import { personInfo, contactsInfo, loginInfo } from './validation/yupValidationSetting';
 
-const HASERROR = 'has-error';
-const TOOLTIP = '.tooltip';
-// const REG_WRAPPER = '.f-registration__inp, .f-registration__radios, .f-registration__checkbox';
-// const INP_FIX = '.inp-fix';
-const HIDE = 'u-hide';
 let redirect = true;
+const HASERROR = 'has-error';
+const HIDE = 'u-hide';
 
 export default class Registration extends Controller {
 	static targets = ['message', 'tooltip', 'acceptDataProcessing'];
@@ -20,33 +17,27 @@ export default class Registration extends Controller {
 
 	inputValidate(element) {
 		const target = element.target;
-		const name = target.attributes.name.value.includes('.') ? target.attributes.name.value.split('.') : target.attributes.name.value;
-		const value = target.value;
+		const name = target.attributes.name.value;
 		const schema = this.getSchema();
+		const data = this.getData();
 
-		if (value.length > 0) {
-			if (typeof name === 'object') {
-				schema.fields[name[0]].fields[name[1]].isValid(value).then(function(valid) {
-					if (!valid) {
-						return;
-					}
-					resetError(target);
-				});
-				schema.fields[name[0]].fields[name[1]].validate(value, { abortEarly: false }).catch((err) => {
-					setError(err, target);
-				});
-			} else {
-				schema.fields[name].isValid(value).then(function(valid) {
-					if (!valid) {
-						return;
-					}
-					resetError(target);
-				});
-				schema.fields[name].validate(value, { abortEarly: false }).catch((err) => {
-					setError(err, target);
-				});
+		resetError(target);
+		schema.validate(data, { stripUnknown: true, abortEarly: false }).catch((e) => {
+			for (const error of e.inner) {
+				if (error.path === name) {
+					setInputError(e, target);
+				}
 			}
-		}
+		});
+	}
+
+	getData() {
+		const form = this.element;
+		let data = new FormData(form);
+		data = paramsToObject(new URLSearchParams(data), this.typeValue);
+		data = this.typeValue ? data[this.typeValue] : data;
+
+		return data;
 	}
 
 	getSchema() {
@@ -63,37 +54,12 @@ export default class Registration extends Controller {
 		return schema;
 	}
 
-	schemaValidate() {
-		const form = this.element;
-		let data = new FormData(form);
-		data = paramsToObject(new URLSearchParams(data), this.typeValue);
-		data = this.typeValue ? data[this.typeValue] : data;
-		let setSchema = this.getSchema();
-
-		setSchema.validate(data, { abortEarly: false }).catch((err) => {
-			setError(err, form);
-		});
-	}
-
 	formValidate() {
-		const hasError = this.element.querySelectorAll('.' + HASERROR);
-		const tooltip = this.element.querySelectorAll(TOOLTIP);
+		let schema = this.getSchema();
 
-		if (hasError.length > 0) {
-			hasError.forEach((element) => {
-				element.classList.remove(HASERROR);
-			});
-		}
-
-		if (tooltip.length > 0) {
-			tooltip.forEach((tooltip) => {
-				if (tooltip.classList.contains(HASERROR)) {
-					tooltip.remove();
-				}
-			});
-		}
-
-		this.schemaValidate();
+		schema.validate(this.getData(), { stripUnknown: true, abortEarly: false }).catch((err) => {
+			setError(err, this.element);
+		});
 	}
 
 	addressValidate() {
@@ -118,6 +84,9 @@ export default class Registration extends Controller {
 
 	redirectToNextStep(data) {
 		sessionStorage.setItem('formValues', JSON.stringify(data));
+		if (this.typeValue === 'user') {
+			sessionStorage.setItem('userUrl', window.location.href);
+		}
 		window.location.href = this.nextValue;
 	}
 
@@ -126,10 +95,17 @@ export default class Registration extends Controller {
 		response.data.inner.forEach((error) => {
 			const path = error.path.split('.');
 
+			if (this.typeValue === 'login' && path[0] === 'user') {
+				const url = sessionStorage.getItem('userUrl');
+				sessionStorage.setItem('validationError', JSON.stringify(response.data));
+				window.location.href = url;
+			}
+
 			redirect = redirect === false ? redirect : path[0] !== this.typeValue;
 
 			if (error.type === 'recaptcha-fail' && this.typeValue === 'login') {
 				this.messageTarget.innerHTML = error.message;
+				this.messageTarget.classList.add(HASERROR);
 				this.messageTarget.classList.remove(HIDE);
 			}
 		});
@@ -154,7 +130,7 @@ export default class Registration extends Controller {
 				}
 			}
 		} catch (err) {
-			console.error('AJAX response error', err);
+			console.error('Data response error', err);
 		}
 	}
 
@@ -181,14 +157,14 @@ export default class Registration extends Controller {
 		} else if (!response.ok && response.status !== 400) {
 			throw new Error('Network response was not ok.');
 		} else {
-			console.error('AJAX response error', response);
+			console.error('Response error', response);
 		}
 
 		return await response.json();
 	}
 
 	setValue(element, value) {
-		if (element !== null) {
+		if (element !== null && value !== '') {
 			const wrapper = element.closest('[data-controller="FocusInput"]');
 			if (wrapper) {
 				wrapper.classList.add('has-focus');
@@ -202,6 +178,10 @@ export default class Registration extends Controller {
 	}
 
 	connect() {
+		if (sessionStorage.getItem('validationError') !== null) {
+			const err = JSON.parse(sessionStorage.getItem('validationError'));
+			setError(err, this.element);
+		}
 		if (sessionStorage.getItem('formValues') !== null) {
 			const data = JSON.parse(sessionStorage.getItem('formValues'));
 			const thisData = data[this.typeValue];

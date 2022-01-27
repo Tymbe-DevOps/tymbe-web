@@ -56,7 +56,7 @@
 				disabled: inpGroup.disabled | default,
 				dataTarget: inpGroup.dataTarget | default,
 			} %}
-			<p class="f-registration__inp inp has-focus">
+			<p class="f-registration__inp inp has-focus js-registration__inp">
 				<label for="select" class="inp-label">
 					{{ select.selectLabel }}
 				</label>
@@ -89,7 +89,7 @@
 				tooltipText: input.tooltipText | default,
 				tooltipTitle: input.tooltipTitle | default
 			} %}
-			<p class="f-registration__inp inp" data-controller="FocusInput">
+			<p class="f-registration__inp js-registration__inp inp" data-controller="FocusInput">
 				<label for="{{ input.name }}" class="inp-label">
 					{{ input.label }}
 				</label>
@@ -115,7 +115,7 @@
 	{% endfor %}
 
 	{% if props.radios %}
-		<div class="f-registration__radios">
+		<div class="f-registration__radios js-registration__inp">
 			<p class="f-registration__inp-title">
 				{{ props.radiosTitle }}
 			</p>
@@ -139,9 +139,9 @@
 		</div>
 	{% endif %}
 	{% if props.checkboxLabel %}
-		<p class="f-registration__checkbox">
+		<p class="f-registration__checkbox js-registration__inp">
 			<label class="inp-item inp-item--checkbox">
-				<input type="checkbox" name="acceptDataProcessing" value="1" class="inp-item__inp" required data-{{ props.controller|lower }}-target="acceptDataProcessing">
+				<input type="checkbox" name="acceptDataProcessing" value="1" class="inp-item__inp" required data-{{ props.controller|lower }}-target="acceptDataProcessing" data-action="input->{{ props.controller }}#inputValidate">
 				<span class="inp-item__text">
 					<span class="inp-item__tool">
 						{% include '@components/core/icon-svg/icon-svg.twig' with {
@@ -157,7 +157,7 @@
 	{% endif %}
 	{% if props.steps %}
 		{% if props.showRecaptcha %}
-			<div class="f-registration__inp inp">
+			<div class="f-registration__captcha js-registration__inp">
 				<div id="reCaptcha" name="reCaptcha" class="g-recaptcha" data-sitekey={{ props.sitekey }}></div>
 			</div>
 		{% endif %}
@@ -182,7 +182,7 @@
 			{% endif %}
 		</div>
 	{% else %}
-		<div class="f-registration__inp inp">
+		<div class="f-registration__captcha js-registration__inp">
 			<div id="reCaptcha" name="reCaptcha" class="g-recaptcha" data-sitekey={{ props.sitekey }}></div>
 		</div>
 		<p class="f-registration__btn u-mt-3">
