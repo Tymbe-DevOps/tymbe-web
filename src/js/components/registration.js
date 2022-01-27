@@ -8,7 +8,7 @@ const HASERROR = 'has-error';
 const HIDE = 'u-hide';
 
 export default class Registration extends Controller {
-	static targets = ['message', 'tooltip', 'acceptDataProcessing'];
+	static targets = ['message', 'acceptDataProcessing'];
 	static values = {
 		url: String,
 		type: String,
