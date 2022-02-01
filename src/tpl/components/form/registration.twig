@@ -158,7 +158,7 @@
 	{% if props.steps %}
 		{% if props.showRecaptcha %}
 			<div class="f-registration__captcha js-registration__inp">
-				<div id="reCaptcha" name="reCaptcha" class="g-recaptcha" data-sitekey={{ props.sitekey }}></div>
+				<div id="reCaptcha" name="reCaptcha" data-controller="Recaptcha" data-sitekey={{ props.sitekey }}></div>
 			</div>
 		{% endif %}
 		<div class="f-registration__btns">
@@ -183,7 +183,7 @@
 		</div>
 	{% else %}
 		<div class="f-registration__captcha js-registration__inp">
-			<div id="reCaptcha" name="reCaptcha" class="g-recaptcha" data-sitekey={{ props.sitekey }}></div>
+			<div id="reCaptcha" name="reCaptcha" data-controller="Recaptcha" data-sitekey={{ props.sitekey }}></div>
 		</div>
 		<p class="f-registration__btn u-mt-3">
 			<button type="submit" class="btn" data-action="click->{{ props.controller }}#formValidate">

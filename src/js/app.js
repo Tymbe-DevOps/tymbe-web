@@ -16,6 +16,7 @@ import Registration from './components/Registration';
 import RegistrationB2B from './components/RegistrationB2B';
 import Contact from './components/Contact';
 import Tooltip from './components/Tooltip';
+import Recaptcha from './components/reCaptcha';
 
 const components = {
 	FocusInput,
@@ -30,6 +31,7 @@ const components = {
 	RegistrationB2B,
 	Contact,
 	Tooltip,
+	Recaptcha,
 };
 
 window.App = {

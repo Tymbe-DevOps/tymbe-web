@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus';
-import { resetError, setError, setInputError } from './validation/setError';
+import { resetError, setError, setInputError, setTootlipError } from './validation/setError';
 import { paramsToObject } from './validation/paramsToObject';
 import { personInfo, contactsInfo, loginInfo } from './validation/yupValidationSetting';
 
@@ -66,16 +66,32 @@ export default class Registration extends Controller {
 		const isSK = event.target.value === 'sk';
 		const elements = this.context.element.querySelectorAll('[name*="contactAddress"]');
 		const select = this.context.element.querySelector('[name="contactAddress.country"]');
+		const schema = this.getSchema();
+
 		if (elements.length > 0) {
 			elements.forEach((element) => {
 				if (isSK) {
 					element.attributes.required = true;
+					element.setAttribute('required', true);
+					element.setAttribute('aria-required', 'true');
 					select.value = 'cz';
 				} else {
 					element.attributes.required = false;
+					element.removeAttribute('required');
+					element.removeAttribute('aria-required');
 				}
 			});
 		}
+
+		resetError(select);
+		schema.validate(this.getData(), { stripUnknown: true, abortEarly: false }).catch((err) => {
+			for (const error of err.inner) {
+				const hasContact = error.type === 'has-contact-address';
+				if (hasContact) {
+					setTootlipError(select, error.message);
+				}
+			}
+		});
 	}
 
 	back() {
