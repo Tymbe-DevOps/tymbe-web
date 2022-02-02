@@ -1,0 +1,79 @@
+.switch {
+	position: relative;
+	display: flex;
+	align-items: center;
+	user-select: none;
+	&__inp {
+		position: absolute;
+		left: -5000px;
+	}
+	&__label {
+		margin-right: auto;
+		padding-right: 20px;
+		color: rgba($colorWhite, 0.6);
+	}
+	&__inner {
+		position: relative;
+		display: flex;
+		border-radius: 30px;
+		background: rgba($colorBlueLt, 0.8);
+		transition: background-color $t;
+		cursor: pointer;
+	}
+	&__text {
+		display: flex;
+		flex: 1 1 auto;
+		justify-content: center;
+		align-items: center;
+		width: 18px;
+		height: 16px;
+		text-align: center;
+		opacity: 0;
+		transition: opacity $t;
+		.icon-svg {
+			position: relative;
+			z-index: 1;
+			svg {
+				fill: currentColor;
+			}
+		}
+	}
+	&__tool {
+		position: absolute;
+		top: -2px;
+		bottom: -2px;
+		left: -1px;
+		width: 20px;
+		border-radius: 50%;
+		background: $colorWhite;
+		transition: transform $t;
+		box-shadow: 0 0 2px rgba($colorBlack, 0.08);
+	}
+
+	// MODIF
+	&__text--right {
+		opacity: 1;
+	}
+
+	// STATES
+	&__inp:focus + &__inner {
+		border-color: $colorText;
+	}
+	&__inp:checked + &__inner {
+		background-color: rgba($colorPrimary, 0.3);
+	}
+	&__inp:checked + &__inner &__tool {
+		background-color: $colorPrimary;
+		transform: translateX(100%);
+	}
+	&__inp:checked + &__inner &__text--left {
+		opacity: 1;
+	}
+	&__inp:checked + &__inner &__text--right {
+		opacity: 0;
+	}
+	&__inp:disabled + &__inner {
+		opacity: 0.8;
+		pointer-events: none;
+	}
+}

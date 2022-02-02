@@ -1,0 +1,14 @@
+.as-link {
+	display: inline;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-weight: 500;
+	font-size: 16px;
+	text-decoration: underline;
+	cursor: pointer;
+	appearance: none;
+	.hoverevents &:hover {
+		text-decoration: none;
+	}
+}

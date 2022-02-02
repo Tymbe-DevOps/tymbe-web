@@ -3,6 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-W38ZVX8');</script>
+		<!-- End Google Tag Manager -->
+
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
@@ -70,14 +79,32 @@
 
 				document.documentElement.className = className;
 			}());
+			(function () {
+				var match = document.cookie.match(new RegExp('(^| )SKcookieConsent=([^;]+)'));
+				document.documentElement.dataset.showCookie = true;
+				if (match) {
+					try {
+						var cookieState = JSON.parse(match[2]);
+						if(cookieState.id && cookieState.datetime && cookieState.storages) {
+							document.documentElement.dataset.showCookie = false;
+							window.cookieState = cookieState;
+						};
+					} catch (error) {}
+				}
+				// GTM consent init
+				window.dataLayer = window.dataLayer || [];
+				function gtag() {
+					window.dataLayer.push(arguments);
+				}
+				gtag('consent', 'default', window.cookieState && window.cookieState.storages ?  window.cookieState.storages : {
+					functionality_storage: 'granted',
+					security_storage: 'granted',
+					ad_storage: 'denied',
+					analytics_storage: 'denied',
+					personalization_storage: 'denied',
+				});
+			}());
 		</script>
-		<!-- Google Tag Manager -->
-		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-W38ZVX8');</script>
-		<!-- End Google Tag Manager -->
 	</head>
 	<body>
 		<!-- Google Tag Manager (noscript) -->
@@ -278,10 +305,24 @@
 				} %}
 
 				<p class="footer__copy">
-					&copy; Copyright 2021 – TYMBE a.s.
+					&copy; Copyright 2021 – TYMBE a.s. &nbsp;
+					<a href="#" class="footer__link item-icon item-icon--after" data-cookie-open>
+						<span class="item-icon__icon">
+							{% include '@components/core/icon-svg/icon-svg.twig' with {
+								props: {
+									name: 'cookies'
+								}
+							} %}
+						</span>
+						<span class="item-icon__text">
+							Cookies
+						</span>
+					</a>
 				</p>
 			</div>
 		</footer>
+
+		{% include "@components/box/cookie.twig" %}
 
 		{% for script in scripts %}
 		<script src="{{script}}"></script>

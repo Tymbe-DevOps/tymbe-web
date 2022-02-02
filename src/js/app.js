@@ -17,6 +17,7 @@ import RegistrationB2B from './components/RegistrationB2B';
 import Contact from './components/Contact';
 import Tooltip from './components/Tooltip';
 import Recaptcha from './components/reCaptcha';
+import * as cookie from '@superkoders/cookie/src/js/components/cookie';
 
 const components = {
 	FocusInput,
@@ -45,5 +46,7 @@ window.App = {
 		Object.keys(components).forEach((component) => {
 			application.register(component, components[component]);
 		});
+
+		cookie.init();
 	},
 };

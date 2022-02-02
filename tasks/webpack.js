@@ -30,7 +30,12 @@ module.exports = function webpack(callback) {
 			rules: [
 				{
 					test: /\.js(x)?$/,
-					exclude: babelLoaderExcludeNodeModulesExcept(['@superkoders/sk-tools', 'stimulus', 'stimulus-use']),
+					exclude: babelLoaderExcludeNodeModulesExcept([
+						'@superkoders/sk-tools',
+						'stimulus',
+						'stimulus-use',
+						'@superkoders/cookie',
+					]),
 					use: 'babel-loader',
 				},
 			],
