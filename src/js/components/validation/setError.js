@@ -46,12 +46,6 @@ export const setError = (err, el) => {
 			element = error.path ? element.querySelector(`[name='${error.path}']`) : element;
 		}
 
-		// const hasContact = error.type === 'has-contact-address';
-		// if (hasContact) {
-		// this.messageTarget.innerHTML = error.message;
-		// this.messageTarget.classList.remove(HIDE);
-		// }
-
 		if (!element) return;
 		setTootlipError(element, error.message);
 	}

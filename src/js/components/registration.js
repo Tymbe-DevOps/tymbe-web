@@ -4,6 +4,7 @@ import { paramsToObject } from './validation/paramsToObject';
 import { personInfo, contactsInfo, loginInfo } from './validation/yupValidationSetting';
 
 let redirect = true;
+let isFormValid = false;
 const HASERROR = 'has-error';
 const HIDE = 'u-hide';
 
@@ -22,7 +23,7 @@ export default class Registration extends Controller {
 		const data = this.getData();
 
 		resetError(target);
-		schema.validate(data, { stripUnknown: true, abortEarly: false }).catch((e) => {
+		schema.validate(data, { abortEarly: false }).catch((e) => {
 			for (const error of e.inner) {
 				if (error.path === name) {
 					setInputError(e, target);
@@ -54,12 +55,17 @@ export default class Registration extends Controller {
 		return schema;
 	}
 
-	formValidate() {
-		let schema = this.getSchema();
+	async formValidate() {
+		const schema = this.getSchema();
+		const data = this.getData();
 
-		schema.validate(this.getData(), { stripUnknown: true, abortEarly: false }).catch((err) => {
+		schema.validate(data, { abortEarly: false }).catch((err) => {
 			setError(err, this.element);
+			return;
 		});
+
+		const isValid = await schema.isValid(data);
+		isFormValid = isValid;
 	}
 
 	addressValidate() {
@@ -76,6 +82,7 @@ export default class Registration extends Controller {
 					element.setAttribute('aria-required', 'true');
 					select.value = 'cz';
 				} else {
+					resetError(element);
 					element.attributes.required = false;
 					element.removeAttribute('required');
 					element.removeAttribute('aria-required');
@@ -84,7 +91,7 @@ export default class Registration extends Controller {
 		}
 
 		resetError(select);
-		schema.validate(this.getData(), { stripUnknown: true, abortEarly: false }).catch((err) => {
+		schema.validate(this.getData(), { abortEarly: false }).catch((err) => {
 			for (const error of err.inner) {
 				const hasContact = error.type === 'has-contact-address';
 				if (hasContact) {
@@ -129,11 +136,13 @@ export default class Registration extends Controller {
 
 	async send(e) {
 		e.preventDefault();
+		if (!isFormValid) return;
 
 		const form = this.element;
 		const url = this.urlValue;
 		let data = new FormData(form);
 		data = paramsToObject(new URLSearchParams(data), this.typeValue);
+		isFormValid = false;
 
 		try {
 			const response = await this.postData(url, data);

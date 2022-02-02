@@ -20,6 +20,15 @@ export const personInfo = Yup.object({
 		.oneOf(['1', '2'], 'Zvolte prosím vaše pohlaví.'),
 });
 
+const contactAddress = Yup.object({
+	street: Yup.string().required('Vyplňte prosím ulici a č.p.'),
+	city: Yup.string().required('Vyplňte prosím město.'),
+	zip: Yup.string()
+		.required('Vyplňte prosím PSČ')
+		.matches(/^[0-9]{3}[ ]?[0-9]{2}$/, 'Chybný formát PSČ.'),
+	country: Yup.string().required('Zvolte prosím stát.'),
+});
+
 export const contactsInfo = Yup.object({
 	permanentAddress: Yup.object({
 		street: Yup.string().required('Vyplňte prosím ulici a č.p.'),
@@ -29,19 +38,21 @@ export const contactsInfo = Yup.object({
 			.matches(/^[0-9]{3}[ ]?[0-9]{2}$/, 'Chybný formát PSČ.'),
 		country: Yup.string().required('Zvolte prosím stát.'),
 	}),
-	contactAddress: Yup.object({
-		street: Yup.string(),
-		city: Yup.string(),
-		zip: Yup.string(),
-		// .matches(/^[0-9]{3}[ ]{0,1}[0-9]{2}$/, 'Chybný formát PSČ'),
-		country: Yup.string(),
-	})
-		.when('permanentAddress.country', function(country, schema) {
-			return country === 'sk' ? schema.required('Zadejte kontaktní adresu v ČR') : schema;
+
+	contactAddress: Yup.object()
+		.when('permanentAddress', function({ country }, schema) {
+			return country === 'sk' ? contactAddress : schema;
+		})
+		.shape({
+			street: Yup.string(),
+			city: Yup.string(),
+			zip: Yup.string(),
+			country: Yup.string(),
 		})
 		.test('has-contact-address', 'Zadejte kontaktní adresu v ČR', function(value) {
 			return !(this.parent.permanentAddress.country === 'sk' && value.country !== 'cz');
 		}),
+
 	phone: Yup.string()
 		.required('Vyplňte prosím telefonní číslo.')
 		.matches(
