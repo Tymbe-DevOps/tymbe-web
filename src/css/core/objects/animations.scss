@@ -1,0 +1,9 @@
+// animation animation-rotate .8s infinite linear
+@keyframes animation-rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}

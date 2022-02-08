@@ -4,10 +4,11 @@ import { registrationSchema } from './validation/yupValidationSettingB2B';
 
 // constants
 const HIDE = 'u-hide';
+const ISLOADING = 'is-loading';
 
 export default class RegistrationB2C extends Controller {
 	// stimulus variables
-	static targets = ['message', 'tooltip'];
+	static targets = ['message', 'loader'];
 	static values = {
 		url: String,
 	};
@@ -50,9 +51,33 @@ export default class RegistrationB2C extends Controller {
 		});
 	}
 
+	setLoader() {
+		this.loaderTarget.classList.add(ISLOADING);
+	}
+
+	removeLoader() {
+		this.loaderTarget.classList.remove(ISLOADING);
+	}
+
 	formValidate() {
+		this.setLoader();
 		registrationSchema.validate(this.getData(), { stripUnknown: true, abortEarly: false }).catch((err) => {
 			setError(err, this.element);
+			this.removeLoader();
+		});
+	}
+
+	resetFilledInput() {
+		const inputsWrapper = this.element.querySelectorAll('[data-controller="FocusInput"]');
+		inputsWrapper.forEach((wrapper) => {
+			if (wrapper) {
+				const element = wrapper.querySelector('.is-filled');
+				console.log(element);
+				wrapper.classList.remove('has-focus');
+				if (element) {
+					element.classList.remove('is-filled');
+				}
+			}
 		});
 	}
 
@@ -91,10 +116,14 @@ export default class RegistrationB2C extends Controller {
 			this.messageTarget.classList.add('message--ok');
 			this.messageTarget.classList.remove(HIDE);
 			this.element.reset();
+			this.removeLoader();
+			this.resetFilledInput();
 		} else if (!response.ok && response.status !== 400) {
+			this.removeLoader();
 			throw new Error('Network response was not ok.');
 		} else {
 			console.error('AJAX response error', response);
+			this.removeLoader();
 		}
 
 		return await response.json();

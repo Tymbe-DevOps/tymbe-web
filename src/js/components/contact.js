@@ -1,16 +1,14 @@
 import { Controller } from 'stimulus';
+import { resetError, setError, setInputError } from './validation/setError';
 import { object, string } from 'yup';
 
 // constants
-const HASERROR = 'has-error';
-const INP = '.inp';
-const INPFIX = '.inp-fix';
-const TOOLTIP = '.tooltip';
 const HIDE = 'u-hide';
+const ISLOADING = 'is-loading';
 
 export default class Contact extends Controller {
 	// stimulus variables
-	static targets = ['message', 'success', 'tooltip', 'errorTooltip'];
+	static targets = ['message', 'success', 'errorTooltip', 'loader'];
 	static values = {
 		url: String,
 	};
@@ -22,24 +20,10 @@ export default class Contact extends Controller {
 			.required('Vyplňte prosím e-mail.')
 			.typeError('E-mail není ve správném formátu.')
 			.email('E-mail není ve správném formátu.'),
-		contactInputMessage: string().required('Vyplňte prosím zprávu.'),
+		contactInputMessage: string()
+			.min(10, 'Vyplňte minimálně 10 znaků.')
+			.required('Vyplňte prosím zprávu.'),
 	});
-
-	// tooltip template
-	tooltipTemplate(message) {
-		return `
-		<button type="button" class="tooltip" data-controller="Tooltip" data-action="click->Tooltip#showTooltip" data-registrationb2b-target="errorTooltip">
-			<span class="icon-svg icon-svg--info" aria-hidden="true">
-				<svg class="icon-svg__svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-					<use xlink:href="../img/bg/icons-svg.svg#icon-info" width="100%" height="100%" focusable="false"></use>
-				</svg>
-			</span>
-			<span class="u-vhide"> Info </span>
-			<span class="tooltip__content">
-				<span class="tooltip__text">${message}</span>
-			</span>
-		</button>`;
-	}
 
 	// set formdata to object
 	paramsToObject(entries) {
@@ -50,33 +34,47 @@ export default class Contact extends Controller {
 		return result;
 	}
 
-	// validation of reqiured fields
-	formValidate() {
-		this.messageTarget.classList.add(HIDE);
-		const hasError = this.element.querySelectorAll('.' + HASERROR);
-		hasError.forEach((element) => {
-			element.classList.remove(HASERROR);
-		});
-		this.errorTooltipTargets.forEach((tooltip) => {
-			tooltip.remove();
-		});
-
+	getData() {
 		const form = this.element;
 		let data = new FormData(form);
 		data = this.paramsToObject(new URLSearchParams(data));
 
-		this.contactSchema.validate(data, { abortEarly: false }).catch((err) => {
-			for (const error of err.inner) {
-				const element = this.element.querySelector(`#${error.path}`);
-				const wrapper = element.closest(INP);
-				const inpfix = wrapper.querySelector(INPFIX);
+		return data;
+	}
 
-				wrapper.classList.add(HASERROR);
-				if (!inpfix) {
-					this.messageTarget.innerHTML = error.message;
-					this.messageTarget.classList.remove(HIDE);
-				} else {
-					inpfix.insertAdjacentHTML('beforeend', this.tooltipTemplate(error.message));
+	inputValidate(element) {
+		const target = element.target;
+		const name = target.attributes.name.value;
+		const data = this.getData();
+
+		resetError(target);
+		this.contactSchema.validate(data, { stripUnknown: true, abortEarly: false }).catch((e) => {
+			for (const error of e.inner) {
+				if (error.path === name) {
+					setInputError(e, target);
+				}
+			}
+		});
+	}
+
+	// validation of reqiured fields
+	formValidate() {
+		this.loaderTarget.classList.add(ISLOADING);
+		this.contactSchema.validate(this.getData(), { stripUnknown: true, abortEarly: false }).catch((err) => {
+			setError(err, this.element);
+			this.loaderTarget.classList.remove(ISLOADING);
+		});
+	}
+
+	resetFilledInput() {
+		const inputsWrapper = this.element.querySelectorAll('[data-controller="FocusInput"]');
+		inputsWrapper.forEach((wrapper) => {
+			if (wrapper) {
+				const element = wrapper.querySelector('.is-filled');
+				console.log(element);
+				wrapper.classList.remove('has-focus');
+				if (element) {
+					element.classList.remove('is-filled');
 				}
 			}
 		});
@@ -95,27 +93,7 @@ export default class Contact extends Controller {
 			const response = await this.postData(url, data);
 			// check form validity
 			if (response.status === 400) {
-				response.data.inner.forEach((error) => {
-					const element = this.element.querySelector(`[name=${error.path}]`);
-
-					if (element !== null) {
-						const wrapper = element.closest(INP);
-
-						if (wrapper !== null) {
-							wrapper.classList.add(HASERROR);
-							const inpfix = wrapper.querySelector(INPFIX);
-							const tooltip = wrapper.querySelector(TOOLTIP);
-
-							if (tooltip !== null) {
-								const text = tooltip.querySelector('.tooltip__text');
-								text.innerHTML = error.message;
-								tooltip.classList.remove(HIDE);
-							} else if (inpfix !== null) {
-								inpfix.insertAdjacentHTML('beforeend', this.tooltipTemplate(error.message));
-							}
-						}
-					}
-				});
+				setError(response.data, this.element);
 			}
 		} catch (err) {
 			console.error('AJAX response error', err);
@@ -137,10 +115,14 @@ export default class Contact extends Controller {
 		if (response.ok) {
 			this.successTarget.classList.remove(HIDE);
 			this.element.reset();
+			this.loaderTarget.classList.remove(ISLOADING);
+			this.resetFilledInput();
 		} else if (!response.ok && response.status !== 400) {
+			this.loaderTarget.classList.remove(ISLOADING);
 			throw new Error('Network response was not ok.');
 		} else {
 			console.error('AJAX response error', response);
+			this.loaderTarget.classList.remove(ISLOADING);
 		}
 
 		return await response.json();

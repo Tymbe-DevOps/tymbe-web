@@ -10,8 +10,9 @@ const HIDE = 'u-hide';
 // reset all errors tooltip
 export const resetError = (element) => {
 	const wrapper = element.closest(REG_WRAPPER);
-	const tooltip = wrapper.querySelectorAll(TOOLTIP);
 	if (wrapper) {
+		const tooltip = wrapper.querySelectorAll(TOOLTIP);
+
 		if (tooltip.length > 0) {
 			tooltip.forEach((tooltip) => {
 				if (tooltip.classList.contains(HASERROR)) {

@@ -24,35 +24,35 @@
 								</h2>
 								<p class="message message--ok u-hide" data-contact-target="success">Děkujeme.<br>Budeme tě kontaktovat co nejdříve.<p>
 								<p class="message message--error u-hide" data-contact-target="message"><p>
-								<p class="inp" data-controller="FocusInput">
+								<p class="inp js-registration__inp" data-controller="FocusInput">
 									<label for="contactInputName" class="inp-label">
 										Jméno
 									</label>
 									<span class="inp-fix">
-										<input type="text" name="contactInputName" id="contactInputName" placeholder="Jméno" class="inp-text" required data-action="focus->FocusInput#focus blur->FocusInput#blur">
+										<input type="text" name="contactInputName" id="contactInputName" placeholder="Jméno" class="inp-text" required data-action="focus->FocusInput#focus blur->FocusInput#blur input->Contact#inputValidate">
 									</span>
 								</p>
-								<p class="inp" data-controller="FocusInput">
+								<p class="inp js-registration__inp" data-controller="FocusInput">
 									<label for="contactInputEmail" class="inp-label">
 										E-mail
 									</label>
 									<span class="inp-fix">
 										<input type="email" name="contactInputEmail" id="contactInputEmail" placeholder="E-mail" class="inp-text"
-										required data-action="focus->FocusInput#focus blur->FocusInput#blur">
+										required data-action="focus->FocusInput#focus blur->FocusInput#blur input->Contact#inputValidate">
 									</span>
 								</p>
-								<p class="inp" data-controller="FocusInput">
+								<p class="inp js-registration__inp" data-controller="FocusInput">
 									<label for="contactInputMessage" class="inp-label">
 										Zpráva
 									</label>
 									<span class="inp-fix">
 										<textarea name="contactInputMessage" id="contactInputMessage" placeholder="Zpráva" class="inp-text" cols="40" rows="6"
-										required data-action="focus->FocusInput#focus blur->FocusInput#blur"></textarea>
+										required data-action="focus->FocusInput#focus blur->FocusInput#blur input->Contact#inputValidate"></textarea>
 									</span>
 								</p>
 
 								<p class="u-mt-2">
-									<button type="submit" class="btn" data-action="click->Contact#formValidate">
+									<button type="submit" class="btn btn-loader" data-contact-target="loader" data-action="click->Contact#formValidate">
 										<span class="btn__text">
 											Odeslat
 										</span>

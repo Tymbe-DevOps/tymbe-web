@@ -173,7 +173,7 @@
 			{% endif %}
 			{% if props.btnNext %}
 				<p class="f-registration__btn-next">
-					<button type="submit" class="btn" data-action="click->{{ props.controller }}#formValidate">
+					<button type="submit" class="btn btn-loader" data-{{ props.controller|lower }}-target="loader" data-action="click->{{ props.controller }}#formValidate">
 						<span class="btn__text">
 							{{ props.btnNext }}
 						</span>
@@ -186,7 +186,7 @@
 			<div id="reCaptcha" name="reCaptcha" data-controller="Recaptcha" data-sitekey={{ props.sitekey }}></div>
 		</div>
 		<p class="f-registration__btn u-mt-3">
-			<button type="submit" class="btn" data-action="click->{{ props.controller }}#formValidate">
+			<button type="submit" class="btn btn-loader" data-{{ props.controller|lower }}-target="loader" data-action="click->{{ props.controller }}#formValidate">
 				<span class="btn__text">
 					{{ props.btn }}
 				</span>

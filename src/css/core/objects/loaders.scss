@@ -1,0 +1,30 @@
+.btn-loader {
+	.btn__text {
+		&::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 22px;
+			width: 16px;
+			height: 16px;
+			margin: -8px 0 0 -8px;
+			border: 2px solid;
+			border-radius: 8px;
+			border-top-color: transparent;
+			opacity: 0;
+			transition: opacity $t;
+		}
+	}
+
+	// STATES
+	&.is-loading {
+		pointer-events: none;
+	}
+	&.is-loading .btn__text {
+		padding-left: 44px;
+		&::after {
+			opacity: 1;
+			animation: animation-rotate 0.8s infinite linear;
+		}
+	}
+}

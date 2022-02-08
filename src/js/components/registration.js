@@ -6,10 +6,11 @@ import { personInfo, contactsInfo, loginInfo } from './validation/yupValidationS
 let redirect = true;
 let isFormValid = false;
 const HASERROR = 'has-error';
+const ISLOADING = 'is-loading';
 const HIDE = 'u-hide';
 
 export default class Registration extends Controller {
-	static targets = ['message', 'acceptDataProcessing'];
+	static targets = ['message', 'acceptDataProcessing', 'loader'];
 	static values = {
 		url: String,
 		type: String,
@@ -55,12 +56,22 @@ export default class Registration extends Controller {
 		return schema;
 	}
 
+	setLoader() {
+		this.loaderTarget.classList.add(ISLOADING);
+	}
+
+	removeLoader() {
+		this.loaderTarget.classList.remove(ISLOADING);
+	}
+
 	async formValidate() {
 		const schema = this.getSchema();
 		const data = this.getData();
+		this.setLoader();
 
 		schema.validate(data, { abortEarly: false }).catch((err) => {
 			setError(err, this.element);
+			this.removeLoader();
 			return;
 		});
 
@@ -182,9 +193,11 @@ export default class Registration extends Controller {
 			sessionStorage.removeItem('userUrl');
 			window.location.href = this.nextValue;
 		} else if (!response.ok && response.status !== 400) {
+			this.removeLoader();
 			throw new Error('Network response was not ok.');
 		} else {
 			console.error('Response error', response);
+			this.removeLoader();
 		}
 
 		return await response.json();
