@@ -188,6 +188,13 @@ export default class Registration extends Controller {
 		});
 
 		if (response.ok) {
+			window.dataLayer = window.dataLayer || [];
+			window.dataLayer.push({
+				event: 'gaevent',
+				category: 'Forms',
+				action: 'Submit',
+				label: 'Tymber Registration',
+			});
 			sessionStorage.removeItem('formValues');
 			sessionStorage.removeItem('validationError');
 			sessionStorage.removeItem('userUrl');

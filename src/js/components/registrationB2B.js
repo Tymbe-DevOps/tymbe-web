@@ -113,6 +113,13 @@ export default class RegistrationB2C extends Controller {
 		});
 
 		if (response.ok) {
+			window.dataLayer = window.dataLayer || [];
+			window.dataLayer.push({
+				event: 'gaevent',
+				category: 'Forms',
+				action: 'Submit',
+				label: 'Company Registration',
+			});
 			this.messageTarget.classList.add('message--ok');
 			this.messageTarget.classList.remove(HIDE);
 			this.element.reset();
