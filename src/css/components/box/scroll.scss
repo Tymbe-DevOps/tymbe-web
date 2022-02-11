@@ -1,0 +1,9 @@
+.b-scroll {
+	@media ($xlDown) {
+		margin-right: -$rowMainGutter;
+		margin-left: -$rowMainGutter;
+		padding: 0 $rowMainGutter;
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+}
