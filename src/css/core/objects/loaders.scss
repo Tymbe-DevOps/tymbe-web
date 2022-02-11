@@ -18,6 +18,7 @@
 
 	// STATES
 	&.is-loading {
+		opacity: 0.5;
 		pointer-events: none;
 	}
 	&.is-loading .btn__text {

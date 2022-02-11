@@ -188,17 +188,22 @@ export default class Registration extends Controller {
 		});
 
 		if (response.ok) {
+			const locationHref = this.nextValue;
 			window.dataLayer = window.dataLayer || [];
 			window.dataLayer.push({
 				event: 'gaevent',
 				category: 'Forms',
 				action: 'Submit',
 				label: 'Tymber Registration',
+				eventCallback: function() {
+					document.location = locationHref;
+				},
+				eventTimeout: 2000,
 			});
 			sessionStorage.removeItem('formValues');
 			sessionStorage.removeItem('validationError');
 			sessionStorage.removeItem('userUrl');
-			window.location.href = this.nextValue;
+			// window.location.href = this.nextValue;
 		} else if (!response.ok && response.status !== 400) {
 			this.removeLoader();
 			throw new Error('Network response was not ok.');
