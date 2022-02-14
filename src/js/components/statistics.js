@@ -21,7 +21,8 @@ export default class Statistics extends Controller {
 					const value = getData.statisticsValue;
 					if (Object.prototype.hasOwnProperty.call(data, value)) {
 						const suffix = getData.statisticsSuffix;
-						const innerHtml = suffix.length > 0 ? data[value] + '&nbsp;' + suffix : this.numberWithSpaces(data[value]);
+						const innerHtml =
+							suffix.length > 0 ? ~~Number(data[value]) + '&nbsp;' + suffix : this.numberWithSpaces(data[value]);
 						element.innerHTML = innerHtml;
 					}
 				});
