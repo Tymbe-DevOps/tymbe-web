@@ -9,6 +9,7 @@ const config = require('./helpers/getConfig');
 
 module.exports = function webpack(callback) {
 	const { rules = {}, breakpointsVars = {} } = config.mediaQueries;
+	const { apiBaseUrl } = config;
 
 	let isReady = false;
 	const settings = {
@@ -45,6 +46,7 @@ module.exports = function webpack(callback) {
 				PROJECT_CONFIG: JSON.stringify({
 					breakpointsVars,
 					rules,
+					apiBaseUrl
 				}),
 			}),
 		],

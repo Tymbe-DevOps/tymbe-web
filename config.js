@@ -1,3 +1,5 @@
+const apiBaseUrl = 'https://api.tymbeos1.cz';
+
 const basePath = {
 	src: 'src/',
 	dest: 'dist/',
@@ -67,6 +69,7 @@ const browserSync = {
 };
 
 module.exports = {
+	apiBaseUrl,
 	basePath,
 	src,
 	dest,
