@@ -100,9 +100,9 @@
 			width: 396px;
 			.tag {
 				top: auto;
-				right: -20px;
-				bottom: 30px;
-				transform: translate(0);
+				right: 0;
+				bottom: 0;
+				transform: translate(-50%);
 			}
 		}
 		&__item.is-smallest {
