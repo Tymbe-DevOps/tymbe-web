@@ -41,7 +41,9 @@
 		}
 		.embla--is-ready .embla__slide {
 			position: absolute;
-			margin-left: -$gridGutter;
+			/* stylelint-disable-next-line declaration-no-important */
+			left: -$gridGutter !important;
+			width: auto;
 		}
 		.embla__slide.is-selected {
 			z-index: 1;
@@ -162,7 +164,7 @@
 				bottom: auto;
 				max-width: 338px;
 				padding: 0;
-				border-width: 0 0 28px 28px;
+				border-width: 0 0 $gridGutter $gridGutter;
 				img {
 					max-width: 180px;
 				}
