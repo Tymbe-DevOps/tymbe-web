@@ -15,7 +15,7 @@ export default class Rings extends Controller {
 
 				// eslint-disable-next-line no-unused-vars
 				Object.entries(data).forEach(([key, value]) => {
-					this.timeTargets[index].innerHTML = value['time_from'];
+					this.timeTargets[index].innerHTML = value['time_from'].substring(0, value['time_from'].length - 3);
 					this.positionTargets[index].innerHTML = value['position'];
 					this.placeTargets[index].innerHTML = value['place'];
 					this.priceTargets[index].innerHTML = value['price_start'];
