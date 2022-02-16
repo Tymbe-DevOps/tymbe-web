@@ -1,4 +1,4 @@
-const apiBaseUrl = 'https://api.tymbeos1.cz';
+const apiBaseUrl = 'https://api.tymbe.com';
 
 const basePath = {
 	src: 'src/',
