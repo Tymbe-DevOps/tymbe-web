@@ -189,6 +189,23 @@
 								}
 							]
 						%}
+						{% set buttonLogin = isB2B is defined ?
+							[
+								{
+									type: 'secondary',
+									link: 'https://tymbe.com/firma/login.php',
+									name: 'Přihlásit',
+									targetBlank: true
+								}
+							] : [
+								{
+									type: 'secondary',
+									link: 'https://tymbe.com/tymber/login',
+									name: 'Přihlásit',
+									targetBlank: true
+								}
+							]
+						%}
 						{% include '@components/menu/main.twig' with {
 							props: {
 								items: [
@@ -217,14 +234,7 @@
 										name: 'Kontakty'
 									},
 								],
-								buttons: [
-									{
-										type: 'secondary',
-										link: 'https://tymbe.com/tymber/login',
-										name: 'Přihlásit',
-										targetBlank: true
-									}
-								]|merge(buttonRegistration)
+								buttons: []|merge(buttonRegistration)|merge(buttonLogin)
 							}
 						} %}
 					{% endif %}
