@@ -11,7 +11,12 @@ export const personInfo = Yup.object({
 		.integer(),
 	birthDate: Yup.string()
 		.required('Vyplňte prosím datum narození.')
-		.matches(/^[0-3][0-9]\.[0-1][0-9]\.[1-2][0-9]{3}$/, 'Chybný formát data narození (DD.MM.RRRR).'),
+		.matches(/^[0-3][0-9]\.[0-1][0-9]\.[1-2][0-9]{3}$/, 'Chybný formát data narození (DD.MM.RRRR).')
+		.test('min-age-15', 'Musíte být starší 15 let', (value) => {
+			const [day, month, year] = value.split('.');
+			const age = new Date(Date.now() - new Date(year, month - 1, day)).getUTCFullYear() - 1970;
+			return age >= 15;
+		}),
 	birthNumber: Yup.string()
 		.required('Vyplňte prosím rodné číslo.')
 		.matches(/^[0-9]{6}[0-9A-Za-z]{3,4}$/, 'Chybný formát rodného čísla.'),
