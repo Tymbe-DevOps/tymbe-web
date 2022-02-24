@@ -8,7 +8,7 @@ export const personInfo = Yup.object({
 	idNumber: Yup.number()
 		.required('Vyplňte prosím číslo občanského průkazu.')
 		.positive('Vyplňte prosím číslo občanského průkazu.')
-		.integer(),
+		.integer('Vyplňte prosím číslo občanského průkazu.'),
 	birthDate: Yup.string()
 		.required('Vyplňte prosím datum narození.')
 		.matches(/^[0-3][0-9]\.[0-1][0-9]\.[1-2][0-9]{3}$/, 'Chybný formát data narození (DD.MM.RRRR).')
