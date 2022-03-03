@@ -5,10 +5,9 @@ export const personInfo = Yup.object({
 	sureName: Yup.string().required('Vyplňte prosím jméno.'),
 	familyName: Yup.string().required('Vyplňte prosím příjmení.'),
 	birthPlace: Yup.string().required('Vyplňte prosím místo narození.'),
-	idNumber: Yup.number()
+	idNumber: Yup.string()
 		.required('Vyplňte prosím číslo občanského průkazu.')
-		.positive('Vyplňte prosím číslo občanského průkazu.')
-		.integer('Vyplňte prosím číslo občanského průkazu.'),
+		.matches(/^([a-z]{2})?\d{4,}$/i, 'Vyplňte prosím číslo občanského průkazu.'),
 	birthDate: Yup.string()
 		.required('Vyplňte prosím datum narození.')
 		.matches(/^[0-3][0-9]\.[0-1][0-9]\.[1-2][0-9]{3}$/, 'Chybný formát data narození (DD.MM.RRRR).')
