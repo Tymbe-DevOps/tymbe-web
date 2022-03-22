@@ -1,12 +1,12 @@
 const importFresh = require('import-fresh');
 const { src, dest } = require('gulp');
-const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const rename = require('gulp-rename');
 const twing = require('gulp-twing');
-const htmlbeautify = require('gulp-html-beautify');
+const formatHtml = require('gulp-format-html');
 
 const config = require('./helpers/getConfig.js');
+const logger = require('./helpers/logger.js');
 
 module.exports = function templatePages(done) {
 	const onError = (error) => {
@@ -24,7 +24,10 @@ module.exports = function templatePages(done) {
 	})
 		.pipe(
 			plumber({
-				errorHandler: onError,
+				errorHandler: logger.onError({
+					title: 'Twig error!',
+					callback: done,
+				}),
 			}),
 		)
 		.pipe(
@@ -38,7 +41,7 @@ module.exports = function templatePages(done) {
 			}),
 		)
 		.pipe(
-			htmlbeautify({
+			formatHtml({
 				indent_size: 1,
 				indent_char: '	',
 				eol: '\n',

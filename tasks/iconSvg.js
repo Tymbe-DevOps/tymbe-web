@@ -9,10 +9,15 @@ const cheerio = require('gulp-cheerio');
 const rename = require('gulp-rename');
 const lodash = require('lodash');
 const config = require('./helpers/getConfig.js');
+const fs = require('fs');
 
 module.exports = function iconSvg() {
+	const fileName = 'icons.scss';
+	const filePath = `${config.src.styles}core/generated/`;
+	fs.writeFileSync(filePath + fileName, '');
+
 	return src(['*.svg', '!_no-delete.svg'], {
-		cwd: config.src.iconsSVG,
+		cwd: config.src.icons,
 	})
 		.pipe(
 			rename({
@@ -53,7 +58,7 @@ module.exports = function iconSvg() {
 				});
 			}),
 		)
-		.pipe(dest(`${config.dest.images}bg/`))
+		.pipe(dest(`${config.dest.images}`))
 		.pipe(
 			through2.obj(function genarateScssIcons(file, _encoding, transformCallback) {
 				const t = this;
@@ -89,7 +94,7 @@ module.exports = function iconSvg() {
 				});
 
 				consolidate.lodash(
-					`${config.src.styles}tpl/icons-svg.css.tpl`,
+					`${config.src.styles}tpl/icons.css.tpl`,
 					{
 						commonWidth,
 						commonPerc,
@@ -98,7 +103,7 @@ module.exports = function iconSvg() {
 					},
 					(err, html) => {
 						const newFile = new Vinyl({
-							path: 'icons-svg.scss',
+							path: fileName,
 							contents: Buffer.from(html),
 						});
 
@@ -108,5 +113,5 @@ module.exports = function iconSvg() {
 				);
 			}),
 		)
-		.pipe(dest(`${config.src.styles}core/generated/`));
+		.pipe(dest(filePath));
 };

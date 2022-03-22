@@ -8,8 +8,7 @@ const basePath = {
 
 const src = {
 	fonts: `${basePath.src}fonts/`,
-	icons: `${basePath.src}img/bg/icons/`,
-	iconsSVG: `${basePath.src}img/bg/icons-svg/`,
+	icons: `${basePath.src}img/icons/`,
 	images: `${basePath.src}img/`,
 	scripts: `${basePath.src}js/`,
 	styles: `${basePath.src}css/`,

@@ -1,14 +1,13 @@
 const { src, dest } = require('gulp');
-const gulpSass = require('gulp-sass');
+const gulpSass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
-const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
-const sassVars = require('gulp-sass-vars');
-const globImporter = require('node-sass-glob-importer');
 
 const isProduction = require('./helpers/isProduction.js');
 const config = require('./helpers/getConfig.js');
+const logger = require('./helpers/logger.js');
+const { compileSassVars } = require('./helpers/compileSassVars');
 const path = require('path');
 
 const paths = Object.fromEntries(
@@ -19,22 +18,28 @@ const paths = Object.fromEntries(
 
 module.exports = function sass(done) {
 	const { breakpoints = {}, rules = {}, breakpointsVars = {} } = config.mediaQueries;
-
-	const onError = (error) => {
-		notify.onError({
-			title: 'Sass error!',
-			message: '<%= error.message %>',
-			sound: 'Beep',
-		})(error);
-
-		done();
+	const sassConfigVars = {
+		contents: compileSassVars({
+			...breakpointsVars,
+			...rules,
+			breakpoints,
+			breakpointsVars,
+			paths,
+		}),
 	};
 
 	const settings = {
 		includePaths: ['bower_components', 'node_modules'],
 		outputStyle: isProduction() ? 'compressed' : 'expanded',
 		precision: 9,
-		importer: [globImporter()],
+		importer: [
+			(url) => {
+				if (url === 'config') {
+					return sassConfigVars;
+				}
+				return null;
+			},
+		],
 	};
 
 	return src(['*.scss'], {
@@ -43,22 +48,14 @@ module.exports = function sass(done) {
 	})
 		.pipe(
 			plumber({
-				errorHandler: onError,
+				errorHandler: logger.onError({
+					title: 'Sass error!',
+					callback: done,
+				}),
 			}),
 		)
-		.pipe(
-			sassVars(
-				{
-					...breakpointsVars,
-					...rules,
-					breakpoints,
-					breakpointsVars,
-					paths,
-				},
-				{ verbose: false },
-			),
-		)
-		.pipe(gulpSass(settings))
+
+		.pipe(gulpSass.sync(settings))
 		.pipe(
 			postcss([
 				autoprefixer({

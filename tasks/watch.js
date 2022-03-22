@@ -8,9 +8,6 @@ const config = require('./helpers/getConfig.js');
 const sass = require('./sass');
 const twig = require('./twig');
 const templatePages = require('./templatePages');
-const sprite = require('./sprite');
-const spriteRetina = require('./spriteRetina');
-const iconFont = require('./iconFont');
 const iconSvg = require('./iconSvg');
 const copyJs = require('./copyJs');
 const webpack = require('./webpack');
@@ -29,25 +26,13 @@ module.exports = function watch(done) {
 			watchGulp(`${config.src.styles}**/*.scss`, sass);
 			watchGulp(`${config.src.templates}**/*.twig`, twig);
 			watchGulp(`${config.src.pages}**/*.twig`, templatePages);
-			watchGulp(`${config.src.images}bg/sprites/*.png`, sprite);
-			watchGulp(`${config.src.images}bg/sprites-retina/*.png`, spriteRetina);
-			watchGulp(`${config.src.icons}*.svg`, iconFont);
-			watchGulp(`${config.src.iconsSVG}*.svg`, iconSvg);
+			watchGulp(`${config.src.icons}*.svg`, iconSvg);
 			watchGulp(`${config.src.scripts}static/*.js`, copyJs);
 			if (isProduction()) {
 				watchGulp([`${config.src.scripts}**/*`, `!${config.src.scripts}static/*.js`], webpack);
 			}
 
-			watchGulp(
-				[
-					`${config.src.images}**/*`,
-					`!${config.src.images}**/sprites*`,
-					`!${config.src.images}**/sprites*/*`,
-					`!${config.src.images}**/icons*`,
-					`!${config.src.images}**/icons*/*`,
-				],
-				copyImages,
-			);
+			watchGulp([`${config.src.images}**/*`, `!${config.src.images}icons/*`], copyImages);
 			watchGulp(
 				[
 					`${config.basePath.src}**/*`,

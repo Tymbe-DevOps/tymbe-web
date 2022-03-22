@@ -1,11 +1,12 @@
 const path = require('path');
-const notify = require('gulp-notify');
 const bundler = require('webpack');
 const babelLoaderExcludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except');
 
 const isProduction = require('./helpers/isProduction');
-const { log } = require('./helpers/logger');
 const config = require('./helpers/getConfig');
+const logger = require('./helpers/logger.js');
+
+let lastCompilerForClose = null;
 
 module.exports = function webpack(callback) {
 	const { rules = {}, breakpointsVars = {} } = config.mediaQueries;
@@ -51,41 +52,33 @@ module.exports = function webpack(callback) {
 			}),
 		],
 		profile: true,
-		watch: !isProduction(),
-		watchOptions: {
-			ignored: /node_modules|bower_components/,
-		},
 		devtool: isProduction() ? false : 'source-map',
-		externals: {
-			jquery: 'jQuery',
-		},
 	};
 
 	if (isProduction()) {
 		settings.mode = 'production';
 	}
 
-	const onError = notify.onError((error) => {
-		return {
-			title: 'JS error!',
-			message: error,
-			sound: 'Beep',
-		};
-	});
-
-	const bundle = bundler(settings, (error, stats) => {
+	const onCompiler = (error, stats) => {
 		const jsonStats = stats.toJson();
 		const { errors } = jsonStats;
 		const { warnings } = jsonStats;
 
 		if (error) {
-			onError(error);
-		} else if (errors.length > 0) {
-			onError(errors.toString());
-		} else if (warnings.length > 0) {
-			onError(warnings.toString());
+			logger.onError({
+				title: 'JS error!',
+				message: error,
+			})();
+		} else if (stats.hasErrors()) {
+			logger.onError({
+				title: 'JS error!',
+			})(errors[0]);
+		} else if (stats.hasWarnings()) {
+			logger.onError({
+				title: 'JS error!',
+			})(warnings[0]);
 		} else {
-			log(`[webpack] ${stats.toString(config.webpack.stats)}`);
+			logger.log(`[webpack] ${stats.toString(config.webpack.stats)}`);
 		}
 
 		if (!isReady) {
@@ -93,9 +86,19 @@ module.exports = function webpack(callback) {
 		}
 
 		isReady = true;
+	};
 
-		return isReady;
-	});
+	// run compilation
+	if (lastCompilerForClose) {
+		lastCompilerForClose.close();
+	}
+	const compiler = bundler(settings);
+	if (isProduction()) {
+		compiler.run(onCompiler);
+		lastCompilerForClose = compiler;
+	} else {
+		lastCompilerForClose = compiler.watch({ ignored: /node_modules|bower_components/ }, onCompiler);
+	}
 
-	return bundle;
+	return lastCompilerForClose;
 };

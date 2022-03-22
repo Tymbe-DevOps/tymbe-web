@@ -9,9 +9,6 @@ const copyJs = require('./tasks/copyJs');
 const copyRoot = require('./tasks/copyRoot');
 
 const iconSvg = require('./tasks/iconSvg');
-const iconFont = require('./tasks/iconFont');
-const spriteRetina = require('./tasks/spriteRetina');
-const sprite = require('./tasks/sprite');
 
 const twig = require('./tasks/twig');
 const templatePages = require('./tasks/templatePages');
@@ -25,11 +22,7 @@ const watch = require('./tasks/watch');
 const build = function build(done) {
 	const twigTpl = !isProduction() ? [templatePages, twig] : twig;
 
-	return series(
-		clean,
-		parallel(iconSvg, iconFont, spriteRetina, sprite),
-		parallel(sass, webpack, twigTpl, copyImages, copyJs, copyRoot),
-	)(done);
+	return series(clean, iconSvg, parallel(sass, webpack, twigTpl, copyImages, copyJs, copyRoot))(done);
 };
 
 const dev = function dev(done) {
@@ -56,13 +49,10 @@ module.exports = {
 	copyJs,
 	copyRoot,
 	iconSvg,
-	iconFont,
 	imagemin,
 	twig,
 	templatePages,
 	sass,
-	spriteRetina,
-	sprite,
 	validate,
 	watch,
 	webpack,

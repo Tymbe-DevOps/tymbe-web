@@ -11,10 +11,10 @@ We're very happy with you – our client and also becouse you're using our DevSt
 The things you need to install (minimal versions). Ideal is using something like [Node Version Manager](https://github.com/nvm-sh/nvm)
 
 ```
-node 12.6.0
+node 14.7.0
 npm	6.9.0
 
-recommend node version is up to version 14.x.x
+recommend node version is up to version 16.x.x
 OS window - need to install Build Tools for Visual Studio 2017/2019
 ```
 

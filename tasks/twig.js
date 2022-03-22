@@ -1,26 +1,16 @@
 const importFresh = require('import-fresh');
 const { src, dest } = require('gulp');
-const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const rename = require('gulp-rename');
 const twing = require('gulp-twing');
 const cheerio = require('cheerio');
 const through2 = require('through2');
-const htmlbeautify = require('gulp-html-beautify');
+const formatHtml = require('gulp-format-html');
 
 const config = require('./helpers/getConfig.js');
+const logger = require('./helpers/logger.js');
 
 module.exports = function twig(done) {
-	const onError = (error) => {
-		notify.onError({
-			title: 'Twig error!',
-			message: '<%= error.message %>',
-			sound: 'Beep',
-		})(error);
-
-		done();
-	};
-
 	const time = new Date().getTime();
 	return (
 		src(['*.twig'], {
@@ -28,7 +18,10 @@ module.exports = function twig(done) {
 		})
 			.pipe(
 				plumber({
-					errorHandler: onError,
+					errorHandler: logger.onError({
+						title: 'Twig error!',
+						callback: done,
+					}),
 				}),
 			)
 			.pipe(
@@ -73,7 +66,7 @@ module.exports = function twig(done) {
 				}),
 			)
 			.pipe(
-				htmlbeautify({
+				formatHtml({
 					indent_size: 1,
 					indent_char: '	',
 					eol: '\n',
