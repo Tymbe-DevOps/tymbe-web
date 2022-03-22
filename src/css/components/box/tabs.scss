@@ -23,7 +23,7 @@
 		font-family: $fontSecondary;
 		font-weight: $bold;
 		font-size: 16px;
-		line-height: (20/16);
+		line-height: calc(20 / 16);
 		text-align: center;
 		text-decoration: none;
 		transition: border-color $t, color $t;
@@ -52,7 +52,7 @@
 		&__link {
 			padding: $size3;
 			font-size: 22px;
-			line-height: (26/22);
+			line-height: calc(26 / 22);
 		}
 
 		&__fragment {

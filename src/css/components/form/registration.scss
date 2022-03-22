@@ -59,7 +59,7 @@
 
 	&__text {
 		font-size: 16px;
-		line-height: (24/16);
+		line-height: calc(24 / 16);
 	}
 
 	// MQ

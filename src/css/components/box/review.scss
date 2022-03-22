@@ -69,7 +69,7 @@
 		&__quotation {
 			padding: $size3 16px;
 			font-size: 18px;
-			line-height: (35/18);
+			line-height: calc(35 / 18);
 		}
 		&__bottom {
 			margin: $size4 (-$size1) 0;

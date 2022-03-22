@@ -1,11 +1,35 @@
 // Box
-@import 'box/**/*.scss';
+@import 'box/about';
+@import 'box/cookie';
+@import 'box/leaders';
+@import 'box/review';
+@import 'box/std';
+@import 'box/bnr';
+@import 'box/intro-hp';
+@import 'box/people';
+@import 'box/scroll';
+@import 'box/tabs';
+@import 'box/contact';
+@import 'box/intro';
+@import 'box/product';
+@import 'box/statistics';
+@import 'box/white';
 
 // Crossroad
-@import 'crossroad/**/*.scss';
+@import 'crossroad/benefits';
+@import 'crossroad/customers';
+@import 'crossroad/grid';
+@import 'crossroad/info-list';
+@import 'crossroad/products';
+@import 'crossroad/reviews';
+@import 'crossroad/steps';
 
 // Form
-@import 'form/**/*.scss';
+@import 'form/registration';
+@import 'form/search';
 
 // Menu
-@import 'menu/**/*.scss';
+@import 'menu/accessibility';
+@import 'menu/footer.scss';
+@import 'menu/main.scss';
+@import 'menu/socials.scss';

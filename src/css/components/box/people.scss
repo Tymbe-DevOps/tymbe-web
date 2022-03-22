@@ -14,7 +14,7 @@
 		font-family: $fontSecondary;
 		font-weight: $bold;
 		font-size: 22px;
-		line-height: (30/22);
+		line-height: calc(30 / 22);
 		text-transform: uppercase;
 	}
 	&__item {

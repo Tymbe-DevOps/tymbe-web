@@ -21,7 +21,7 @@
 		&::before {
 			content: '';
 			display: block;
-			padding-top: percentage(120/270);
+			padding-top: percentage(calc(120 / 270));
 		}
 		img {
 			position: absolute;

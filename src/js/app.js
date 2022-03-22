@@ -1,8 +1,6 @@
 import { Application } from 'stimulus';
 import smoothscroll from 'smoothscroll-polyfill';
 
-import './tools/svg4everybody';
-
 // Components
 import FocusInput from './components/FocusInput';
 import SiteNav from './components/SiteNav';

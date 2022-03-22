@@ -24,7 +24,7 @@
 		font-family: $fontPrimary;
 		font-weight: $medium;
 		font-size: 14px;
-		line-height: (24/14);
+		line-height: calc(24 / 14);
 		text-decoration: none;
 		transition: all $t;
 		cursor: pointer;
@@ -52,7 +52,7 @@
 		padding: 0 $size1 $size1;
 		color: $colorGreyLt;
 		font-size: 14px;
-		line-height: (24/14);
+		line-height: calc(24 / 14);
 		> :last-child {
 			margin-bottom: 0;
 		}
@@ -82,11 +82,11 @@
 		&__toggle {
 			padding: 20px 18px 19px;
 			font-size: 18px;
-			line-height: (24/18);
+			line-height: calc(24 / 18);
 		}
 		&__content {
 			font-size: 16px;
-			line-height: (24/16);
+			line-height: calc(24 / 16);
 		}
 	}
 }

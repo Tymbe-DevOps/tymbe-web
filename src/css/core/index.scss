@@ -1,4 +1,28 @@
-@import 'generated/**/*.scss';
+@import 'generated/icons';
 
 // Objects
-@import 'objects/**/*.scss';
+@import 'objects/buttons/default';
+
+@import 'objects/inputs/default';
+@import 'objects/inputs/as-link';
+@import 'objects/inputs/fix';
+@import 'objects/inputs/item';
+@import 'objects/inputs/label';
+@import 'objects/inputs/select';
+@import 'objects/inputs/switch';
+@import 'objects/inputs/text';
+
+@import 'objects/accordion';
+@import 'objects/animations';
+@import 'objects/down';
+@import 'objects/embla';
+@import 'objects/fonts';
+@import 'objects/grid';
+@import 'objects/heading';
+@import 'objects/item-icon';
+@import 'objects/list-horizontal';
+@import 'objects/loaders';
+@import 'objects/message';
+@import 'objects/steps';
+@import 'objects/tag';
+@import 'objects/tooltip';

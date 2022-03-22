@@ -88,7 +88,7 @@
 	}
 
 	&--x-9 {
-		margin-left: (-($size9 / 2));
+		margin-left: calc($size9 / 2 * -1);
 
 		// MQ
 		@media ($mdUp) {
@@ -96,7 +96,7 @@
 		}
 	}
 	&--x-9 > &__cell {
-		border-left-width: (-($size9 / 2));
+		border-left-width: calc($size9 / 2);
 
 		// MQ
 		@media ($mdUp) {

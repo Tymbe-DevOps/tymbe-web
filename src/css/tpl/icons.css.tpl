@@ -1,34 +1,31 @@
-@font-face {
-	font-family: '<%= fontName %>';
-	src: url('<%= fontPath %><%= fontName %>.eot');
-	src: url('<%= fontPath %><%= fontName %>.eot#iefix') format('embedded-opentype'),
-		url('<%= fontPath %><%= fontName %>.ttf') format('truetype'),
-		url('<%= fontPath %><%= fontName %>.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-
-%icon {
-	font-family: '<%= fontName %>';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-.icon {
-	@extend %icon;
+.icon-svg {
 	display: inline-block;
+	vertical-align: middle;
 	position: relative;
-}
+	width: <%= commonWidth %>px;
+	&__svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		fill: currentColor;
+		pointer-events: none;
+		transform: translateZ(0);
+	}
+	&::before {
+		content: '';
+		display: block;
+		padding-top: <%= commonPerc %>%;
+	}
 
-<% _.each(glyphs, function(glyph) { %>
-$<%= className %>--<%= glyph.name %>: '\<%= glyph.code %>';
-.<%= className %>--<%= glyph.name %>::before {
-	content: $<%= className %>--<%= glyph.name %>;
+	<% _.each(withoutCommonWidth, function(glyph) { %>
+	&--<%= glyph.name %> {
+		width: <%= glyph.width %>px;
+	} <% }); %>
+	<% _.each(withoutCommonPerc, function(glyph) { %>
+	&--<%= glyph.name %>::before {
+		padding-top: <%= glyph.perc %>%;
+	} <% }); %>
+
 }
-<% }); %>

@@ -7,7 +7,7 @@ html {
 	// MQ
 	@media ($mdDown) {
 		font-size: 16px;
-		line-height: (26/16);
+		line-height: calc(26 / 16);
 	}
 }
 
@@ -37,7 +37,7 @@ h1,
 	// MQ
 	@media ($mdDown) {
 		font-size: 35px;
-		line-height: (45/35);
+		line-height: calc(45 / 35);
 	}
 }
 h2,
@@ -47,7 +47,7 @@ h2,
 	// MQ
 	@media ($mdDown) {
 		font-size: 28px;
-		line-height: (38/28);
+		line-height: calc(38 / 28);
 	}
 }
 h3,
@@ -108,7 +108,7 @@ dl {
 	list-style: none;
 }
 li {
-	margin: 0 0 ($typoSpaceVertical / 4);
+	margin: 0 0 calc($typoSpaceVertical / 4);
 	padding: 0 0 0 20px;
 }
 ul {
@@ -151,7 +151,7 @@ dt {
 	font-weight: bold;
 }
 dd {
-	margin: 0 0 ($typoSpaceVertical / 2);
+	margin: 0 0 calc($typoSpaceVertical / 2);
 	padding: 0;
 }
 

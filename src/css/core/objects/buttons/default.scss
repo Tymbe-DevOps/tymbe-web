@@ -16,7 +16,7 @@
 		color: $colorWhite;
 		font-weight: $semiBold;
 		font-size: 16px;
-		line-height: (23/16);
+		line-height: calc(23 / 16);
 		text-align: center;
 		text-decoration: none;
 		transition: background-color $t;

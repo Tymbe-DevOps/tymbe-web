@@ -24,7 +24,7 @@
 		&::before {
 			content: '';
 			display: block;
-			padding-top: percentage(40/78);
+			padding-top: percentage(calc(40 / 78));
 		}
 		img {
 			position: absolute;

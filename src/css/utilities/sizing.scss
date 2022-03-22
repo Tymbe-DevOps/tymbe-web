@@ -1,7 +1,7 @@
 .u-max-width {
 	@for $i from 1 through 12 {
 		&--#{$i}-12 {
-			max-width: round((($rowMainWidth - $rowMainGutter * 2) / $gridColumns) * $i);
+			max-width: round(calc((($rowMainWidth - $rowMainGutter * 2) / $gridColumns) * $i));
 		}
 	}
 }

@@ -1,3 +1,5 @@
+@import 'config';
+
 // Colors
 $colorPrimary: #28367b;
 $colorSecondary: #b6cd1e;
@@ -31,7 +33,7 @@ $fontSystem: -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, helvetica, a
 $fontPrimary: poppins, $fontSystem;
 $fontSecondary: coolvetica, $fontPrimary;
 $fontSize: 18px;
-$lineHeight: (28 / 18);
+$lineHeight: calc(28 / 18);
 
 // Typography
 $typoSpaceVertical: 1.375em;
