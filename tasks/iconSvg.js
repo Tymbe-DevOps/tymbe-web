@@ -14,6 +14,9 @@ const fs = require('fs');
 module.exports = function iconSvg() {
 	const fileName = 'icons.scss';
 	const filePath = `${config.src.styles}core/generated/`;
+	if (!fs.existsSync(filePath)) {
+		fs.mkdirSync(filePath, { recursive: true });
+	}
 	fs.writeFileSync(filePath + fileName, '');
 
 	return src(['*.svg', '!_no-delete.svg'], {

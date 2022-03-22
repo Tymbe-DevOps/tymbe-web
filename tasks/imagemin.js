@@ -3,7 +3,7 @@ const config = require('./helpers/getConfig.js');
 
 module.exports = function imagemin() {
 	return import('gulp-imagemin').then((gulpImagemin) => {
-		src(['**/*.{png,jpg,gif,svg}', '!bg/icons-svg.svg'], {
+		src(['**/*.{png,jpg,gif,svg}', '!icons.svg'], {
 			cwd: config.dest.images,
 		})
 			.pipe(
