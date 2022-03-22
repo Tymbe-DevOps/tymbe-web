@@ -59,7 +59,7 @@
 	"@superkoders/cookie": "2.3.1",
 	"embla-carousel": "5.0.1",
     "smoothscroll-polyfill": "0.4.4",
-    "stimulus": "3.0.1",
+    "@hotwired/stimulus": "3.0.1",
 	"stimulus-use": "0.41.0",
     "yup": "0.32.11"
   },
