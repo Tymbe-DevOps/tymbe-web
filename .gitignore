@@ -3,7 +3,7 @@
 /_export
 /_podklady
 /dist
-/src/css/core/generated/icons.scss
+/src/css/core/generated
 /wordpress/wp-content/themes/*/static/
 /wordpress/wp-content/uploads/
 /wordpress/wp-config.php
