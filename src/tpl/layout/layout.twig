@@ -187,12 +187,12 @@
 							[
 								{
 									link: './registrace-b2b.html',
-									name: 'Registrace'
+									name: 'Реєстрація'
 								}
 							] : [
 								{
 									link: './registrace.html',
-									name: 'Registrace'
+									name: 'Реєстрація'
 								}
 							]
 						%}
@@ -201,14 +201,14 @@
 								{
 									type: 'secondary',
 									link: 'https://tymbe.com/firma/login.php',
-									name: 'Přihlásit',
+									name: 'Увійти',
 									targetBlank: true
 								}
 							] : [
 								{
 									type: 'secondary',
 									link: 'https://tymbe.com/tymber/login',
-									name: 'Přihlásit',
+									name: 'Увійти',
 									targetBlank: true
 								}
 							]
@@ -220,25 +220,25 @@
 										isActive: isB2C|default(false),
 										link: './',
 										icon: 'work',
-										name: 'Pro brigádníky'
+										name: 'Для тимчасових працівників'
 									},
 									{
 										isActive: isB2B|default(false),
 										link: './pro-firmy.html',
 										icon: 'building',
-										name: 'Pro firmy'
+										name: 'Для компаній'
 									},
 									{
 										isActive: isAbout|default(false),
 										link: './o-nas.html',
 										icon: 'user',
-										name: 'O nás'
+										name: 'Про нас'
 									},
 									{
 										isActive: isContact|default(false),
 										link: './kontakty.html',
 										icon: 'message',
-										name: 'Kontakty'
+										name: 'Контакти'
 									},
 								],
 								buttons: []|merge(buttonLogin)|merge(buttonRegistration)
@@ -261,25 +261,25 @@
 								isActive: isB2C|default(false),
 								link: './',
 								icon: 'work',
-								name: 'Pro brigádníky'
+								name: 'Для тимчасових працівників'
 							},
 							{
 								isActive: isB2B|default(false),
 								link: './pro-firmy.html',
 								icon: 'building',
-								name: 'Pro firmy'
+								name: 'Для компаній'
 							},
 							{
 								isActive: isAbout|default(false),
 								link: './o-nas.html',
 								icon: 'user',
-								name: 'O nás'
+								name: 'Про нас'
 							},
 							{
 								isActive: isContact|default(false),
 								link: './kontakty.html',
 								icon: 'message',
-								name: 'Kontakty'
+								name: 'Контакти'
 							},
 							{
 								isActive: isFAQ|default(false),
@@ -292,10 +292,10 @@
 				} %}
 
 				<p class="u-max-width--6-12 u-mx-auto">
-					Ty&#8209;brigády od Tymbe jsou jediná ryze online platforma pro nábor, zaškolení a zasmluvnění brigádníků se správou docházek a možností okamžitého vyplacení brigádníků.
+					Ty- brigády від Tymbe єдина суто онлайн-платформа для набору, навчання та контрактування тимчасових працівників з керівництвом відвідуваності та можливістю негайної оплати тимчасових працівників.
 				</p>
 				<p class="footer__contact u-mb-4">
-					24 hodin denně, 7 dní v týdnu a&nbsp;po celé ČR.
+					24 години на добу, 7 днів на тиждень і по всій Чеській Республіці.
 				</p>
 
 				{% include '@components/menu/socials.twig' with {

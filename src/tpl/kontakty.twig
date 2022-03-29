@@ -9,8 +9,8 @@
 			props: {
 				classes: ['b-intro--cut'],
 				background: 'intro-bg.jpg',
-				title: 'Kontakt',
-				text: 'Máš otázky? Máme odpovědi! Ozvi se a doplníme všechno, co tě zajímá.',
+				title: 'Контакти',
+				text: 'У тебе є питання? У нас є відповіді! Зв яжись з нами, і ми додамо все, що тебе цікавить.',
 			}
 		} %}
 		<div class="row-main">
@@ -21,13 +21,13 @@
 							<form class="b-contact__form" action="?" data-controller="Contact"
 							data-contact-url-value="{{apiBaseUrl}}/contactForm" data-action="submit->Contact#send">
 								<h2 class="b-contact__title h3">
-									Spoj se s námi
+									Зв яжись з нами
 								</h2>
-								<p class="message message--ok u-hide" data-contact-target="success">Děkujeme.<br>Budeme tě kontaktovat co nejdříve.<p>
+								<p class="message message--ok u-hide" data-contact-target="success">Дякуємо.<br>Ми зв'яжемося з вами якнайшвидше.<p>
 								<p class="message message--error u-hide" data-contact-target="message"><p>
 								<p class="inp js-registration__inp" data-controller="FocusInput">
 									<label for="contactInputName" class="inp-label">
-										Jméno
+										Твоє ім’я
 									</label>
 									<span class="inp-fix">
 										<input type="text" name="contactInputName" id="contactInputName" placeholder="Jméno" class="inp-text" required data-action="focus->FocusInput#focus blur->FocusInput#blur input->Contact#inputValidate">
@@ -44,7 +44,7 @@
 								</p>
 								<p class="inp js-registration__inp" data-controller="FocusInput">
 									<label for="contactInputMessage" class="inp-label">
-										Zpráva
+										Повідомлення
 									</label>
 									<span class="inp-fix">
 										<textarea name="contactInputMessage" id="contactInputMessage" placeholder="Zpráva" class="inp-text" cols="40" rows="6"
@@ -55,7 +55,7 @@
 								<p class="u-mt-2">
 									<button type="submit" class="btn btn-loader" data-contact-target="loader" data-action="click->Contact#formValidate">
 										<span class="btn__text">
-											Odeslat
+											Відправити
 										</span>
 									</button>
 								</p>
