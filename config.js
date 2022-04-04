@@ -81,7 +81,7 @@ module.exports = {
 			xs: '375px',
 			sm: '480px',
 			md: '750px',
-			lg: '1000px',
+			lg: '1110px',
 			xl: '1200px',
 		},
 		rules: {
