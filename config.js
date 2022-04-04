@@ -81,8 +81,8 @@ module.exports = {
 			xs: '375px',
 			sm: '480px',
 			md: '750px',
-			lg: '1110px',
-			xl: '1200px',
+			lg: '1180px',
+			xl: '50000px',
 		},
 		rules: {
 			webkit: '(-webkit-min-device-pixel-ratio: 0)',
