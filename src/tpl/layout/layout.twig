@@ -17,22 +17,29 @@
 		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 		})(window,document,'script','dataLayer','GTM-W38ZVX8');</script>
 		<!-- End Google Tag Manager -->
-
-		<meta name="description" content="">
+		{% if metaDescriptionContent is defined %}
+				<meta name="description" content="{{metaDescriptionContent}}">
+				<meta property="og:description" content="{{metaDescriptionContent}}">
+				<meta name="twitter:description" content="{{metaDescriptionContent}}">
+		{% else %}
+				<meta name="description" content="">
+				<meta property="og:description" content="">
+				<meta name="twitter:description" content="">
+		{% endif %}
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-
 		<meta name="twitter:card" content="summary">
 		<meta name="twitter:title" content="{{ pageTitle }} | Tymbe">
-		<meta name="twitter:description" content="">
+		
 		<meta name="twitter:image" content="{{ assets.images }}social/twitter.jpg">
 
 		<meta property="og:title" content="{{ pageTitle }} | Tymbe">
-		<meta property="og:description" content="">
+		
 		<meta property="og:image" content="{{ assets.images }}social/facebook.jpg">
 		<meta property="og:site_name" content="Tymbe">
 		<meta property="og:url" content="Staň se Tymberem a vydělej víc!">
 
-		<title>Tymbe | {{ pageTitle }}  </title>
+		<title>{{ pageTitle }}  | Tymbe  </title>
 
 		<link rel="stylesheet" href="https://use.typekit.net/gwu8cnr.css">
 
