@@ -1,0 +1,200 @@
+{% extends '@layout/layout.twig' %}
+{% set pageTitle = 'Smlouva o spolupráci a poskytování služeb' %}
+
+
+{% block content %}
+<style>
+	hr {
+        position: relative;
+        top: 20px;
+        border: none;
+        height: 3px;
+        background: #28367b;
+        margin-bottom: 50px;
+}
+	.pcenter {
+		text-align: center;
+}
+	.hedr {
+		padding: 0px 15px;
+}
+	h2 {
+		text-align: center;
+}
+	.space {
+  		margin-top: 50px;
+		display: block;
+}
+	.column {
+  		float: left;
+  		width: 50%;
+		padding: 0px 15px;
+		text-align: justify;
+}
+
+		.row:after {
+  		content: "";
+  		display: table;
+  		clear: both;
+}
+	.placeholder {
+		width: 50px;
+		display: inline-block;
+		border-bottom: 1px solid black;
+}
+	p {
+		display: inline;
+		line-height: 20px;
+}
+</style>
+
+	<main id="main" class="main">
+		{% include '@components/box/intro.twig' with {
+			props: {
+				background: 'intro-bg.jpg',
+				title: 'Smlouva o spolupráci a poskytování služeb',
+				title: 'ДОГОВІР ПРО СПІВРОБІТНИЦТВО ТА НАДАННЯ ПОСЛУГ',
+				downLink: 'content',
+			}
+		} %}
+		<div class="row-main">
+			<div id="content" class="u-pt-10 u-mb-9">
+				<h2>
+					Níže uvedeného roku, měsíce a dne uzavírají smluvní strany:<br>
+					Договірні Сторони уклали наступного року, місяця і дня:<br>
+				</h2>
+
+				<p class="space">
+					TYMBE, a.s., IČ: 05892538, se sídlem Podolská 2731/33, Líšeň, 628 00 Brno <br> společnost je zapsaná v obchodním rejstříku vedeném Krajským soudem v Brně, sp. zn. B 7688 zastoupená<br> Martinem Plášilem, členem představenstva<br>(dále pouze „TYMBE“)
+				</p>
+
+				<p class="space">
+					TYMBE, a.s., ІН: 05892538, із зареєстрованим офісом за адресою: Подольська 2731/33, Лішень, 628 00 Брно <br> компанія зареєстрована в Торговому реєстрі, який веде обласний суд м. Брно, спр. No B 7688 особі<br> Мартіна Плашила, члена ради директорів<br>(далі - „TYMBE“)
+				</p>
+
+				<p class="space"> 
+					та
+				</p>
+
+				<p class="space">
+					poskytovatel - постачальник
+				</p>
+
+				<h2>
+					tuto smlouvu o spolupráci a poskytování služeb<br>
+					цю угоду про співпрацю та обслуговування<br>
+				</h2>
+
+				<div class="pcenter">
+				<p class="space">
+					dle ust. § 1746 odst. 2. zák. č. 89/2012 Sb., Občanský zákoník, v platném a účinném znění<br>
+					відповідно до положень § 1746, абз. 2 Закону № 89/2012 Зб., Цивільний кодекс із змінами та введеними в дію<br>
+				</p>
+				</div>
+
+				<h2>
+					I.	Úvodní ustanovení<br>
+					I.	Вступні положення<br>
+				</h2>
+
+				<hr>
+
+				<div class="row">
+					<div class="column">
+						<p>
+							1.	TYMBE je obchodní korporací, jejímž zájmem 	je zvýšení kvality poskytovaných služeb v rámci aplikace „TYMBE“ a zajištění on-line marketingu pro klienty TYMBE. Poskytovatel je uživatelem služeb aplikace TYMBE, na základě které uzavírá s klienty TYMBE či přímo s TYMBE pracovněprávní dohody.<br>
+							2.	Předmětem této smlouvy je stanovení vzájemných práv a povinností při poskytování služeb ze strany poskytovatele, přičemž TYMBE se zavazuje za činnost dle čl. II.(„Služby“) uhradit poskytovateli odměnu blíže specifikovanou v čl. III. této smlouvy.<br>
+						</p>
+					</div>
+					<div class="column">
+						<p>
+							1.	TYMBE – бізнес-корпорація, яка зацікавлена в підвищенні якості послуг, що надаються в рамках програми «TYMBE», а також у забезпеченні онлайн-маркетингу клієнтам TYMBE. Провайдер є користувачем сервісів додатків TYMBE, на підставі яких він укладає трудові договори з клієнтами TYMBE або безпосередньо з TYMBE.<br>
+							2.	Предметом цього договору є визначення взаємних прав та обов'язків у наданні послуг постачальником, при цьому TYMBE зобов'язується діяти відповідно до статті II. («Послуги») для виплати Постачальнику винагороди, зазначеної у статті III. цього договору.<br>
+						</p>
+					</div>
+				</div>
+
+				<h2>
+					II.	Služby<br>
+					II. Послуги<br>
+				</h2>
+
+				<hr>
+
+				<div class="row">
+					<div class="column">
+						<p>
+							1.	Smluvní strany se dohodly na poskytování následujících služeb. Jedná se, nikoliv však výlučně, o následující služby: vyplňování on-line formulářů průzkumu pracovního trhu – posuzování pracovního prostředí a výzkum spokojenosti klientů i poskytovatele se službami TYMBE; zajišťování marketingového průzkumu.<br>
+							2.	Služby budou poskytovány na základě přihlášení do aplikace TYMBE a v souvislosti s evidencí pracovní činnosti poskytovatele, který se uzavřením této smlouvy zavazuje účastnit výše uvedených marketingových průzkumu a odpovídat na otázky v rámci fungování aplikace TYMBE a kvality pracovního prostředí při výkonu práce pro klienty TYMBE. Poskytovatel bere na vědomí, že rozsah poskytovaných služeb závisí na potřebách TYMBE a není jednostranně nárokovatelný. O případných změnách podmínek bude poskytovatel vždy dopředu informován.<br>
+						</p>
+					</div>
+					<div class="column">
+						<p>
+							1.	Сторони домовилися про надання наступних послуг. Ними є, але не виключно, наступні послуги: заповнення онлайн-форм дослідження ринку праці - оцінка робочого середовища та дослідження задоволеності клієнта та постачальника послугами TYMBE; надання маркетингових досліджень.<br>
+							2.	Послуги надаватимуться на основі входу в додаток TYMBE та у зв’язку з діловими записами провайдера, який, уклавши цей договір, зобов’язується брати участь у зазначених вище маркетингових дослідженнях та відповідати на запитання в рамках роботи програми TYMBE та якості робочого середовища при виконанні робіт для клієнтів TYMBE. Постачальник визнає, що обсяг наданих послуг залежить від потреб TYMBE і не може бути витребуваний в односторонньому порядку. Про будь-які зміни умов постачальник завжди буде поінформований заздалегідь.<br>
+						</p>
+					</div>
+				</div>
+				<hr>
+				<h2>
+					III. Odměna<br>
+					III. Винагорода<br>
+				</h2>
+				<div class="row">
+					<div class="column">
+						<p>
+							1.	Odměna za služby uvedené v čl. II. bude poskytována ve formě tzv. „kreditů“, které budou přepočítávány do měny CZK na základě dalších kritérií a podmínek blíže specifikovaných na stránkách aplikace TYMBE a zasílány na účet poskytovatele určený při zadávání registračních údajů. Poskytovatel nemá nárok v souvislosti s poskytováním služeb dle této smlouvy na úhradu nákladů či jiného finančního plnění. Poskytovatel bere na vědomí, že přijatá peněžní odměna je považována za ostatní příjmy podle § 10 odst. 1, písm. a zákona č. 586/1992 Sb., o daních z příjmů a je třeba ji případně (vzhledem k její výši) zahrnout do daňového přiznání, pokud má poplatník dle zákona o daních z příjmu povinnost daňové přiznání podat.<br>
+						</p>
+					</div>
+					<div class="column">
+						<p>
+							1.	Винагорода за послуги, зазначені у статті II. надаватимуться у вигляді так званих «кредитів», які будуть конвертовані в чеські крони на основі інших критеріїв та умов, більш детально зазначених на веб-сайті програми TYMBE та надісланих на обліковий запис провайдера, зазначений під час введення реєстраційних даних. Постачальник не має права на відшкодування витрат або інших фінансових вигод у зв’язку з наданням послуг за цим договором. Постачальник визнає, що отримана грошова винагорода вважається іншим доходом відповідно до § 10 абз. 1 (а) Закону № 586/1992 Зб., про податки на прибуток і необхідно (у зв'язку з його розміром) включити його до податкової декларації, якщо платник податку зобов'язаний подавати податкову декларацію відповідно до Закону про податок на прибуток.<br>
+						</p>
+					</div>
+				</div>
+				<h2>
+					IV.	Trvání smlouvy<br>
+					IV.	Термін дії договору<br>
+				</h2>
+
+				<hr>
+
+				<div class="row">
+					<div class="column">
+						<p>
+							1.	Tato smlouva se uzavírá na dobu trvání dohody o provedení práce uzavřené prostřednictvím aplikace TYMBE spolu s touto smlouvou.<br>
+						</p>
+					</div>
+					<div class="column">
+						<p>
+							1.	Цей договір укладається на термін дії договору про виконання робіт, укладеного через додаток TYMBE разом з цим договором.<br>
+						</p>
+					</div>
+				</div>
+
+				<h2>
+					V.	Závěrečná ustanovení<br>
+					V.	Прикінцеві положення<br>
+				</h2>
+
+				<hr>
+				
+				<div class="row">
+					<div class="column">
+						<p>
+							1.	Tato smlouva nabývá platnosti a účinnosti dnem jejího podpisu oběma stranami a řídí příslušnými ustanoveními Občanského zákoníku.<br>
+						</p>
+					</div>
+					<div class="column">
+						<p>
+							1.	Цей Договір набирає чинності з дня його підписання обома сторонами та регулюється відповідними положеннями Цивільного кодексу.<br>
+						</p>
+					</div>
+				</div>
+
+				
+			</div>
+		</div>
+	</main>
+
+{% endblock %}
