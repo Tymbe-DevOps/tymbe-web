@@ -10,37 +10,60 @@
 		<meta charset="utf-8">
 		<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 
-		<!-- Google Tag Manager -->
-		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-W38ZVX8');</script>
-		<!-- End Google Tag Manager -->
+		<!-- Google Tag Manager tymbe.cz -->
+			<script>
+(function (w, d, s, l, i) {
+w[l] = w[l] || [];
+w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+var f = d.getElementsByTagName(s)[0],
+j = d.createElement(s),
+dl = l != 'dataLayer' ? '&l=' + l : '';
+j.async = true;
+j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-W38ZVX8');
+		</script>
+		<!-- End Google Tag Manager tymbe.cz -->
 
-		{% if metaDescriptionContent is defined %}
-				<meta name="description" content="{{metaDescriptionContent}}">
-				<meta property="og:description" content="{{metaDescriptionContent}}">
-				<meta name="twitter:description" content="{{metaDescriptionContent}}">
+		<!-- Google Tag Manager tymbe.com-->
+			<script>
+(function (w, d, s, l, i) {
+w[l] = w[l] || [];
+w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+var f = d.getElementsByTagName(s)[0],
+j = d.createElement(s),
+dl = l != 'dataLayer' ? '&l=' + l : '';
+j.async = true;
+j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KDMSLXX');
+		</script>
+		<!-- End Google Tag Manager tymbe.com-->
+
+			{% if metaDescriptionContent is defined %}
+			<meta name="description" content="{{metaDescriptionContent}}"> <meta property="og:description" content="{{metaDescriptionContent}}">
+			<meta name="twitter:description" content="{{metaDescriptionContent}}">
 		{% else %}
-				<meta name="description" content="">
-				<meta property="og:description" content="">
-				<meta name="twitter:description" content="">
+			<meta name="description" content="">
+			<meta property="og:description" content="">
+			<meta name="twitter:description" content="">
 		{% endif %}
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 		<meta name="twitter:card" content="summary">
 		<meta name="twitter:title" content="{{ pageTitle }} | Tymbe">
-		
+
 		<meta name="twitter:image" content="{{ assets.images }}social/twitter.jpg">
 
 		<meta property="og:title" content="{{ pageTitle }} | Tymbe">
-		
+
 		<meta property="og:image" content="{{ assets.images }}social/facebook.jpg">
 		<meta property="og:site_name" content="Tymbe">
 		<meta property="og:url" content="Staň se Tymberem a vydělej víc!">
 
-		<title>{{ pageTitle }} | Tymbe </title>
+		<title>{{ pageTitle }}
+			| Tymbe
+		</title>
 
 		<link rel="stylesheet" href="https://use.typekit.net/gwu8cnr.css">
 
@@ -53,7 +76,7 @@
 		] %}
 
 		{% for script in scripts %}
-		<link rel="preload" as="script" href="{{script}}">
+			<link rel="preload" as="script" href="{{script}}">
 		{% endfor %}
 
 		<link rel="apple-touch-icon" sizes="180x180" href="{{ assets.images }}favicons/apple-touch-icon.png">
@@ -67,65 +90,71 @@
 
 		<script>
 			(function () {
-				var className = document.documentElement.className;
-				className = className.replace('no-js', 'js');
+var className = document.documentElement.className;
+className = className.replace('no-js', 'js');
 
-				(function() {
-					var mediaHover = window.matchMedia('(hover: none), (pointer: coarse), (pointer: none)');
-					mediaHover.addListener(function(media) {
-						document.documentElement.classList[media.matches ? 'add' : 'remove']('no-hoverevents');
-						document.documentElement.classList[!media.matches ? 'add' : 'remove']('hoverevents');
-					});
-					className += (mediaHover.matches ? ' no-hoverevents' : ' hoverevents');
-				})();
+(function () {
+var mediaHover = window.matchMedia('(hover: none), (pointer: coarse), (pointer: none)');
+mediaHover.addListener(function (media) {
+document.documentElement.classList[media.matches ? 'add' : 'remove']('no-hoverevents');
+document.documentElement.classList[! media.matches ? 'add' : 'remove']('hoverevents');
+});
+className += (mediaHover.matches ? ' no-hoverevents' : ' hoverevents');
+})();
 
-				// var supportsCover = 'CSS' in window && typeof CSS.supports === 'function' && CSS.supports('object-fit: cover');
-				// className += (supportsCover ? ' ' : ' no-') + 'objectfit';
+// var supportsCover = 'CSS' in window && typeof CSS.supports === 'function' && CSS.supports('object-fit: cover');
+// className += (supportsCover ? ' ' : ' no-') + 'objectfit';
 
-				// fix iOS zoom issue: https://docs.google.com/document/d/1KclJmXyuuErcvit-kwCC6K2J7dClRef43oyGVCqWxFE/edit#heading=h.sgbqg5nzhvu9
-				var ua = navigator.userAgent.toLowerCase();
-				var isIOS = /ipad|iphone|ipod/.test(ua) && !window.MSStream;
+// fix iOS zoom issue: https://docs.google.com/document/d/1KclJmXyuuErcvit-kwCC6K2J7dClRef43oyGVCqWxFE/edit#heading=h.sgbqg5nzhvu9
+var ua = navigator.userAgent.toLowerCase();
+var isIOS = /ipad|iphone|ipod/.test(ua) && !window.MSStream;
 
-				if (isIOS === true) {
-					var viewportTag = document.querySelector("meta[name=viewport]");
-					viewportTag.setAttribute("content", "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no");
-				}
+if (isIOS === true) {
+var viewportTag = document.querySelector("meta[name=viewport]");
+viewportTag.setAttribute("content", "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no");
+}
 
-				document.documentElement.className = className;
-			}());
-			(function () {
-				var match = document.cookie.match(new RegExp('(^| )SKcookieConsent=([^;]+)'));
-				document.documentElement.dataset.showCookie = true;
-				if (match) {
-					try {
-						var cookieState = JSON.parse(match[2]);
-						if(cookieState.id && cookieState.datetime && cookieState.storages) {
-							document.documentElement.dataset.showCookie = false;
-							window.cookieState = cookieState;
-						};
-					} catch (error) {}
-				}
-				// GTM consent init
-				window.dataLayer = window.dataLayer || [];
-				function gtag() {
-					window.dataLayer.push(arguments);
-				}
-				gtag('consent', 'default', window.cookieState && window.cookieState.storages ?  window.cookieState.storages : {
-					functionality_storage: 'granted',
-					security_storage: 'granted',
-					ad_storage: 'denied',
-					analytics_storage: 'denied',
-					personalization_storage: 'denied',
-				});
-			}());
+document.documentElement.className = className;
+}());
+(function () {
+var match = document.cookie.match(new RegExp('(^| )SKcookieConsent=([^;]+)'));
+document.documentElement.dataset.showCookie = true;
+if (match) {
+try {
+var cookieState = JSON.parse(match[2]);
+if (cookieState.id && cookieState.datetime && cookieState.storages) {
+document.documentElement.dataset.showCookie = false;
+window.cookieState = cookieState;
+};
+} catch (error) {}
+}
+// GTM consent init
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+window.dataLayer.push(arguments);
+}
+gtag('consent', 'default', window.cookieState && window.cookieState.storages ? window.cookieState.storages : {
+functionality_storage: 'granted',
+security_storage: 'granted',
+ad_storage: 'denied',
+analytics_storage: 'denied',
+personalization_storage: 'denied'
+});
+}());
 		</script>
 
 	</head>
 	<body>
-		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W38ZVX8"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- End Google Tag Manager (noscript) -->
+		<!-- Google Tag Manager (noscript) tymbe.cz-->
+		<noscript>
+			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W38ZVX8" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<!-- End Google Tag Manager (noscript) tymbe.cz-->
+		<!-- Google Tag Manager (noscript) tymbe.com-->
+		<noscript>
+			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDMSLXX" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<!-- End Google Tag Manager (noscript) tymbe.com-->
 		<p class="m-accessibility">
 			<a title="Přejít k obsahu (Klávesová zkratka: Alt + 2)" accesskey="2" href="#main">Přejít k obsahu</a>
 			<span class="hide">|</span>
@@ -331,19 +360,19 @@
 
 				<p class="footer__copy">
 					&copy; Copyright 2021 – TYMBE a.s. &nbsp;
-					{# Odkaz na vyvolani cookie popupu #}
+				{# Odkaz na vyvolani cookie popupu #}
 					{# <a href="#" class="footer__link item-icon item-icon--after" data-cookie-open>
-						<span class="item-icon__icon">
-							{% include '@components/core/icon-svg/icon-svg.twig' with {
-								props: {
-									name: 'cookies'
-								}
-							} %}
-						</span>
-						<span class="item-icon__text">
-							Cookies
-						</span>
-					</a> #}
+																					<span class="item-icon__icon">
+																						{% include '@components/core/icon-svg/icon-svg.twig' with {
+																							props: {
+																								name: 'cookies'
+																							}
+																						} %}
+																					</span>
+																					<span class="item-icon__text">
+																						Cookies
+																					</span>
+																				</a> #}
 				</p>
 			</div>
 		</footer>
@@ -351,22 +380,25 @@
 		{% include "@components/box/cookie.twig" %}
 
 		{% for script in scripts %}
-		<script src="{{script}}"></script>
+			<script src="{{script}}"></script>
 		{% endfor %}
 		<script>
 			App.run({})
 		</script>
-		
-	<!-- Leady Impera -->
-	<script type="text/javascript">
-  		var leady_track_key="4qc4l3hhEMLmAZ8H";
-  		(function(){
-    		var l=document.createElement("script");l.type="text/javascript";l.async=true;
-    		l.src='https://ct.leady.com/'+leady_track_key+"/L.js";
-    		var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(l,s);
- 		 })();
+
+		<!-- Leady Impera -->
+		<script type="text/javascript">
+			var leady_track_key = "4qc4l3hhEMLmAZ8H";
+(function () {
+var l = document.createElement("script");
+l.type = "text/javascript";
+l.async = true;
+l.src = 'https://ct.leady.com/' + leady_track_key + "/L.js";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(l, s);
+})();
 		</script>
-	<!-- End Leady Impera -->
+		<!-- End Leady Impera -->
 
 	</body>
 </html>
