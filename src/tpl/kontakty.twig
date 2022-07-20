@@ -8,7 +8,7 @@
 		{% include '@components/box/intro.twig' with {
 			props: {
 				classes: ['b-intro--cut'],
-				background: 'intro-bg.jpg',
+				background: 'intro-bg.svg',
 				title: 'Kontakt',
 				text: 'Máš otázky? Máme odpovědi! Ozvi se a doplníme všechno, co tě zajímá.',
 			}
@@ -18,13 +18,14 @@
 				<div class="b-white b-contact">
 					<div class="grid grid--x-0">
 						<div class="grid__cell size--6-12@md">
-							<form class="b-contact__form" action="?" data-controller="Contact"
-							data-contact-url-value="{{apiBaseUrl}}/contactForm" data-action="submit->Contact#send">
+							<form class="b-contact__form" action="?" data-controller="Contact" data-contact-url-value="{{apiBaseUrl}}/contactForm" data-action="submit->Contact#send">
 								<h2 class="b-contact__title h3">
 									Spoj se s námi
 								</h2>
-								<p class="message message--ok u-hide" data-contact-target="success">Děkujeme.<br>Budeme tě kontaktovat co nejdříve.<p>
-								<p class="message message--error u-hide" data-contact-target="message"><p>
+								<p class="message message--ok u-hide" data-contact-target="success">Děkujeme.<br>Budeme tě kontaktovat co nejdříve.</p>
+								<p></p>
+								<p class="message message--error u-hide" data-contact-target="message"></p>
+								<p></p>
 								<p class="inp js-registration__inp" data-controller="FocusInput">
 									<label for="contactInputName" class="inp-label">
 										Jméno
@@ -38,8 +39,7 @@
 										E-mail
 									</label>
 									<span class="inp-fix">
-										<input type="email" name="contactInputEmail" id="contactInputEmail" placeholder="E-mail" class="inp-text"
-										required data-action="focus->FocusInput#focus blur->FocusInput#blur input->Contact#inputValidate">
+										<input type="email" name="contactInputEmail" id="contactInputEmail" placeholder="E-mail" class="inp-text" required data-action="focus->FocusInput#focus blur->FocusInput#blur input->Contact#inputValidate">
 									</span>
 								</p>
 								<p class="inp js-registration__inp" data-controller="FocusInput">
@@ -47,8 +47,7 @@
 										Zpráva
 									</label>
 									<span class="inp-fix">
-										<textarea name="contactInputMessage" id="contactInputMessage" placeholder="Zpráva" class="inp-text" cols="40" rows="6"
-										required data-action="focus->FocusInput#focus blur->FocusInput#blur input->Contact#inputValidate"></textarea>
+										<textarea name="contactInputMessage" id="contactInputMessage" placeholder="Zpráva" class="inp-text" cols="40" rows="6" required data-action="focus->FocusInput#focus blur->FocusInput#blur input->Contact#inputValidate"></textarea>
 									</span>
 								</p>
 

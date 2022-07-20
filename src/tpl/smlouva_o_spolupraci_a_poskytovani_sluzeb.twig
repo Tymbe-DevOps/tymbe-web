@@ -3,55 +3,55 @@
 
 
 {% block content %}
-<style>
-	hr {
-        position: relative;
-        top: 20px;
-        border: none;
-        height: 3px;
-        background: #28367b;
-        margin-bottom: 50px;
-}
-	.pcenter {
-		text-align: center;
-}
-	.hedr {
-		padding: 0px 15px;
-}
-	h2 {
-		text-align: center;
-}
-	.space {
-  		margin-top: 50px;
-		display: block;
-}
-	.column {
-  		float: left;
-  		width: 50%;
-		padding: 0px 15px;
-		text-align: justify;
-}
+	<style>
+		hr {
+			position: relative;
+			top: 20px;
+			border: none;
+			height: 3px;
+			background: #28367b;
+			margin-bottom: 50px;
+		}
+		.pcenter {
+			text-align: center;
+		}
+		.hedr {
+			padding: 0 15px;
+		}
+		h2 {
+			text-align: center;
+		}
+		.space {
+			margin-top: 50px;
+			display: block;
+		}
+		.column {
+			float: left;
+			width: 50%;
+			padding: 0 15px;
+			text-align: justify;
+		}
 
 		.row:after {
-  		content: "";
-  		display: table;
-  		clear: both;
-}
-	.placeholder {
-		width: 50px;
-		display: inline-block;
-		border-bottom: 1px solid black;
-}
-	p {
-		display: inline;
-		line-height: 20px;
-}
-</style>
+			content: "";
+			display: table;
+			clear: both;
+		}
+		.placeholder {
+			width: 50px;
+			display: inline-block;
+			border-bottom: 1px solid black;
+		}
+		p {
+			display: inline;
+			line-height: 20px;
+		}
+	</style>
 
 	<main id="main" class="main">
 		{% include '@components/box/intro.twig' with {
 			props: {
-				background: 'intro-bg.jpg',
+				background: 'intro-bg.svg',
 				title: 'Smlouva o spolupráci a poskytování služeb',
 				title: 'ДОГОВІР ПРО СПІВРОБІТНИЦТВО ТА НАДАННЯ ПОСЛУГ',
 				downLink: 'content',
@@ -65,14 +65,20 @@
 				</h2>
 
 				<p class="space">
-					TYMBE, a.s., IČ: 05892538, se sídlem Podolská 2731/33, Líšeň, 628 00 Brno <br> společnost je zapsaná v obchodním rejstříku vedeném Krajským soudem v Brně, sp. zn. B 7688 zastoupená<br> Martinem Plášilem, členem představenstva<br>(dále pouze „TYMBE“)
+					TYMBE, a.s., IČ: 05892538, se sídlem Podolská 2731/33, Líšeň, 628 00 Brno
+					<br>
+					společnost je zapsaná v obchodním rejstříku vedeném Krajským soudem v Brně, sp. zn. B 7688 zastoupená<br>
+					Martinem Plášilem, členem představenstva<br>(dále pouze „TYMBE“)
 				</p>
 
 				<p class="space">
-					TYMBE, a.s., ІН: 05892538, із зареєстрованим офісом за адресою: Подольська 2731/33, Лішень, 628 00 Брно <br> компанія зареєстрована в Торговому реєстрі, який веде обласний суд м. Брно, спр. No B 7688 особі<br> Мартіна Плашила, члена ради директорів<br>(далі - „TYMBE“)
+					TYMBE, a.s., ІН: 05892538, із зареєстрованим офісом за адресою: Подольська 2731/33, Лішень, 628 00 Брно
+					<br>
+					компанія зареєстрована в Торговому реєстрі, який веде обласний суд м. Брно, спр. No B 7688 особі<br>
+					Мартіна Плашила, члена ради директорів<br>(далі - „TYMBE“)
 				</p>
 
-				<p class="space"> 
+				<p class="space">
 					та
 				</p>
 
@@ -86,10 +92,10 @@
 				</h2>
 
 				<div class="pcenter">
-				<p class="space">
-					dle ust. § 1746 odst. 2. zák. č. 89/2012 Sb., Občanský zákoník, v platném a účinném znění<br>
-					відповідно до положень § 1746, абз. 2 Закону № 89/2012 Зб., Цивільний кодекс із змінами та введеними в дію<br>
-				</p>
+					<p class="space">
+						dle ust. § 1746 odst. 2. zák. č. 89/2012 Sb., Občanský zákoník, v platném a účinném znění<br>
+						відповідно до положень § 1746, абз. 2 Закону № 89/2012 Зб., Цивільний кодекс із змінами та введеними в дію<br>
+					</p>
 				</div>
 
 				<h2>
@@ -178,7 +184,7 @@
 				</h2>
 
 				<hr>
-				
+
 				<div class="row">
 					<div class="column">
 						<p>
@@ -192,7 +198,7 @@
 					</div>
 				</div>
 
-				
+
 			</div>
 		</div>
 	</main>

@@ -7,7 +7,7 @@
 		{% include '@components/box/intro.twig' with {
 			props: {
 				classes: ['b-intro--cut'],
-				background: 'intro-bg.jpg',
+				background: 'intro-bg.svg',
 				title: 'FAQ',
 				text: 'Máš otázky? Máme odpovědi! Ozvi se a doplníme všechno, co tě zajímá.',
 			}
@@ -17,7 +17,7 @@
 				<div class="b-white b-tabs" data-controller="Tabs">
 					<ul class="b-tabs__list">
 						<li class="b-tabs__item">
-							<a href="#first" class="b-tabs__link is-selected" data-key="first" data-Tabs-target="link" data-action="Tabs#changeTab">
+							<a href="#first" class="b-tabs__link is-selected" data-key="first" data-tabs-target="link" data-action="Tabs#changeTab">
 								<span class="item-icon">
 									{% include '@components/core/icon-svg/icon-svg.twig' with {
 										props: {
@@ -30,7 +30,7 @@
 							</a>
 						</li>
 						<li class="b-tabs__item">
-							<a href="#second" class="b-tabs__link" data-key="second" data-Tabs-target="link" data-action="Tabs#changeTab">
+							<a href="#second" class="b-tabs__link" data-key="second" data-tabs-target="link" data-action="Tabs#changeTab">
 								<span class="item-icon">
 									{% include '@components/core/icon-svg/icon-svg.twig' with {
 										props: {
@@ -43,7 +43,7 @@
 							</a>
 						</li>
 					</ul>
-					<div id="first" class="b-tabs__fragment is-active" data-Tabs-target="content">
+					<div id="first" class="b-tabs__fragment is-active" data-tabs-target="content">
 						<h2 class="u-js-hide">
 							Pro firmy
 						</h2>
@@ -75,7 +75,7 @@
 							}
 						} %}
 					</div>
-					<div id="second" class="b-tabs__fragment" data-Tabs-target="content">
+					<div id="second" class="b-tabs__fragment" data-tabs-target="content">
 						<h2 class="u-js-hide">
 							Pro brigádníky
 						</h2>
